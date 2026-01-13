@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
-  color: ${({ theme }) => theme.colors.primary.hex};
-  padding: 1rem;
+  color: var(--color-violet);
+  padding: var(--space-3);
 
   @media (min-width: 768px) {
-    padding-left: 2.5rem;
+    padding-left: var(--space-6);
   }
 `;
 

@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterWrapper = styled.footer`
-  // background-color: ${({ theme }) => theme.colors.primary.hex};
-  color: #fbfbfb;
-  padding: 1rem;
+  color: var(--color-pearl);
+  padding: var(--space-3);
   margin-top: auto;
   z-index: 2;
 `;

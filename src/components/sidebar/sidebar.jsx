@@ -29,7 +29,7 @@ const SectionHeader = styled.div`
   color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-top: ${props => props.first ? '0' : 'var(--space-5)'};
+  margin-top: ${props => props.$first ? '0' : 'var(--space-5)'};
   margin-bottom: var(--space-2);
   padding-left: var(--space-2);
 
@@ -77,7 +77,7 @@ const StyledNavLink = styled(NavLink)`
 const Sidebar = () => {
   return (
     <SidebarWrapper>
-      <SectionHeader first>FOUNDATION</SectionHeader>
+      <SectionHeader $first>FOUNDATION</SectionHeader>
       <StyledNavLink to="/">Introduction</StyledNavLink>
       <StyledNavLink to="/brand-dna">Brand DNA</StyledNavLink>
 
