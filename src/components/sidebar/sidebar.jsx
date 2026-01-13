@@ -8,7 +8,9 @@ const SidebarWrapper = styled.nav`
   padding: var(--space-7) var(--space-4);
   position: fixed;
   overflow-y: auto;
-  background-color: var(--color-surface-primary);
+  background-color: var(--color-midnight);
+  border-top-right-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
 
   @media (max-width: 768px) {
     position: relative;
@@ -20,13 +22,15 @@ const SidebarWrapper = styled.nav`
     overflow-x: auto;
     overflow-y: visible;
     white-space: nowrap;
+    border-radius: 0;
+    background-color: var(--color-midnight);
   }
 `;
 
 const SectionHeader = styled.div`
   font-size: var(--text-body-small);
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: rgba(251, 251, 251, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: ${props => props.$first ? '0' : 'var(--space-5)'};
@@ -40,24 +44,26 @@ const SectionHeader = styled.div`
 
 const StyledNavLink = styled(NavLink)`
   display: block;
-  color: var(--color-text-primary);
+  color: var(--color-pearl);
   text-decoration: none;
   padding: var(--space-2) var(--space-2);
   border-radius: var(--radius-sm);
   font-size: var(--text-body-small);
   font-weight: 400;
   margin-bottom: var(--space-1);
-  transition: background-color var(--duration-fast) var(--ease-default);
+  transition: all var(--duration-fast) var(--ease-default);
   border-left: 3px solid transparent;
 
   &.active {
-    background-color: var(--color-lavender);
+    background-color: rgba(106, 0, 213, 0.2);
     border-left-color: var(--color-violet);
+    color: var(--color-pearl);
     font-weight: 500;
   }
 
   &:hover {
-    background-color: var(--color-lavender);
+    background-color: rgba(106, 0, 213, 0.1);
+    color: var(--color-pearl);
   }
 
   @media (max-width: 768px) {
