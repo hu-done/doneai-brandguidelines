@@ -8,8 +8,14 @@ import Sidebar from "./components/sidebar/sidebar.jsx";
 import Home from "./components/home/home.jsx";
 import BrandDNA from "./components/brand-dna/brand-dna.jsx";
 import Logo from "./components/logo/logo.jsx";
-import Colors from "./components/colors/colors.jsx";
+import Colors from "./components/colors/ColorsNew.jsx";
+import Typography from "./components/typography/Typography.jsx";
+import ToneOfVoice from "./components/tone-of-voice/ToneOfVoice.jsx";
+import ForbiddenLanguage from "./components/forbidden-language/ForbiddenLanguage.jsx";
+import Buttons from "./components/buttons/Buttons.jsx";
+import DarkMode from "./components/dark-mode/DarkMode.jsx";
 import Designguide from "./components/designguide/designguide.jsx";
+import ComingSoon from "./components/shared/ComingSoon.jsx";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -83,8 +89,30 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/brand-dna" element={<BrandDNA />} />
+
+              {/* Verbal Identity */}
+              <Route path="/tone-of-voice" element={<ToneOfVoice />} />
+              <Route path="/writing-guidelines" element={<ComingSoon title="Writing Guidelines" description="Comprehensive writing guidelines coming soon." />} />
+              <Route path="/forbidden-language" element={<ForbiddenLanguage />} />
+
+              {/* Visual Identity */}
               <Route path="/logo" element={<Logo />} />
               <Route path="/colors" element={<Colors />} />
+              <Route path="/typography" element={<Typography />} />
+              <Route path="/dark-mode" element={<DarkMode />} />
+
+              {/* Design System */}
+              <Route path="/spacing" element={<ComingSoon title="Spacing & Layout" description="8pt grid system and spacing guidelines coming soon." />} />
+              <Route path="/border-radius" element={<ComingSoon title="Border Radius" description="Radius scale and nesting rules coming soon." />} />
+              <Route path="/elevation" element={<ComingSoon title="Elevation & Shadows" description="Shadow system and elevation guidelines coming soon." />} />
+              <Route path="/css-tokens" element={<ComingSoon title="CSS Tokens" description="Complete CSS token reference coming soon." />} />
+
+              {/* Components */}
+              <Route path="/buttons" element={<Buttons />} />
+              <Route path="/inputs" element={<ComingSoon title="Inputs" description="Input component specifications coming soon." />} />
+              <Route path="/cards" element={<ComingSoon title="Cards" description="Card component specifications coming soon." />} />
+
+              {/* Legacy */}
               <Route path="/designguide" element={<Designguide />} />
             </Routes>
           </ContentWrapper>
