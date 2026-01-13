@@ -10,7 +10,7 @@ const HeroContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-full);
   overflow: hidden;
 `;
 
@@ -53,7 +53,9 @@ const HeroGradient = ({ title, subtitle }) => {
       if (interBubble) {
         curX += (tgX - curX) / 20;
         curY += (tgY - curY) / 20;
-        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+        interBubble.style.transform = `translate(${Math.round(
+          curX
+        )}px, ${Math.round(curY)}px)`;
       }
       requestAnimationFrame(move);
     }
@@ -86,7 +88,11 @@ const HeroGradient = ({ title, subtitle }) => {
           <svg xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="10"
+                  result="blur"
+                />
                 <feColorMatrix
                   in="blur"
                   mode="matrix"

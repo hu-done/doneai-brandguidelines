@@ -6,14 +6,14 @@ const HeaderWrapper = styled.header`
   color: var(--color-violet);
   padding: var(--space-3);
 
-  @media (min-width: 768px) {
-    padding-left: var(--space-6);
-  }
+  // @media (min-width: 768px) {
+  //   padding-left: var(--space-6);
+  // }
 `;
 
 const LogoContainerImage = styled.img`
   max-width: calc(120px + 3vw);
-  max-height: 100px;
+  max-height: 40px;
   margin: 0px 10px;
 `;
 

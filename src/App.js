@@ -32,8 +32,8 @@ const AppWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  margin-left: 250px;
-  padding: 1rem 2rem;
+  margin-left: 280px;
+  padding: 0 2rem;
   flex-grow: 1;
   max-width: 900px;
 
@@ -98,8 +98,19 @@ const App = () => {
 
               {/* Verbal Identity */}
               <Route path="/tone-of-voice" element={<ToneOfVoice />} />
-              <Route path="/writing-guidelines" element={<ComingSoon title="Writing Guidelines" description="Comprehensive writing guidelines coming soon." />} />
-              <Route path="/forbidden-language" element={<ForbiddenLanguage />} />
+              <Route
+                path="/writing-guidelines"
+                element={
+                  <ComingSoon
+                    title="Writing Guidelines"
+                    description="Comprehensive writing guidelines coming soon."
+                  />
+                }
+              />
+              <Route
+                path="/forbidden-language"
+                element={<ForbiddenLanguage />}
+              />
 
               {/* Visual Identity */}
               <Route path="/logo" element={<Logo />} />

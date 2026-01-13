@@ -45,7 +45,7 @@ const CodeBlock = styled.pre`
   line-height: 1.6;
   margin: var(--space-4) 0;
   position: relative;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 `;
 
 const CopyButton = styled.button`
@@ -123,9 +123,10 @@ const CSSTokens = () => {
 
   /* Radius */
   --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-md: 18px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-xxl: 32px;
   --radius-full: 9999px;
 
   /* Shadows */
@@ -240,20 +241,23 @@ const CSSTokens = () => {
       <PageTitle>CSS Tokens</PageTitle>
 
       <SectionDescription>
-        Copy-paste ready CSS custom properties for the Done.ai design system. All tokens are defined in [src/index.css](src/index.css) and available globally.
+        Copy-paste ready CSS custom properties for the Done.ai design system.
+        All tokens are defined in [src/index.css](src/index.css) and available
+        globally.
       </SectionDescription>
 
       {/* Full Token Set */}
       <Section>
         <SectionTitle>Complete Token Set</SectionTitle>
         <SectionDescription>
-          The full set of CSS custom properties. Copy this into your :root selector.
+          The full set of CSS custom properties. Copy this into your :root
+          selector.
         </SectionDescription>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(fullCSS, 'full')}>
-              {copiedSection === 'full' ? 'Copied!' : 'Copy All'}
+            <CopyButton onClick={() => handleCopy(fullCSS, "full")}>
+              {copiedSection === "full" ? "Copied!" : "Copy All"}
             </CopyButton>
             {fullCSS}
           </CodeBlock>
@@ -264,17 +268,18 @@ const CSSTokens = () => {
       <Section>
         <SectionTitle>Color Tokens</SectionTitle>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(colorTokens, 'colors')}>
-              {copiedSection === 'colors' ? 'Copied!' : 'Copy'}
+            <CopyButton onClick={() => handleCopy(colorTokens, "colors")}>
+              {copiedSection === "colors" ? "Copied!" : "Copy"}
             </CopyButton>
             {colorTokens}
           </CodeBlock>
         </div>
 
         <Callout type="warning" title="Royal Violet Restriction">
-          --color-violet (#6A00D5) should only be used for small accents. Never as a primary background or large text.
+          --color-violet (#6A00D5) should only be used for small accents. Never
+          as a primary background or large text.
         </Callout>
       </Section>
 
@@ -282,17 +287,18 @@ const CSSTokens = () => {
       <Section>
         <SectionTitle>Spacing Tokens</SectionTitle>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(spacingTokens, 'spacing')}>
-              {copiedSection === 'spacing' ? 'Copied!' : 'Copy'}
+            <CopyButton onClick={() => handleCopy(spacingTokens, "spacing")}>
+              {copiedSection === "spacing" ? "Copied!" : "Copy"}
             </CopyButton>
             {spacingTokens}
           </CodeBlock>
         </div>
 
         <Callout type="info">
-          All spacing is based on an 8pt grid. Use these tokens exclusively - no hardcoded pixel values.
+          All spacing is based on an 8pt grid. Use these tokens exclusively - no
+          hardcoded pixel values.
         </Callout>
       </Section>
 
@@ -300,10 +306,12 @@ const CSSTokens = () => {
       <Section>
         <SectionTitle>Typography Tokens</SectionTitle>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(typographyTokens, 'typography')}>
-              {copiedSection === 'typography' ? 'Copied!' : 'Copy'}
+            <CopyButton
+              onClick={() => handleCopy(typographyTokens, "typography")}
+            >
+              {copiedSection === "typography" ? "Copied!" : "Copy"}
             </CopyButton>
             {typographyTokens}
           </CodeBlock>
@@ -315,7 +323,7 @@ const CSSTokens = () => {
         <SectionTitle>Usage Examples</SectionTitle>
 
         <CodeBlock>
-{`/* Button example */
+          {`/* Button example */
 .button {
   padding: var(--space-3) var(--space-4);
   background-color: var(--color-midnight);
@@ -360,11 +368,14 @@ p {
         <SectionTitle>Implementation Guide</SectionTitle>
 
         <Callout type="success" title="Already Set Up">
-          If you're working in this project, all tokens are already available in [src/index.css](src/index.css). Just use them with var(--token-name).
+          If you're working in this project, all tokens are already available in
+          [src/index.css](src/index.css). Just use them with var(--token-name).
         </Callout>
 
         <Callout type="info" title="For New Projects">
-          Copy the complete token set above into your global CSS file (typically index.css or styles.css). Make sure it's in a :root selector so tokens are available everywhere.
+          Copy the complete token set above into your global CSS file (typically
+          index.css or styles.css). Make sure it's in a :root selector so tokens
+          are available everywhere.
         </Callout>
       </Section>
 
@@ -373,13 +384,24 @@ p {
         <SectionTitle>Token Categories</SectionTitle>
 
         <SectionDescription>
-          <strong>Colors:</strong> Named colors (pearl, midnight, etc.) and semantic colors (surface, text, border)<br/>
-          <strong>Typography:</strong> Font sizes from hero (40px) to caption (12px)<br/>
-          <strong>Spacing:</strong> 8pt grid from 4px to 120px<br/>
-          <strong>Radius:</strong> Border radius from small (4px) to full (9999px)<br/>
-          <strong>Shadows:</strong> Four elevation levels with dark mode variants<br/>
-          <strong>Motion:</strong> Duration and easing for transitions<br/>
-          <strong>Containers:</strong> Max-width breakpoints for content<br/>
+          <strong>Colors:</strong> Named colors (pearl, midnight, etc.) and
+          semantic colors (surface, text, border)
+          <br />
+          <strong>Typography:</strong> Font sizes from hero (40px) to caption
+          (12px)
+          <br />
+          <strong>Spacing:</strong> 8pt grid from 4px to 120px
+          <br />
+          <strong>Radius:</strong> Border radius from small (4px) to full
+          (9999px)
+          <br />
+          <strong>Shadows:</strong> Four elevation levels with dark mode
+          variants
+          <br />
+          <strong>Motion:</strong> Duration and easing for transitions
+          <br />
+          <strong>Containers:</strong> Max-width breakpoints for content
+          <br />
           <strong>Breakpoints:</strong> Responsive design breakpoints
         </SectionDescription>
       </Section>
@@ -389,11 +411,15 @@ p {
         <SectionTitle>Best Practices</SectionTitle>
 
         <Callout type="success" title="✓ Do">
-          Use tokens for all spacing, colors, and typography. This ensures consistency and makes global changes easy. Tokens also make dark mode implementation simple - just override the values.
+          Use tokens for all spacing, colors, and typography. This ensures
+          consistency and makes global changes easy. Tokens also make dark mode
+          implementation simple - just override the values.
         </Callout>
 
         <Callout type="error" title="✗ Don't">
-          Don't hardcode values like "16px" or "#FBFBFB". Don't create new tokens without documenting them here. Don't use tokens for one-off exceptions - that defeats the purpose.
+          Don't hardcode values like "16px" or "#FBFBFB". Don't create new
+          tokens without documenting them here. Don't use tokens for one-off
+          exceptions - that defeats the purpose.
         </Callout>
       </Section>
     </PageContainer>

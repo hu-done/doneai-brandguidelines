@@ -9,8 +9,8 @@ const SidebarWrapper = styled.nav`
   position: fixed;
   overflow-y: auto;
   background-color: var(--color-midnight);
-  border-top-right-radius: var(--radius-xl);
-  border-bottom-right-radius: var(--radius-xl);
+  border-radius: var(--radius-xxl);
+  margin-left: 1rem;
 
   @media (max-width: 768px) {
     position: relative;
@@ -33,7 +33,7 @@ const SectionHeader = styled.div`
   color: rgba(251, 251, 251, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-top: ${props => props.$first ? '0' : 'var(--space-5)'};
+  margin-top: ${(props) => (props.$first ? "0" : "var(--space-5)")};
   margin-bottom: var(--space-2);
   padding-left: var(--space-2);
 
@@ -47,17 +47,16 @@ const StyledNavLink = styled(NavLink)`
   color: var(--color-pearl);
   text-decoration: none;
   padding: var(--space-2) var(--space-2);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-body-small);
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
   font-weight: 400;
   margin-bottom: var(--space-1);
   transition: all var(--duration-fast) var(--ease-default);
   border-left: 3px solid transparent;
 
   &.active {
-    background-color: rgba(106, 0, 213, 0.2);
-    border-left-color: var(--color-violet);
-    color: var(--color-pearl);
+    background-color: var(--color-pearl);
+    color: var(--color-midnight);
     font-weight: 500;
   }
 
