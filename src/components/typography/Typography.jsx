@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import Callout from "../shared/Callout";
+import HeroGradient from "../shared/HeroGradient";
 
 const PageContainer = styled.div`
   max-width: var(--container-md);
@@ -110,6 +111,11 @@ const Typography = () => {
       <Helmet>
         <title>Typography | Done.ai Brand Guidelines</title>
       </Helmet>
+
+      <HeroGradient
+        title="Typography"
+        subtitle="DM Sans type system for clear hierarchy and excellent readability"
+      />
 
       <PageTitle>Typography</PageTitle>
 
