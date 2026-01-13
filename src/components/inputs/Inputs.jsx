@@ -1,0 +1,442 @@
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import styled from "styled-components";
+import Callout from "../shared/Callout";
+
+const PageContainer = styled.div`
+  max-width: var(--container-md);
+  padding: var(--space-7) var(--space-6);
+`;
+
+const PageTitle = styled.h1`
+  font-size: var(--text-h1);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+`;
+
+const Section = styled.section`
+  margin-top: var(--space-8);
+`;
+
+const SectionTitle = styled.h2`
+  font-size: var(--text-h2);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+`;
+
+const SectionDescription = styled.p`
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+`;
+
+const InputShowcase = styled.div`
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-lg);
+  margin: var(--space-4) 0;
+`;
+
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+`;
+
+const Label = styled.label`
+  font-size: var(--text-body-small);
+  font-weight: 500;
+  color: var(--color-text-primary);
+`;
+
+const Input = styled.input`
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-body);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-elevated);
+  transition: all var(--duration-normal) var(--ease-default);
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-violet);
+    box-shadow: 0 0 0 3px rgba(106, 0, 213, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-surface-secondary);
+  }
+
+  ${props => props.error && `
+    border-color: var(--color-error);
+
+    &:focus {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 3px rgba(222, 53, 11, 0.1);
+    }
+  `}
+
+  ${props => props.success && `
+    border-color: var(--color-success);
+
+    &:focus {
+      border-color: var(--color-success);
+      box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
+    }
+  `}
+`;
+
+const TextArea = styled.textarea`
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-body);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-elevated);
+  transition: all var(--duration-normal) var(--ease-default);
+  resize: vertical;
+  min-height: 100px;
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-violet);
+    box-shadow: 0 0 0 3px rgba(106, 0, 213, 0.1);
+  }
+`;
+
+const HelperText = styled.div`
+  font-size: var(--text-body-small);
+  color: ${props => {
+    if (props.error) return 'var(--color-error)';
+    if (props.success) return 'var(--color-success)';
+    return 'var(--color-text-secondary)';
+  }};
+  margin-top: var(--space-1);
+`;
+
+const SpecTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-5) 0;
+  font-size: var(--text-body-small);
+`;
+
+const TableHeader = styled.th`
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background-color: var(--color-platinum);
+  border-bottom: 1px solid var(--color-border);
+`;
+
+const TableCell = styled.td`
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+  line-height: 1.6;
+`;
+
+const CodeBlock = styled.pre`
+  background-color: var(--color-midnight);
+  color: var(--color-pearl);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  font-size: var(--text-body-small);
+  line-height: 1.6;
+  margin: var(--space-4) 0;
+`;
+
+const Inputs = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const validateEmail = (value) => {
+    setEmail(value);
+    const isValid = value.includes('@') && value.includes('.');
+    setShowError(value.length > 0 && !isValid);
+    setShowSuccess(value.length > 0 && isValid);
+  };
+
+  return (
+    <PageContainer>
+      <Helmet>
+        <title>Inputs | Done.ai Brand Guidelines</title>
+      </Helmet>
+
+      <PageTitle>Inputs</PageTitle>
+
+      {/* Interactive Examples */}
+      <Section>
+        <SectionTitle>Interactive Examples</SectionTitle>
+        <SectionDescription>
+          Try these inputs to see all states: default, hover, focus, error, success, and disabled.
+        </SectionDescription>
+
+        <InputShowcase>
+          <InputGroup>
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Enter your name"
+            />
+            <HelperText>Your full name</HelperText>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => validateEmail(e.target.value)}
+              error={showError}
+              success={showSuccess}
+            />
+            {showError && <HelperText error>Please enter a valid email address</HelperText>}
+            {showSuccess && <HelperText success>Email format is valid</HelperText>}
+            {!showError && !showSuccess && <HelperText>We'll never share your email</HelperText>}
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="message">Message</Label>
+            <TextArea
+              id="message"
+              placeholder="Type your message here..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <HelperText>{message.length} characters</HelperText>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="disabled">Disabled Input</Label>
+            <Input
+              id="disabled"
+              type="text"
+              placeholder="This field is disabled"
+              disabled
+            />
+            <HelperText>This field cannot be edited</HelperText>
+          </InputGroup>
+        </InputShowcase>
+      </Section>
+
+      {/* Specifications */}
+      <Section>
+        <SectionTitle>Specifications</SectionTitle>
+
+        <SpecTable>
+          <thead>
+            <tr>
+              <TableHeader>Property</TableHeader>
+              <TableHeader>Value</TableHeader>
+              <TableHeader>Token</TableHeader>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <TableCell>Padding</TableCell>
+              <TableCell>12px (vertical and horizontal)</TableCell>
+              <TableCell>--space-3</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Border Radius</TableCell>
+              <TableCell>8px</TableCell>
+              <TableCell>--radius-md</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Border (default)</TableCell>
+              <TableCell>1px solid #E0E0E0</TableCell>
+              <TableCell>--color-border</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Font Size</TableCell>
+              <TableCell>16px</TableCell>
+              <TableCell>--text-body</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Font Family</TableCell>
+              <TableCell>DM Sans</TableCell>
+              <TableCell>-</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Height</TableCell>
+              <TableCell>44px (with padding)</TableCell>
+              <TableCell>-</TableCell>
+            </tr>
+          </tbody>
+        </SpecTable>
+      </Section>
+
+      {/* States */}
+      <Section>
+        <SectionTitle>States</SectionTitle>
+
+        <SpecTable>
+          <thead>
+            <tr>
+              <TableHeader>State</TableHeader>
+              <TableHeader>Visual Change</TableHeader>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <TableCell>Default</TableCell>
+              <TableCell>Border: --color-border, Background: --color-surface-elevated</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Hover</TableCell>
+              <TableCell>Border color darkens to --color-text-secondary</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Focus</TableCell>
+              <TableCell>Border: Royal Violet, 3px violet ring (rgba(106, 0, 213, 0.1))</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Error</TableCell>
+              <TableCell>Border: --color-error, Red ring on focus</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Success</TableCell>
+              <TableCell>Border: --color-success, Green ring on focus</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Disabled</TableCell>
+              <TableCell>50% opacity, cursor: not-allowed, background: --color-surface-secondary</TableCell>
+            </tr>
+          </tbody>
+        </SpecTable>
+      </Section>
+
+      {/* Label & Helper Text */}
+      <Section>
+        <SectionTitle>Labels & Helper Text</SectionTitle>
+
+        <Callout type="info" title="Structure">
+          Every input should have a label. Helper text is optional but recommended for context, validation feedback, or character counts.
+        </Callout>
+
+        <SpecTable>
+          <thead>
+            <tr>
+              <TableHeader>Element</TableHeader>
+              <TableHeader>Specifications</TableHeader>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <TableCell>Label</TableCell>
+              <TableCell>14px, medium weight (500), 8px margin below, --color-text-primary</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Helper Text</TableCell>
+              <TableCell>14px, regular weight (400), 4px margin above, --color-text-secondary</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Error Text</TableCell>
+              <TableCell>Same as helper, but --color-error</TableCell>
+            </tr>
+            <tr>
+              <TableCell>Success Text</TableCell>
+              <TableCell>Same as helper, but --color-success</TableCell>
+            </tr>
+          </tbody>
+        </SpecTable>
+      </Section>
+
+      {/* Implementation */}
+      <Section>
+        <SectionTitle>Implementation</SectionTitle>
+
+        <CodeBlock>{`/* Input Base Styles */
+input, textarea {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-body);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-elevated);
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+input:hover, textarea:hover {
+  border-color: var(--color-text-secondary);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-violet);
+  box-shadow: 0 0 0 3px rgba(106, 0, 213, 0.1);
+}
+
+/* Error State */
+input.error {
+  border-color: var(--color-error);
+}
+
+input.error:focus {
+  box-shadow: 0 0 0 3px rgba(222, 53, 11, 0.1);
+}
+
+/* Disabled State */
+input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-surface-secondary);
+}`}</CodeBlock>
+      </Section>
+
+      {/* Usage Guidelines */}
+      <Section>
+        <SectionTitle>Usage Guidelines</SectionTitle>
+
+        <Callout type="success" title="✓ Do">
+          Always include labels for accessibility. Use placeholder text for examples only, not labels. Provide clear error messages. Use helper text for context. Maintain consistent spacing between form fields.
+        </Callout>
+
+        <Callout type="error" title="✗ Don't">
+          Don't use placeholder text as the only label. Don't show error states before the user interacts. Don't use vague error messages like "Invalid input." Don't forget disabled states. Don't remove focus indicators.
+        </Callout>
+      </Section>
+    </PageContainer>
+  );
+};
+
+export default Inputs;

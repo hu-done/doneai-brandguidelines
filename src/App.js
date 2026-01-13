@@ -14,6 +14,12 @@ import ToneOfVoice from "./components/tone-of-voice/ToneOfVoice.jsx";
 import ForbiddenLanguage from "./components/forbidden-language/ForbiddenLanguage.jsx";
 import Buttons from "./components/buttons/Buttons.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
+import Spacing from "./components/spacing/Spacing.jsx";
+import BorderRadius from "./components/border-radius/BorderRadius.jsx";
+import Elevation from "./components/elevation/Elevation.jsx";
+import CSSTokens from "./components/css-tokens/CSSTokens.jsx";
+import Inputs from "./components/inputs/Inputs.jsx";
+import Cards from "./components/cards/Cards.jsx";
 import Designguide from "./components/designguide/designguide.jsx";
 import ComingSoon from "./components/shared/ComingSoon.jsx";
 
@@ -102,15 +108,15 @@ const App = () => {
               <Route path="/dark-mode" element={<DarkMode />} />
 
               {/* Design System */}
-              <Route path="/spacing" element={<ComingSoon title="Spacing & Layout" description="8pt grid system and spacing guidelines coming soon." />} />
-              <Route path="/border-radius" element={<ComingSoon title="Border Radius" description="Radius scale and nesting rules coming soon." />} />
-              <Route path="/elevation" element={<ComingSoon title="Elevation & Shadows" description="Shadow system and elevation guidelines coming soon." />} />
-              <Route path="/css-tokens" element={<ComingSoon title="CSS Tokens" description="Complete CSS token reference coming soon." />} />
+              <Route path="/spacing" element={<Spacing />} />
+              <Route path="/border-radius" element={<BorderRadius />} />
+              <Route path="/elevation" element={<Elevation />} />
+              <Route path="/css-tokens" element={<CSSTokens />} />
 
               {/* Components */}
               <Route path="/buttons" element={<Buttons />} />
-              <Route path="/inputs" element={<ComingSoon title="Inputs" description="Input component specifications coming soon." />} />
-              <Route path="/cards" element={<ComingSoon title="Cards" description="Card component specifications coming soon." />} />
+              <Route path="/inputs" element={<Inputs />} />
+              <Route path="/cards" element={<Cards />} />
 
               {/* Legacy */}
               <Route path="/designguide" element={<Designguide />} />
