@@ -177,12 +177,14 @@ const GlobalSearch = ({ isOpen, onClose }) => {
       keys: [
         { name: "title", weight: 2 },
         { name: "description", weight: 1.5 },
-        { name: "keywords", weight: 1 },
+        { name: "keywords", weight: 1.2 },
+        { name: "content", weight: 1 },
         { name: "category", weight: 0.5 },
       ],
-      threshold: 0.3,
+      threshold: 0.4,
       includeMatches: true,
       minMatchCharLength: 2,
+      ignoreLocation: true,
     })
   ).current;
 

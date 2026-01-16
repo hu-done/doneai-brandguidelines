@@ -32,9 +32,10 @@ const ValuesGrid = styled.div`
 `;
 
 const ValueCard = styled.div`
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const ValueTitle = styled.h3`

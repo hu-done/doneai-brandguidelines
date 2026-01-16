@@ -15,10 +15,7 @@ const ColorsContainer = styled.div`
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: flex-start;
-  margin: var(--space-5) 0;
-  padding: var(--space-5);
-  background-color: var(--color-surface-secondary);
-  border-radius: var(--radius-lg);
+  margin: var(--space-6) 0;
 `;
 
 const ColorBoxWrapper = styled.div`
@@ -26,9 +23,10 @@ const ColorBoxWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 120px;
-  padding: var(--space-3);
-  background-color: var(--color-surface-elevated);
-  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const ColorBox = styled.div`
@@ -70,7 +68,7 @@ const CopyableValue = styled.button`
   font-family: inherit;
 
   &:hover {
-    background-color: var(--color-lavender);
+    background-color: rgba(11, 4, 37, 0.04);
     color: var(--color-text-primary);
   }
 
@@ -144,22 +142,23 @@ const TitleWithIcon = styled.span`
 const TokenTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin: var(--space-5) 0;
+  margin: var(--space-6) 0;
   font-size: var(--text-body-small);
-  background-color: var(--color-surface-elevated);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 
   thead {
-    background-color: var(--color-platinum);
+    background-color: var(--color-midnight);
+    color: var(--color-pearl);
   }
 
   th {
     padding: var(--space-3) var(--space-4);
     text-align: left;
-    font-weight: 600;
-    color: var(--color-text-primary);
+    font-weight: 500;
+    color: var(--color-pearl);
     font-size: var(--text-body-small);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -172,13 +171,13 @@ const TokenTable = styled.table`
   }
 
   tbody tr:hover {
-    background-color: var(--color-lavender);
+    background-color: rgba(11, 4, 37, 0.02);
   }
 
   code {
     font-family: 'Courier New', Courier, monospace;
     font-size: var(--text-caption);
-    background-color: rgba(106, 0, 213, 0.05);
+    background-color: rgba(11, 4, 37, 0.04);
     padding: 2px 6px;
     border-radius: var(--radius-sm);
     color: var(--color-text-primary);

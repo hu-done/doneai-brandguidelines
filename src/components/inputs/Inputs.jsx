@@ -5,7 +5,7 @@ import Callout from "../shared/Callout";
 import CodeBlock from "../shared/CodeBlock";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 
@@ -40,9 +40,10 @@ const InputShowcase = styled.div`
   display: grid;
   gap: var(--space-5);
   padding: var(--space-6);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
-  margin: var(--space-4) 0;
+  margin: var(--space-5) 0;
+  box-shadow: var(--shadow-sm);
 `;
 
 const InputGroup = styled.div`
@@ -156,8 +157,8 @@ const TableHeader = styled.th`
   padding: var(--space-3) var(--space-4);
   text-align: left;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary);
+  color: var(--color-pearl);
+  background-color: var(--color-midnight);
   border-bottom: 1px solid var(--color-border);
 `;
 

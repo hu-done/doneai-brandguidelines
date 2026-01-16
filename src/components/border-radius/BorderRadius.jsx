@@ -5,7 +5,7 @@ import { Check, X } from "lucide-react";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 
@@ -58,8 +58,9 @@ const RadiusItem = styled.div`
   align-items: center;
   gap: var(--space-5);
   padding: var(--space-5);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const RadiusVisual = styled.div`
@@ -97,16 +98,17 @@ const RadiusUsage = styled.div`
 
 const NestingDemo = styled.div`
   padding: var(--space-6);
-  background-color: var(--color-lavender);
+  background-color: rgba(11, 4, 37, 0.03);
   border-radius: var(--radius-xl);
-  margin: var(--space-5) 0;
+  margin: var(--space-6) 0;
 `;
 
 const OuterCard = styled.div`
   padding: var(--space-5);
-  background-color: var(--color-surface-elevated);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-sm);
 `;
 
 const InnerCard = styled.div`
@@ -119,13 +121,14 @@ const InnerCard = styled.div`
 
 const Formula = styled.div`
   padding: var(--space-4);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-md);
   font-family: 'Courier New', monospace;
   font-size: var(--text-body);
   color: var(--color-text-primary);
   text-align: center;
-  margin: var(--space-4) 0;
+  margin: var(--space-5) 0;
+  box-shadow: var(--shadow-sm);
 `;
 
 const ExampleGrid = styled.div`
@@ -166,18 +169,20 @@ const ExampleLabel = ({ icon, children }) => (
 
 const GoodNesting = styled.div`
   padding: ${props => props.outer ? 'var(--space-5)' : 'var(--space-3)'};
-  background-color: ${props => props.outer ? 'var(--color-surface-secondary)' : 'var(--color-violet)'};
+  background-color: ${props => props.outer ? 'var(--color-card-bg)' : 'var(--color-violet)'};
   color: ${props => props.outer ? 'var(--color-text-primary)' : 'var(--color-pearl)'};
   border-radius: ${props => props.outer ? 'var(--radius-lg)' : 'var(--radius-md)'};
   font-size: var(--text-body-small);
+  box-shadow: ${props => props.outer ? 'var(--shadow-sm)' : 'none'};
 `;
 
 const BadNesting = styled.div`
   padding: ${props => props.outer ? 'var(--space-5)' : 'var(--space-3)'};
-  background-color: ${props => props.outer ? 'var(--color-surface-secondary)' : 'var(--color-violet)'};
+  background-color: ${props => props.outer ? 'var(--color-card-bg)' : 'var(--color-violet)'};
   color: ${props => props.outer ? 'var(--color-text-primary)' : 'var(--color-pearl)'};
   border-radius: var(--radius-lg);
   font-size: var(--text-body-small);
+  box-shadow: ${props => props.outer ? 'var(--shadow-sm)' : 'none'};
 `;
 
 const BorderRadius = () => {

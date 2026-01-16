@@ -17,6 +17,12 @@ const LogoContainerImage = styled.img`
   max-width: calc(120px + 3vw);
   max-height: 40px;
   margin: 0px 10px;
+  transition: filter var(--duration-normal) var(--ease-default);
+
+  /* Invert logo color in dark mode */
+  .dark & {
+    filter: brightness(0) invert(1);
+  }
 `;
 
 const Container = styled.div`
@@ -62,7 +68,7 @@ const Header = () => {
       <Container>
         <NavLink to="/">
           <LogoContainerImage
-            src={isDarkMode ? "/images/done-logo-white.svg" : "/images/done-logo.svg"}
+            src="/images/done-logo.svg"
             alt="Done.ai"
           />
         </NavLink>

@@ -52,15 +52,15 @@ const AppWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   flex-grow: 1;
-  padding: 0 2rem;
-  max-width: 1200px;
+  padding: 0 var(--space-7);
   width: 100%;
-  margin-left: calc(250px + 2rem);
-  margin-right: auto;
+  margin-left: calc(250px + var(--space-7));
+  margin-right: var(--space-7);
 
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 0 var(--space-4);
     margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -128,7 +128,7 @@ const App = () => {
       <AppWrapper>
         <Header />
         <PageWrapper>
-          <Sidebar />
+          <Sidebar onSearchClick={() => setIsSearchOpen(true)} />
           <ContentWrapper>
             <Routes>
               <Route path="/" element={<Home />} />

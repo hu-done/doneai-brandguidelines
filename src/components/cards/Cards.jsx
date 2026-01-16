@@ -6,7 +6,7 @@ import Callout from "../shared/Callout";
 import CodeBlock from "../shared/CodeBlock";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 
@@ -45,8 +45,9 @@ const CardGrid = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-surface-elevated-dark)'};
-  color: ${props => props.$isPrimary ? 'var(--color-midnight)' : 'var(--color-pearl)'};
+  /* Primary cards always have light bg with dark text (ignores theme) */
+  background-color: ${props => props.$isPrimary ? '#FBFBFB' : 'var(--color-surface-elevated-dark)'};
+  color: ${props => props.$isPrimary ? '#0B0425' : 'var(--color-pearl)'};
   border-radius: var(--radius-card);
   padding: var(--space-5);
   display: flex;
@@ -70,9 +71,10 @@ const Card = styled.div`
     box-shadow: var(--shadow-sm);
   `}
 
-  /* Dark mode: lighter background for dark cards */
+  /* Dark mode: adjust only non-primary cards */
   .dark & {
-    background-color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-nav-bg)'};
+    background-color: ${props => props.$isPrimary ? '#FBFBFB' : 'var(--color-nav-bg)'};
+    color: ${props => props.$isPrimary ? '#0B0425' : 'var(--color-pearl)'};
   }
 `;
 
@@ -107,11 +109,13 @@ const CardTitle = styled.h3`
   font-size: var(--text-h2);
   font-weight: 600;
   margin-bottom: var(--space-2);
+  /* Inherit color from parent Card */
 `;
 
 const CardDescription = styled.p`
   font-size: var(--text-body-small);
-  color: ${props => props.$isPrimary ? 'var(--color-text-secondary)' : 'rgba(251, 251, 251, 0.7)'};
+  /* Primary cards always have light bg, so use dark text regardless of theme */
+  color: ${props => props.$isPrimary ? '#6B6B6B' : 'rgba(251, 251, 251, 0.7)'};
   margin-bottom: var(--space-5);
   flex-grow: 1;
 `;
@@ -143,8 +147,8 @@ const TableHeader = styled.th`
   padding: var(--space-3) var(--space-4);
   text-align: left;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary);
+  color: var(--color-pearl);
+  background-color: var(--color-midnight);
   border-bottom: 1px solid var(--color-border);
 `;
 
@@ -158,23 +162,24 @@ const TableCell = styled.td`
 
 const NestedCardDemo = styled.div`
   padding: var(--space-6);
-  background-color: var(--color-lavender);
+  background-color: rgba(11, 4, 37, 0.03);
   border-radius: var(--radius-xl);
   margin: var(--space-5) 0;
 `;
 
 const OuterCard = styled.div`
   padding: var(--space-5);
-  background-color: var(--color-surface-elevated);
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const InnerCard = styled.div`
   padding: var(--space-4);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-midnight);
+  color: var(--color-pearl);
   border-radius: var(--radius-md);
   font-size: var(--text-body-small);
-  color: var(--color-text-secondary);
 `;
 
 const Cards = () => {

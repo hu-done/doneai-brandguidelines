@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { Search } from "lucide-react";
 
 const SidebarWrapper = styled.nav`
   width: 250px;
   height: 80vh;
-  padding: var(--space-7) var(--space-4);
+  padding: var(--space-4) var(--space-4);
   position: fixed;
   left: 1rem;
   overflow-y: auto;
@@ -88,9 +89,50 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Sidebar = () => {
+const SearchButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-2);
+  margin-bottom: var(--space-4);
+  background-color: rgba(251, 251, 251, 0.1);
+  border: 1px solid rgba(251, 251, 251, 0.2);
+  border-radius: var(--radius-md);
+  color: rgba(251, 251, 251, 0.7);
+  font-size: var(--text-body-small);
+  font-family: "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+
+  &:hover {
+    background-color: rgba(251, 251, 251, 0.15);
+    color: #fbfbfb;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const SearchShortcut = styled.span`
+  margin-left: auto;
+  font-size: var(--text-caption);
+  padding: 2px 6px;
+  background-color: rgba(251, 251, 251, 0.1);
+  border-radius: var(--radius-sm);
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+`;
+
+const Sidebar = ({ onSearchClick }) => {
   return (
     <SidebarWrapper>
+      <SearchButton onClick={onSearchClick}>
+        <Search size={16} strokeWidth={1.5} />
+        Search...
+        <SearchShortcut>⌘K</SearchShortcut>
+      </SearchButton>
+
       <SectionHeader $first>FOUNDATION</SectionHeader>
       <StyledNavLink to="/">Introduction</StyledNavLink>
       <StyledNavLink to="/brand-dna">Brand DNA</StyledNavLink>

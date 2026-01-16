@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 
@@ -53,9 +53,10 @@ const ShadowScale = styled.div`
 `;
 
 const ShadowItem = styled.div`
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const ShadowVisual = styled.div`
@@ -110,8 +111,8 @@ const ElevationDemo = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-6);
   margin: var(--space-6) 0;
-  padding: var(--space-8);
-  background: linear-gradient(135deg, var(--color-surface-secondary) 0%, var(--color-surface-elevated) 100%);
+  padding: var(--space-6);
+  background-color: rgba(11, 4, 37, 0.03);
   border-radius: var(--radius-lg);
 `;
 
@@ -152,8 +153,8 @@ const TableHeader = styled.th`
   padding: var(--space-3) var(--space-4);
   text-align: left;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary);
+  color: var(--color-pearl);
+  background-color: var(--color-midnight);
   border-bottom: 1px solid var(--color-border);
 `;
 

@@ -176,8 +176,7 @@ export default function Logo() {
       </Helmet>
       <S.Title>Logo</S.Title>
       <S.ImageContainer>
-        <S.LogoImage src="./images/done-logo.svg" />
-        <S.LogoIconImage src="./images/done-logo-icon.svg" />
+        <S.LogoImage src="/images/done-logo.svg" />
       </S.ImageContainer>
       <S.Subtitle>Logo Typography: Cy Font</S.Subtitle>
       <S.Bodytext>

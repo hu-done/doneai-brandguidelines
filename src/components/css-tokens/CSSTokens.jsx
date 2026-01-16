@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 

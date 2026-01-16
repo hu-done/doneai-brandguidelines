@@ -79,10 +79,11 @@ const TableCell = styled.td`
 `;
 
 const CategorySection = styled.div`
-  margin: var(--space-6) 0;
+  margin: var(--space-5) 0;
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const CategoryTitle = styled.div`

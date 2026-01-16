@@ -10,7 +10,8 @@ const TypeSpecimen = styled.div`
   margin-bottom: var(--space-6);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const TypeExample = styled.div`
@@ -60,16 +61,19 @@ const RulesList = styled.ul`
 `;
 
 const RuleItem = styled.li`
-  padding: var(--space-3);
-  margin-bottom: var(--space-2);
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface-secondary);
+  padding: var(--space-3) 0;
+  margin-bottom: 0;
   font-size: var(--text-body-small);
   color: var(--color-text-secondary);
   line-height: 1.6;
   display: flex;
   align-items: flex-start;
   gap: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const RuleIconWrapper = styled.span`

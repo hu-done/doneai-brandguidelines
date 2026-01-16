@@ -6,9 +6,10 @@ export const Title = styled.h1`
   font-size: var(--text-h1);
   font-weight: 500;
   color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
 
   @media (min-width: 768px) {
-    font-size: 36px;
+    font-size: 40px;
   }
 `;
 
@@ -16,7 +17,7 @@ export const Subtitle = styled.h2`
   font-size: var(--text-h2);
   font-weight: 500;
   color: var(--color-text-primary);
-  margin: var(--space-6) 0 var(--space-4);
+  margin: var(--section-gap) 0 var(--space-5);
 
   @media (min-width: 768px) {
     font-size: 28px;
@@ -37,8 +38,8 @@ export const Bodytext = styled.p`
   font-size: var(--text-body);
   font-weight: 400;
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-4);
+  line-height: 1.7;
+  margin-bottom: var(--space-5);
 
   @media (min-width: 768px) {
     font-size: 17px;
@@ -133,7 +134,15 @@ export const LightImageContainer = styled.div`
 
 export const LogoImage = styled.img`
   max-height: 70px;
+  transition: filter var(--duration-normal) var(--ease-default);
+
+  /* Invert logo color in dark mode */
+  .dark & {
+    filter: brightness(0) invert(1);
+  }
 `;
+
+// Deprecated - icon logo not ready yet, but keeping export for legacy designguide page
 export const LogoIconImage = styled.img`
   max-height: 54px;
 `;

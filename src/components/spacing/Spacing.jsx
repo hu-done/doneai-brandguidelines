@@ -5,7 +5,7 @@ import { Check, X } from "lucide-react";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
 `;
 
@@ -58,8 +58,9 @@ const SpacingItem = styled.div`
   align-items: center;
   gap: var(--space-4);
   padding: var(--space-4);
-  background-color: var(--color-surface-secondary);
-  border-radius: var(--radius-md);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 `;
 
 const SpacingVisual = styled.div`
@@ -102,9 +103,10 @@ const ContainerDemo = styled.div`
 const ContainerBox = styled.div`
   max-width: ${props => props.width};
   padding: var(--space-4);
-  background-color: var(--color-surface-secondary);
-  border-radius: var(--radius-md);
-  border: 2px solid var(--color-violet);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--color-violet);
 `;
 
 const ContainerLabel = styled.div`
@@ -123,20 +125,21 @@ const ContainerValue = styled.div`
 const PrincipleBox = styled.div`
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-surface-secondary) 100%);
-  margin: var(--space-5) 0;
+  background-color: var(--color-midnight);
+  color: var(--color-pearl);
+  margin: var(--space-6) 0;
 `;
 
 const PrincipleTitle = styled.div`
   font-size: var(--text-h3);
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--color-pearl);
   margin-bottom: var(--space-2);
 `;
 
 const PrincipleText = styled.div`
   font-size: var(--text-body);
-  color: var(--color-text-secondary);
+  color: rgba(251, 251, 251, 0.8);
   line-height: 1.6;
 `;
 

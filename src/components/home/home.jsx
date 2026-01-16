@@ -12,7 +12,13 @@ import {
   Dna,
   MessageSquare,
   Settings2,
-  ArrowRight
+  ArrowRight,
+  Code2,
+  Moon,
+  Download,
+  Layers,
+  Zap,
+  Box,
 } from "lucide-react";
 
 // Hero section with gradient background
@@ -64,15 +70,7 @@ const SectionTitle = styled.h2`
 `;
 
 const CardsContainer = styled.div`
-  background-color: var(--color-midnight);
-  border-radius: var(--radius-container);
-  padding: var(--space-6);
-
-  /* Dark mode: remove container background */
-  .dark & {
-    background-color: transparent;
-    padding: 0;
-  }
+  /* No container background - cards stand alone with shadows */
 `;
 
 const CardsGrid = styled.div`
@@ -90,8 +88,8 @@ const CardsGrid = styled.div`
 `;
 
 const Card = styled(Link)`
-  background-color: var(--color-surface-elevated-dark);
-  color: var(--color-pearl);
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
   display: flex;
@@ -99,6 +97,7 @@ const Card = styled(Link)`
   min-height: 180px;
   text-decoration: none;
   transition: all var(--duration-normal) var(--ease-default);
+  box-shadow: var(--shadow-md);
 
   &:hover {
     transform: translateY(-4px);
@@ -110,7 +109,7 @@ const Card = styled(Link)`
     }
   }
 
-  /* Dark mode: lighter cards matching nav */
+  /* Dark mode: dark cards */
   .dark & {
     background-color: var(--color-nav-bg);
     color: var(--color-pearl);
@@ -128,8 +127,12 @@ const CardIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-pearl);
-  opacity: 0.8;
+  color: var(--color-violet);
+
+  .dark & {
+    color: var(--color-pearl);
+    opacity: 0.8;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -150,10 +153,14 @@ const CardArrow = styled.span`
 
 const CardDescription = styled.p`
   font-size: var(--text-body-small);
-  color: rgba(251, 251, 251, 0.7);
+  color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.5;
   flex-grow: 1;
+
+  .dark & {
+    color: rgba(251, 251, 251, 0.7);
+  }
 `;
 
 export default function Home() {
@@ -240,6 +247,52 @@ export default function Home() {
     },
   ];
 
+  const developerCards = [
+    {
+      id: 1,
+      title: "CSS Tokens",
+      description:
+        "Copy-paste SCSS variables, CSS custom properties, and Tailwind config.",
+      icon: Code2,
+      link: "/css-tokens",
+    },
+    {
+      id: 2,
+      title: "Dark Mode",
+      description: "Class-based toggle implementation with token overrides.",
+      icon: Moon,
+      link: "/dark-mode",
+    },
+    {
+      id: 3,
+      title: "Asset Library",
+      description: "Download logos, icons, and design token files.",
+      icon: Download,
+      link: "/asset-library",
+    },
+    {
+      id: 4,
+      title: "Spacing & Layout",
+      description: "8pt grid system and container widths.",
+      icon: Layers,
+      link: "/spacing",
+    },
+    {
+      id: 5,
+      title: "Motion",
+      description: "Animation timing, easing functions, and patterns.",
+      icon: Zap,
+      link: "/motion",
+    },
+    {
+      id: 6,
+      title: "Components",
+      description: "Buttons, inputs, cards with Svelte 5 examples.",
+      icon: Box,
+      link: "/buttons",
+    },
+  ];
+
   return (
     <div>
       <Helmet>
@@ -251,7 +304,8 @@ export default function Home() {
         <HeroContent>
           <HeroTitle>Done.ai Brand Guidelines</HeroTitle>
           <HeroSubtitle>
-            Design tokens, components, and brand identity resources.
+            This is an instruction manual explaining how we present ourselves to
+            the world as an organization and brand.
           </HeroSubtitle>
         </HeroContent>
 
@@ -321,17 +375,35 @@ export default function Home() {
         </CardsContainer>
       </CardsSection>
 
-      {/* About Section */}
-      <div style={{ marginTop: "var(--space-7)" }}>
-        <S.Subtitle>About These Guidelines</S.Subtitle>
-        <S.Bodytext>
-          This is an instruction manual explaining how we present ourselves to
-          the world as an organization and brand. It's our rule book on
-          communicating consistently across all channels, and defines visual,
-          verbal, and written communication frameworks that set the foundation
-          for our brand to grow and thrive.
-        </S.Bodytext>
-      </div>
+      {/* Developer Quick Links Section */}
+      <CardsSection>
+        <SectionTitle>For Developers (Hi Mattias 👋)</SectionTitle>
+
+        <CardsContainer>
+          <CardsGrid>
+            {developerCards.map((card) => {
+              const IconComponent = card.icon;
+              return (
+                <Card key={card.id} to={card.link}>
+                  <CardHeader>
+                    <CardIconWrapper>
+                      <IconComponent size={24} strokeWidth={1.5} />
+                    </CardIconWrapper>
+                  </CardHeader>
+
+                  <CardTitle>
+                    {card.title}
+                    <CardArrow className="card-arrow">
+                      <ArrowRight size={20} strokeWidth={1.5} />
+                    </CardArrow>
+                  </CardTitle>
+                  <CardDescription>{card.description}</CardDescription>
+                </Card>
+              );
+            })}
+          </CardsGrid>
+        </CardsContainer>
+      </CardsSection>
     </div>
   );
 }

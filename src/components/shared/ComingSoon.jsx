@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const PageContainer = styled.div`
-  max-width: var(--container-md);
+  /* No max-width - use full available space */
   padding: var(--space-7) var(--space-6);
   min-height: 60vh;
   display: flex;

@@ -8,11 +8,11 @@ import Callout from "../shared/Callout";
 const CorePrinciple = styled.div`
   font-size: var(--text-hero);
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--color-pearl);
   text-align: center;
   padding: var(--space-8) var(--space-5);
   margin: var(--space-6) 0;
-  background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-surface-secondary) 100%);
+  background-color: var(--color-midnight);
   border-radius: var(--radius-lg);
 `;
 
@@ -26,7 +26,7 @@ const CharacteristicsList = styled.div`
 const CharacteristicCard = styled.div`
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-card-bg);
   box-shadow: var(--shadow-sm);
 `;
 
@@ -54,8 +54,8 @@ const TableHeader = styled.th`
   padding: var(--space-3) var(--space-4);
   text-align: left;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary);
+  color: var(--color-pearl);
+  background-color: var(--color-midnight);
   border-bottom: 1px solid var(--color-border);
 `;
 

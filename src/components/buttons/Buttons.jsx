@@ -146,8 +146,8 @@ const TableHeader = styled.th`
   padding: var(--space-3) var(--space-4);
   text-align: left;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-secondary);
+  color: var(--color-pearl);
+  background-color: var(--color-midnight);
   border-bottom: 1px solid var(--color-border);
 `;
 

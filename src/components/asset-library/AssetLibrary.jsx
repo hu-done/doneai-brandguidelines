@@ -54,6 +54,11 @@ const LogoPreview = styled.img`
   max-width: 100%;
   height: auto;
   max-height: 80px;
+  transition: filter var(--duration-normal) var(--ease-default);
+`;
+
+const LogoPreviewInverted = styled(LogoPreview)`
+  filter: brightness(0) invert(1);
 `;
 
 const AssetTitle = styled.h3`
@@ -301,7 +306,7 @@ const AssetLibrary = () => {
               Midnight Violet logo for light backgrounds. Primary usage.
             </AssetDescription>
             <FormatGrid>
-              <DownloadButton onClick={() => handleDownload('/images/done-logo.svg', 'done-logo-dark.svg')}>
+              <DownloadButton onClick={() => handleDownload('/images/done-logo.svg', 'done-logo.svg')}>
                 SVG
               </DownloadButton>
             </FormatGrid>
@@ -309,19 +314,20 @@ const AssetLibrary = () => {
 
           <AssetCard>
             <AssetPreview $bgColor="var(--color-midnight)">
-              <LogoPreview src="/images/done-logo-white.svg" alt="Done.ai Logo Light" />
+              <LogoPreviewInverted src="/images/done-logo.svg" alt="Done.ai Logo Light" />
             </AssetPreview>
             <AssetTitle>Primary Logo (Light)</AssetTitle>
             <AssetDescription>
-              Pearl White logo for dark backgrounds.
+              Use CSS filter to invert for dark backgrounds. Same SVG file.
             </AssetDescription>
             <FormatGrid>
-              <DownloadButton onClick={() => handleDownload('/images/done-logo-white.svg', 'done-logo-light.svg')}>
+              <DownloadButton onClick={() => handleDownload('/images/done-logo.svg', 'done-logo.svg')}>
                 SVG
               </DownloadButton>
             </FormatGrid>
           </AssetCard>
 
+          {/* Icon logos hidden until ready
           <AssetCard>
             <AssetPreview $bgColor="var(--color-pearl)">
               <LogoPreview src="/images/done-logo-icon.svg" alt="Done.ai Icon Dark" />
@@ -342,21 +348,19 @@ const AssetLibrary = () => {
 
           <AssetCard>
             <AssetPreview $bgColor="var(--color-midnight)">
-              <LogoPreview src="/images/done-logo-icon-white.svg" alt="Done.ai Icon Light" />
+              <LogoPreviewInverted src="/images/done-logo-icon.svg" alt="Done.ai Icon Light" />
             </AssetPreview>
             <AssetTitle>Logo Icon (Light)</AssetTitle>
             <AssetDescription>
               Light icon for dark backgrounds and dark mode.
             </AssetDescription>
             <FormatGrid>
-              <DownloadButton onClick={() => handleDownload('/images/done-logo-icon-white.svg', 'done-icon-light.svg')}>
+              <DownloadButton onClick={() => handleDownload('/images/done-logo-icon.svg', 'done-icon.svg')}>
                 SVG
-              </DownloadButton>
-              <DownloadButton onClick={() => handleDownload('/images/fav-icon_dark-mode.png', 'done-favicon-dark.png')}>
-                PNG
               </DownloadButton>
             </FormatGrid>
           </AssetCard>
+          */}
         </AssetGrid>
       </CategorySection>
 

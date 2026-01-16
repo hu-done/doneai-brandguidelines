@@ -38,13 +38,14 @@ const DurationDemoGrid = styled.div`
 `;
 
 const DurationDemoBox = styled.div`
-  background: var(--color-surface-secondary);
+  background: var(--color-card-bg);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
 `;
 
 const DurationLabel = styled.div`
@@ -114,9 +115,10 @@ const EasingGrid = styled.div`
 `;
 
 const EasingDemo = styled.div`
-  background: var(--color-surface-secondary);
+  background: var(--color-card-bg);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
 `;
 
 const EasingTitle = styled.h3`
@@ -146,13 +148,14 @@ const PatternDemoSection = styled.div`
 `;
 
 const PatternDemo = styled.div`
-  background: var(--color-surface-secondary);
+  background: var(--color-card-bg);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  box-shadow: var(--shadow-sm);
 `;
 
 const PatternTitle = styled.h4`
