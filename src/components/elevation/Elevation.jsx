@@ -70,6 +70,13 @@ const ShadowVisual = styled.div`
   font-size: var(--text-body-small);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
+  transition: all var(--duration-normal) var(--ease-default);
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: ${props => props.$hoverShadow || props.shadow};
+  }
 `;
 
 const ShadowInfo = styled.div`
@@ -104,7 +111,7 @@ const ElevationDemo = styled.div`
   gap: var(--space-6);
   margin: var(--space-6) 0;
   padding: var(--space-8);
-  background: linear-gradient(135deg, var(--color-surface-secondary) 0%, var(--color-platinum) 100%);
+  background: linear-gradient(135deg, var(--color-surface-secondary) 0%, var(--color-surface-elevated) 100%);
   border-radius: var(--radius-lg);
 `;
 
@@ -146,7 +153,7 @@ const TableHeader = styled.th`
   text-align: left;
   font-weight: 500;
   color: var(--color-text-primary);
-  background-color: var(--color-platinum);
+  background-color: var(--color-surface-secondary);
   border-bottom: 1px solid var(--color-border);
 `;
 
@@ -189,8 +196,8 @@ const Elevation = () => {
 
         <ShadowScale>
           <ShadowItem>
-            <ShadowVisual shadow="var(--shadow-sm)">
-              Hover to see shadow
+            <ShadowVisual shadow="var(--shadow-sm)" $hoverShadow="var(--shadow-md)">
+              Hover to see elevation
             </ShadowVisual>
             <ShadowInfo>
               <ShadowName>Small</ShadowName>
@@ -201,8 +208,8 @@ const Elevation = () => {
           </ShadowItem>
 
           <ShadowItem>
-            <ShadowVisual shadow="var(--shadow-md)">
-              Hover to see shadow
+            <ShadowVisual shadow="var(--shadow-md)" $hoverShadow="var(--shadow-lg)">
+              Hover to see elevation
             </ShadowVisual>
             <ShadowInfo>
               <ShadowName>Medium</ShadowName>
@@ -213,8 +220,8 @@ const Elevation = () => {
           </ShadowItem>
 
           <ShadowItem>
-            <ShadowVisual shadow="var(--shadow-lg)">
-              Hover to see shadow
+            <ShadowVisual shadow="var(--shadow-lg)" $hoverShadow="var(--shadow-xl)">
+              Hover to see elevation
             </ShadowVisual>
             <ShadowInfo>
               <ShadowName>Large</ShadowName>
@@ -225,8 +232,8 @@ const Elevation = () => {
           </ShadowItem>
 
           <ShadowItem>
-            <ShadowVisual shadow="var(--shadow-xl)">
-              Hover to see shadow
+            <ShadowVisual shadow="var(--shadow-xl)" $hoverShadow="0 24px 64px rgba(11,4,37,0.24)">
+              Hover to see elevation
             </ShadowVisual>
             <ShadowInfo>
               <ShadowName>Extra Large</ShadowName>

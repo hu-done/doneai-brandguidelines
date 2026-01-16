@@ -3,40 +3,45 @@ import styled from "styled-components";
 // Text
 
 export const Title = styled.h1`
-  font-size: 30px;
-  font-weight: 400;
+  font-size: var(--text-h1);
+  font-weight: 500;
+  color: var(--color-text-primary);
 
   @media (min-width: 768px) {
-    font-size: 33px;
+    font-size: 36px;
   }
 `;
 
 export const Subtitle = styled.h2`
-  font-size: 23px;
+  font-size: var(--text-h2);
   font-weight: 500;
-  padding: 2rem 0;
+  color: var(--color-text-primary);
+  margin: var(--space-6) 0 var(--space-4);
 
   @media (min-width: 768px) {
-    font-size: 25px;
+    font-size: 28px;
   }
 `;
 
 export const SubSubtitle = styled.h3`
-  font-size: 20px;
+  font-size: var(--text-h3);
   font-weight: 500;
+  color: var(--color-text-primary);
 
   @media (min-width: 768px) {
-    font-size: 21px;
+    font-size: 22px;
   }
 `;
 
 export const Bodytext = styled.p`
-  font-size: 15px;
-  padding-bottom: 2rem;
+  font-size: var(--text-body);
   font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
 
   @media (min-width: 768px) {
-    font-size: 16px;
+    font-size: 17px;
   }
 `;
 
@@ -95,7 +100,7 @@ export const DoneTM = () => (
 export const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 3em;
+  gap: var(--space-6);
 
   & > div {
     flex: 1 1 100%;
@@ -115,15 +120,15 @@ export const ImageContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 0;
-  margin: 2rem auto;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  margin: var(--space-5) auto;
 `;
 
 export const LightImageContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral1.hex};
   border-radius: 30px;
-  padding: 1rem;
+  padding: var(--space-3);
 `;
 
 export const LogoImage = styled.img`

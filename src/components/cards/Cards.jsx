@@ -1,7 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { Palette, FileText, Puzzle, Zap, MessageCircle, Wrench } from "lucide-react";
 import Callout from "../shared/Callout";
+import CodeBlock from "../shared/CodeBlock";
 
 const PageContainer = styled.div`
   max-width: var(--container-md);
@@ -43,64 +45,91 @@ const CardGrid = styled.div`
 `;
 
 const Card = styled.div`
+  background-color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-surface-elevated-dark)'};
+  color: ${props => props.$isPrimary ? 'var(--color-midnight)' : 'var(--color-pearl)'};
+  border-radius: var(--radius-card);
   padding: var(--space-5);
-  background-color: var(--color-surface-secondary);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
   transition: all var(--duration-normal) var(--ease-default);
+  box-shadow: ${props => props.$isPrimary ? 'var(--shadow-md)' : 'none'};
 
   ${props => props.interactive && `
     cursor: pointer;
 
     &:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
-
-    &:active {
-      transform: translateY(0);
-    }
-  `}
-
-  ${props => props.elevated && `
-    box-shadow: var(--shadow-md);
   `}
 
   ${props => props.flat && `
-    box-shadow: none;
     background-color: var(--color-surface-elevated);
-    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-sm);
   `}
+
+  /* Dark mode: lighter background for dark cards */
+  .dark & {
+    background-color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-nav-bg)'};
+  }
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+`;
+
+const StatusBadge = styled.span`
+  background-color: ${props => props.$variant === 'active' ? 'rgba(0, 106, 78, 0.15)' : 'rgba(180, 83, 9, 0.15)'};
+  color: ${props => props.$variant === 'active' ? 'var(--color-success)' : 'var(--color-warning)'};
+  font-size: var(--text-caption);
+  font-weight: 500;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+`;
+
+const CardIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(106, 0, 213, 0.15);
+  color: var(--color-violet);
 `;
 
 const CardTitle = styled.h3`
-  font-size: var(--text-h3);
-  font-weight: 500;
-  color: var(--color-text-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
   margin-bottom: var(--space-2);
 `;
 
 const CardDescription = styled.p`
   font-size: var(--text-body-small);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-3);
+  color: ${props => props.$isPrimary ? 'var(--color-text-secondary)' : 'rgba(251, 251, 251, 0.7)'};
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
 `;
 
-const CardFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border);
-  margin-top: var(--space-3);
-`;
+const CardButton = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: var(--space-3);
+  border-radius: 100px;
+  font-weight: 500;
+  background-color: ${props => props.$isPrimary ? 'var(--color-midnight)' : 'var(--color-pearl)'};
+  color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-midnight)'};
+  transition: all var(--duration-normal) var(--ease-default);
 
-const CardLabel = styled.span`
-  font-size: var(--text-caption);
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  ${Card}:hover & {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+  }
 `;
 
 const SpecTable = styled.table`
@@ -115,7 +144,7 @@ const TableHeader = styled.th`
   text-align: left;
   font-weight: 500;
   color: var(--color-text-primary);
-  background-color: var(--color-platinum);
+  background-color: var(--color-surface-secondary);
   border-bottom: 1px solid var(--color-border);
 `;
 
@@ -126,16 +155,6 @@ const TableCell = styled.td`
   line-height: 1.6;
 `;
 
-const CodeBlock = styled.pre`
-  background-color: var(--color-midnight);
-  color: var(--color-pearl);
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
-  overflow-x: auto;
-  font-size: var(--text-body-small);
-  line-height: 1.6;
-  margin: var(--space-4) 0;
-`;
 
 const NestedCardDemo = styled.div`
   padding: var(--space-6);
@@ -175,34 +194,40 @@ const Cards = () => {
         </SectionDescription>
 
         <CardGrid>
-          <Card>
-            <CardTitle>Standard Card</CardTitle>
-            <CardDescription>
-              This is the base card style with default spacing, shadow, and radius. Use for most card needs.
+          <Card $isPrimary={true} interactive>
+            <CardHeader>
+              <StatusBadge $variant="active">Active</StatusBadge>
+              <CardIcon><Palette size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Primary Card</CardTitle>
+            <CardDescription $isPrimary={true}>
+              Light background with dark text. Use for the most important or featured item.
             </CardDescription>
-            <CardFooter>
-              <CardLabel>Default</CardLabel>
-            </CardFooter>
+            <CardButton $isPrimary={true}>Explore</CardButton>
           </Card>
 
           <Card interactive>
-            <CardTitle>Interactive Card</CardTitle>
+            <CardHeader>
+              <StatusBadge $variant="available">Available</StatusBadge>
+              <CardIcon><FileText size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Secondary Card</CardTitle>
             <CardDescription>
-              Hover this card to see the interactive state. Shadow increases and card lifts slightly.
+              Dark background with light text. Hover to see the interactive lift effect.
             </CardDescription>
-            <CardFooter>
-              <CardLabel>Hover me</CardLabel>
-            </CardFooter>
+            <CardButton>Explore</CardButton>
           </Card>
 
-          <Card elevated>
-            <CardTitle>Elevated Card</CardTitle>
+          <Card interactive>
+            <CardHeader>
+              <StatusBadge $variant="available">Available</StatusBadge>
+              <CardIcon><Puzzle size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Interactive Card</CardTitle>
             <CardDescription>
-              This card starts with a stronger shadow for emphasis or to indicate active/selected state.
+              All cards have smooth hover animations that lift the card and button.
             </CardDescription>
-            <CardFooter>
-              <CardLabel>Elevated</CardLabel>
-            </CardFooter>
+            <CardButton>Explore</CardButton>
           </Card>
         </CardGrid>
       </Section>
@@ -212,25 +237,40 @@ const Cards = () => {
         <SectionTitle>Card Variants</SectionTitle>
 
         <CardGrid>
-          <Card flat>
-            <CardTitle>Flat Card</CardTitle>
+          <Card>
+            <CardHeader>
+              <StatusBadge $variant="available">Available</StatusBadge>
+              <CardIcon><Zap size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Standard Dark</CardTitle>
             <CardDescription>
-              No shadow, just a border. Use for already elevated contexts or nested cards.
+              Dark cards are the default secondary style for most navigation items.
             </CardDescription>
+            <CardButton>Explore</CardButton>
           </Card>
 
-          <Card style={{ backgroundColor: 'var(--color-midnight)', color: 'var(--color-pearl)' }}>
-            <CardTitle style={{ color: 'var(--color-pearl)' }}>Dark Card</CardTitle>
-            <CardDescription style={{ color: 'rgba(251, 251, 251, 0.8)' }}>
-              Inverted colors for emphasis or dark sections. Use sparingly.
+          <Card $isPrimary={true}>
+            <CardHeader>
+              <StatusBadge $variant="active">Featured</StatusBadge>
+              <CardIcon><MessageCircle size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Featured Light</CardTitle>
+            <CardDescription $isPrimary={true}>
+              Use light cards to highlight the primary or most important item.
             </CardDescription>
+            <CardButton $isPrimary={true}>Explore</CardButton>
           </Card>
 
-          <Card style={{ border: '2px solid var(--color-violet)' }}>
-            <CardTitle>Highlighted Card</CardTitle>
+          <Card>
+            <CardHeader>
+              <StatusBadge $variant="available">Coming Soon</StatusBadge>
+              <CardIcon><Wrench size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>With Status</CardTitle>
             <CardDescription>
-              With accent border for important or selected items. Use Royal Violet sparingly.
+              Use status badges to indicate availability, coming soon, or active states.
             </CardDescription>
+            <CardButton>Explore</CardButton>
           </Card>
         </CardGrid>
       </Section>
@@ -245,38 +285,38 @@ const Cards = () => {
               <TableHeader>Variant</TableHeader>
               <TableHeader>Padding</TableHeader>
               <TableHeader>Radius</TableHeader>
-              <TableHeader>Shadow</TableHeader>
+              <TableHeader>Min Height</TableHeader>
               <TableHeader>Background</TableHeader>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <TableCell>Base</TableCell>
-              <TableCell>32px (--space-5)</TableCell>
-              <TableCell>16px (--radius-lg)</TableCell>
-              <TableCell>--shadow-sm</TableCell>
-              <TableCell>--color-surface-secondary</TableCell>
+              <TableCell>Primary (Light)</TableCell>
+              <TableCell>24px (1.5rem)</TableCell>
+              <TableCell>44px</TableCell>
+              <TableCell>280px</TableCell>
+              <TableCell>#FBFBFB (Pearl)</TableCell>
             </tr>
             <tr>
-              <TableCell>Interactive (hover)</TableCell>
-              <TableCell>32px (--space-5)</TableCell>
-              <TableCell>16px (--radius-lg)</TableCell>
-              <TableCell>--shadow-md</TableCell>
-              <TableCell>--color-surface-secondary</TableCell>
+              <TableCell>Secondary (Dark)</TableCell>
+              <TableCell>24px (1.5rem)</TableCell>
+              <TableCell>44px</TableCell>
+              <TableCell>280px</TableCell>
+              <TableCell>#1a1435 (Dark Purple)</TableCell>
             </tr>
             <tr>
-              <TableCell>Elevated</TableCell>
-              <TableCell>32px (--space-5)</TableCell>
-              <TableCell>16px (--radius-lg)</TableCell>
-              <TableCell>--shadow-md</TableCell>
-              <TableCell>--color-surface-secondary</TableCell>
+              <TableCell>Button (Primary)</TableCell>
+              <TableCell>16px (1rem)</TableCell>
+              <TableCell>100px (full pill)</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>#0B0425 (Midnight)</TableCell>
             </tr>
             <tr>
-              <TableCell>Flat</TableCell>
-              <TableCell>32px (--space-5)</TableCell>
-              <TableCell>16px (--radius-lg)</TableCell>
-              <TableCell>None</TableCell>
-              <TableCell>--color-surface-elevated</TableCell>
+              <TableCell>Button (Secondary)</TableCell>
+              <TableCell>16px (1rem)</TableCell>
+              <TableCell>100px (full pill)</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>#FBFBFB (Pearl)</TableCell>
             </tr>
           </tbody>
         </SpecTable>
@@ -306,40 +346,158 @@ const Cards = () => {
       <Section>
         <SectionTitle>Implementation</SectionTitle>
 
-        <CodeBlock>{`/* Base Card */
-.card {
-  padding: var(--space-5);
-  background-color: var(--color-surface-secondary);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--duration-normal) var(--ease-default);
-}
+        <SectionDescription>
+          All code examples below use Svelte 5 syntax with runes ($props, $state, etc).
+        </SectionDescription>
 
-/* Interactive Card */
-.card-interactive {
-  cursor: pointer;
-}
+        <CodeBlock language="svelte" title="Card.svelte">
+{`<!-- Card.svelte -->
+<script>
+  let {
+    variant = 'default',
+    hoverable = false,
+    href = ''
+  } = $props();
+</script>
 
-.card-interactive:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
+<svelte:element
+  this={href ? 'a' : 'div'}
+  {href}
+  class="card card-{variant}"
+  class:hoverable
+>
+  <slot name="header" />
+  <div class="card-content">
+    <slot />
+  </div>
+  <slot name="footer" />
+</svelte:element>
 
-.card-interactive:active {
-  transform: translateY(0);
-}
+<style lang="scss">
+  @use '../styles/variables' as *;
 
-/* Elevated Card */
-.card-elevated {
-  box-shadow: var(--shadow-md);
-}
+  .card {
+    background-color: var(--color-surface-secondary);
+    border-radius: $radius-lg;
+    padding: $space-5;
+    box-shadow: $shadow-sm;
+    transition: all $duration-normal $ease-default;
+  }
 
-/* Flat Card */
-.card-flat {
-  box-shadow: none;
-  background-color: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-}`}</CodeBlock>
+  .card-elevated {
+    box-shadow: $shadow-md;
+  }
+
+  .hoverable {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  a.card {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>`}
+        </CodeBlock>
+
+        <CodeBlock language="svelte" title="FeatureCard.svelte">
+{`<!-- FeatureCard.svelte -->
+<script>
+  let { icon, title, description } = $props();
+</script>
+
+<div class="feature-card">
+  <div class="icon-wrapper">
+    <svelte:component this={icon} size={24} strokeWidth={1.5} />
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+
+  .feature-card {
+    background: $pearl-white;
+    border-radius: $radius-lg;
+    padding: $space-5;
+    text-align: center;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin: $space-3 0 $space-2;
+      color: $midnight-violet;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+  }
+
+  .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    background: $lavender;
+    color: $royal-violet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+</style>`}
+        </CodeBlock>
+
+        <CodeBlock language="svelte" title="Usage with Tailwind">
+{`<!-- Using Tailwind classes -->
+<div class="
+  bg-pearl rounded-lg p-6
+  shadow-sm hover:shadow-lg
+  hover:-translate-y-1
+  transition-all duration-200
+">
+  <h3 class="text-lg font-medium text-midnight">Card Title</h3>
+  <p class="text-sm text-midnight/70 mt-2">
+    Card description goes here.
+  </p>
+</div>`}
+        </CodeBlock>
+
+        <CodeBlock language="svelte" title="Card Grid Layout">
+{`<script>
+  import Card from '$lib/components/Card.svelte';
+</script>
+
+<div class="card-grid">
+  {#each items as item}
+    <Card hoverable href={item.href}>
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+    </Card>
+  {/each}
+</div>
+
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+  }
+</style>`}
+        </CodeBlock>
       </Section>
 
       {/* Content Structure */}

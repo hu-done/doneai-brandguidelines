@@ -1,6 +1,70 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import styled from "styled-components";
 import * as S from "../commonStyles/index.js";
+
+const PositioningBox = styled.div`
+  background-color: var(--color-midnight);
+  color: var(--color-pearl);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  margin: var(--space-5) 0;
+
+  /* Dark mode: invert to light background */
+  .dark & {
+    background-color: var(--color-pearl);
+    color: var(--color-midnight);
+  }
+`;
+
+const PositioningText = styled.p`
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: inherit;
+  margin: 0;
+`;
+
+const ValuesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin: var(--space-5) 0;
+`;
+
+const ValueCard = styled.div`
+  background-color: var(--color-surface-secondary);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+`;
+
+const ValueTitle = styled.h3`
+  font-size: var(--text-h3);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+  color: var(--color-text-primary);
+
+  u {
+    text-decoration: underline;
+    text-decoration-color: var(--color-violet);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+`;
+
+const ValueText = styled.p`
+  font-size: var(--text-body-small);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  b {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+`;
+
+const SectionBox = styled.div`
+  margin: var(--space-6) 0;
+`;
 
 export default function BrandDNA() {
   return (
@@ -9,119 +73,91 @@ export default function BrandDNA() {
         <title>Brand DNA | Done.ai</title>
       </Helmet>
       <S.Title>Our Brand</S.Title>
-      <S.Subtitle>Brand Positioning</S.Subtitle>
-      <S.Bodytext>
-        Done.ai is an AI-native platform built to embed intelligence into the
-        heart of modern business. We empower companies of all sizes to automate
-        workflows, optimize operations, and make smarter decisions in real time.
-        With seamlessly integrated AI-powered solutions, they don't have to
-        think twice about what's running, or how. It's just handled. It's
-        intelligent.
-        <S.LogoCatchPhrase>
-          It's
-          <S.DoneTM />
-        </S.LogoCatchPhrase>
-      </S.Bodytext>
 
-      <S.Subtitle>Vision</S.Subtitle>
-      <S.Bodytext>
-        Our vision is a world where business just works. Smarter. Faster.
-        Effortless. We help companies of all sizes move with clarity, precision,
-        and purpose. When operations run themselves, businesses can focus on
-        what truly matters.
-      </S.Bodytext>
+      <SectionBox>
+        <S.Subtitle>Brand Positioning</S.Subtitle>
+        <PositioningBox>
+          <PositioningText>
+            Done.ai is an advanced, unified business infrastructure platform integrating
+            CRM, Accounting, Fintech, Inventory, and operations into a single automated core.
+            We sell the finality of the result, not the work of getting there. The name says it: Done.
+          </PositioningText>
+        </PositioningBox>
+      </SectionBox>
 
-      <S.Subtitle>Mission</S.Subtitle>
-      <S.Bodytext>
-        Our mission is to take the friction out of business operations. By
-        embedding intelligence directly into the systems companies use every
-        day, we empower them to move faster, think clearer and act with
-        confidence, so they can spend less time managing and more time growing.
-      </S.Bodytext>
+      <SectionBox>
+        <S.Subtitle>Vision</S.Subtitle>
+        <S.Bodytext>
+          We transform business complexity into clarity, giving SMEs the power to
+          grow with confidence.
+        </S.Bodytext>
+      </SectionBox>
 
-      <S.Subtitle>Brand Promise</S.Subtitle>
-      <S.Bodytext>
-        We promise our customers more than software. We deliver clarity, speed,
-        and control. With intelligence built into every layer, Done.ai makes
-        business feel simpler, sharper, and smarter from day one. No complexity.
-        No chaos. Everything they need is seamlessly integrated, AI-powered, and
-        already handled.
-        <S.LogoCatchPhrase>
-          It's
-          <S.DoneTM />
-        </S.LogoCatchPhrase>
-      </S.Bodytext>
+      <SectionBox>
+        <S.Subtitle>Mission</S.Subtitle>
+        <S.Bodytext>
+          We unify SaaS, operations, and embedded financial services into one
+          intelligent platform. As the one-stop shop for ambitious SMEs, we combine
+          AI-powered workflows with a distribution flywheel from our ecosystem,
+          giving customers clarity, confidence, and capital to scale.
+        </S.Bodytext>
+      </SectionBox>
 
-      <S.Subtitle>Our Core Values</S.Subtitle>
+      <SectionBox>
+        <S.Subtitle>Our Core Values</S.Subtitle>
 
-      <S.FlexContainer>
-        <div>
-          <S.SubSubtitle>
-            We <u>Empower</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            We don't just provide software. We <b>empower</b> people. Our tools
-            give companies clarity, control, and confidence to grow on their
-            terms.
-          </S.Bodytext>
-        </div>
+        <ValuesGrid>
+          <ValueCard>
+            <ValueTitle>
+              <u>Trust</u>
+            </ValueTitle>
+            <ValueText>
+              We earn it through <b>transparency</b> and reliability. Every interaction,
+              every product decision, every relationship—built on integrity.
+            </ValueText>
+          </ValueCard>
 
-        <div>
-          <S.SubSubtitle>
-            We Build for <u>Thinking</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            Our platform isn't just fast, it's smart. <b>Intelligence</b> is
-            built into every layer, helping our customers make better decisions
-            without the complexity.
-          </S.Bodytext>
-        </div>
+          <ValueCard>
+            <ValueTitle>
+              <u>Ownership</u>
+            </ValueTitle>
+            <ValueText>
+              We think and act like <b>founders</b>. We take responsibility for outcomes,
+              not just tasks.
+            </ValueText>
+          </ValueCard>
 
-        <div>
-          <S.SubSubtitle>
-            We Prioritize <u>Clarity</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            We provide <b>clarity</b> by removing friction, noise, and bloated
-            systems. Our job is to make the complex feel simple, and help
-            businesses move with purpose.
-          </S.Bodytext>
-        </div>
+          <ValueCard>
+            <ValueTitle>
+              <u>Clarity</u>
+            </ValueTitle>
+            <ValueText>
+              We <b>simplify complexity</b> for customers and ourselves. No noise,
+              no bloat—just what matters.
+            </ValueText>
+          </ValueCard>
 
-        <div>
-          <S.SubSubtitle>
-            We Move with <u>Purpose</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            We build <b>intentionally</b>, adapt quickly, and act decisively,
-            because speed only matters when it leads to meaningful impact. Every
-            product we ship and every feature we refine is guided by what helps
-            our customers move forward.
-          </S.Bodytext>
-        </div>
+          <ValueCard>
+            <ValueTitle>
+              <u>Collaboration</u>
+            </ValueTitle>
+            <ValueText>
+              We build stronger <b>outcomes together</b>. The best solutions come
+              from diverse perspectives working toward shared goals.
+            </ValueText>
+          </ValueCard>
 
-        <div>
-          <S.SubSubtitle>
-            We Earn <u>Trust</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            Every line of code, every product decision, every relationship—we
-            approach it with <b>integrity</b>. We deliver what we promise.
-            Always.
-          </S.Bodytext>
-        </div>
-
-        <div>
-          <S.SubSubtitle>
-            We Scale <u>Sustainably</u>
-          </S.SubSubtitle>
-          <S.Bodytext>
-            Efficiency isn't just good business. It's good stewardship. Smarter
-            workflows mean less waste, more focus, and long-term{" "}
-            <b>sustainability</b>.
-          </S.Bodytext>
-        </div>
-      </S.FlexContainer>
+          <ValueCard>
+            <ValueTitle>
+              <u>Progress</u>
+            </ValueTitle>
+            <ValueText>
+              We move fast, learn, and <b>raise the bar</b> every day. Speed with
+              purpose beats perfection in isolation.
+            </ValueText>
+          </ValueCard>
+        </ValuesGrid>
+      </SectionBox>
     </div>
   );
 }

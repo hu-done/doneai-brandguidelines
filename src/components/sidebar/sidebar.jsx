@@ -4,13 +4,21 @@ import styled from "styled-components";
 
 const SidebarWrapper = styled.nav`
   width: 250px;
-  height: 100vh;
+  height: 80vh;
   padding: var(--space-7) var(--space-4);
   position: fixed;
+  left: 1rem;
   overflow-y: auto;
-  background-color: var(--color-midnight);
+  background-color: var(--color-nav-bg);
   border-radius: var(--radius-xxl);
-  margin-left: 1rem;
+
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 
   @media (max-width: 768px) {
     position: relative;
@@ -23,13 +31,13 @@ const SidebarWrapper = styled.nav`
     overflow-y: visible;
     white-space: nowrap;
     border-radius: 0;
-    background-color: var(--color-midnight);
+    background-color: var(--color-nav-bg);
   }
 `;
 
 const SectionHeader = styled.div`
   font-size: var(--text-body-small);
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(251, 251, 251, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -44,7 +52,7 @@ const SectionHeader = styled.div`
 
 const StyledNavLink = styled(NavLink)`
   display: block;
-  color: var(--color-pearl);
+  color: #fbfbfb;
   text-decoration: none;
   padding: var(--space-2) var(--space-2);
   border-radius: var(--radius-md);
@@ -55,14 +63,15 @@ const StyledNavLink = styled(NavLink)`
   border-left: 3px solid transparent;
 
   &.active {
-    background-color: var(--color-pearl);
-    color: var(--color-midnight);
+    background-color: rgba(251, 251, 251, 0.15);
+    color: #fbfbfb;
     font-weight: 500;
+    border-left-color: var(--color-violet);
   }
 
-  &:hover {
-    background-color: rgba(106, 0, 213, 0.1);
-    color: var(--color-pearl);
+  &:hover:not(.active) {
+    background-color: rgba(106, 0, 213, 0.2);
+    color: #fbfbfb;
   }
 
   @media (max-width: 768px) {
@@ -85,6 +94,7 @@ const Sidebar = () => {
       <SectionHeader $first>FOUNDATION</SectionHeader>
       <StyledNavLink to="/">Introduction</StyledNavLink>
       <StyledNavLink to="/brand-dna">Brand DNA</StyledNavLink>
+      <StyledNavLink to="/brand-essentials">Brand Essentials</StyledNavLink>
 
       <SectionHeader>VERBAL IDENTITY</SectionHeader>
       <StyledNavLink to="/tone-of-voice">Tone of Voice</StyledNavLink>
@@ -96,11 +106,14 @@ const Sidebar = () => {
       <StyledNavLink to="/colors">Colors</StyledNavLink>
       <StyledNavLink to="/typography">Typography</StyledNavLink>
       <StyledNavLink to="/dark-mode">Dark Mode</StyledNavLink>
+      <StyledNavLink to="/asset-library">Asset Library</StyledNavLink>
 
       <SectionHeader>DESIGN SYSTEM</SectionHeader>
       <StyledNavLink to="/spacing">Spacing & Layout</StyledNavLink>
       <StyledNavLink to="/border-radius">Border Radius</StyledNavLink>
       <StyledNavLink to="/elevation">Elevation & Shadows</StyledNavLink>
+      <StyledNavLink to="/motion">Motion & Animation</StyledNavLink>
+      <StyledNavLink to="/icons">Icons</StyledNavLink>
       <StyledNavLink to="/css-tokens">CSS Tokens</StyledNavLink>
 
       <SectionHeader>COMPONENTS</SectionHeader>

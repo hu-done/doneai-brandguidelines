@@ -1,39 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { Check, X } from "lucide-react";
+import * as S from "../commonStyles/index.js";
 import Callout from "../shared/Callout";
-
-const PageContainer = styled.div`
-  max-width: var(--container-md);
-  padding: var(--space-7) var(--space-6);
-`;
-
-const PageTitle = styled.h1`
-  font-size: var(--text-h1);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
-`;
-
-const Section = styled.section`
-  margin-top: var(--space-8);
-`;
-
-const SectionTitle = styled.h2`
-  font-size: var(--text-h2);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-4);
-`;
-
-const SectionDescription = styled.p`
-  font-size: var(--text-body);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-5);
-`;
 
 const CorePrinciple = styled.div`
   font-size: var(--text-hero);
@@ -85,7 +55,7 @@ const TableHeader = styled.th`
   text-align: left;
   font-weight: 500;
   color: var(--color-text-primary);
-  background-color: var(--color-platinum);
+  background-color: var(--color-surface-secondary);
   border-bottom: 1px solid var(--color-border);
 `;
 
@@ -105,31 +75,38 @@ const TestBox = styled.div`
   font-weight: 500;
   text-align: center;
   margin: var(--space-5) 0;
+
+  /* Dark mode: invert to light background */
+  .dark & {
+    background-color: var(--color-pearl);
+    color: var(--color-midnight);
+  }
+`;
+
+const TitleWithIcon = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
 `;
 
 const ToneOfVoice = () => {
   return (
-    <PageContainer>
+    <div>
       <Helmet>
         <title>Tone of Voice | Done.ai Brand Guidelines</title>
       </Helmet>
 
-      <PageTitle>Tone of Voice</PageTitle>
+      <S.Title>Tone of Voice</S.Title>
 
-      {/* Core Principle */}
-      <Section>
-        <CorePrinciple>Authority through Simplicity</CorePrinciple>
-        <SectionDescription style={{ textAlign: 'center', fontSize: 'var(--text-body)' }}>
-          Done.ai makes complex business infrastructure feel simple and authoritative. The brand is whisper-quiet confident - it doesn't shout, it states.
-        </SectionDescription>
-      </Section>
+      <CorePrinciple>Authority through Simplicity</CorePrinciple>
+      <S.Bodytext style={{ textAlign: 'center', fontSize: 'var(--text-body)' }}>
+        Done.ai makes complex business infrastructure feel simple and authoritative. The brand is whisper-quiet confident - it doesn't shout, it states.
+      </S.Bodytext>
 
-      {/* Tone Characteristics */}
-      <Section>
-        <SectionTitle>Tone Characteristics</SectionTitle>
-        <SectionDescription>
-          Our voice is distinctive and consistent. These characteristics guide every word we write.
-        </SectionDescription>
+      <S.Subtitle>Tone Characteristics</S.Subtitle>
+      <S.Bodytext>
+        Our voice is distinctive and consistent. These characteristics guide every word we write.
+      </S.Bodytext>
 
         <CharacteristicsList>
           <CharacteristicCard>
@@ -160,14 +137,11 @@ const ToneOfVoice = () => {
             </CharacteristicText>
           </CharacteristicCard>
         </CharacteristicsList>
-      </Section>
 
-      {/* The Done Hook */}
-      <Section>
-        <SectionTitle>The "Done." Hook</SectionTitle>
-        <SectionDescription>
-          Our name is our message. Format: Question → "Done." This creates immediate clarity and confidence.
-        </SectionDescription>
+      <S.Subtitle>The "Done." Hook</S.Subtitle>
+      <S.Bodytext>
+        Our name is our message. Format: Question → "Done." This creates immediate clarity and confidence.
+      </S.Bodytext>
 
         <ExampleTable>
           <thead>
@@ -215,49 +189,40 @@ const ToneOfVoice = () => {
         <Callout type="info" title="Why It Works">
           The "Done." hook is memorable, confident, and unique. It focuses on resolution, not process. It's what our customers want to hear - not how we'll do it, but that it's handled.
         </Callout>
-      </Section>
 
-      {/* The Read-Out-Loud Test */}
-      <Section>
-        <SectionTitle>The Read-Out-Loud Test</SectionTitle>
+      <S.Subtitle>The Read-Out-Loud Test</S.Subtitle>
 
         <TestBox>
           "If it sounds like a used car commercial, rewrite it."
         </TestBox>
 
-        <SectionDescription>
-          Read your copy out loud. Does it sound like something a real person would say? Or does it sound like corporate marketing speak? If it's the latter, start over.
-        </SectionDescription>
+      <S.Bodytext>
+        Read your copy out loud. Does it sound like something a real person would say? Or does it sound like corporate marketing speak? If it's the latter, start over.
+      </S.Bodytext>
 
         <Callout type="warning" title="Warning Signs">
           If your copy includes phrases like "cutting-edge," "game-changing," "revolutionize," or "empower," you've failed the test. Real people don't talk like that.
         </Callout>
-      </Section>
 
-      {/* Writing Examples */}
-      <Section>
-        <SectionTitle>Writing Examples</SectionTitle>
+      <S.Subtitle>Writing Examples</S.Subtitle>
 
-        <Callout type="success" title="✓ Good">
+        <Callout type="success" title={<TitleWithIcon><Check size={16} strokeWidth={1.5} /> Good</TitleWithIcon>}>
           "Track every lead. Close more deals. Stop using five different tools."
         </Callout>
 
-        <Callout type="success" title="✓ Good">
+        <Callout type="success" title={<TitleWithIcon><Check size={16} strokeWidth={1.5} /> Good</TitleWithIcon>}>
           "Your sales team wastes 3 hours a day switching between apps. We fixed that."
         </Callout>
 
-        <Callout type="error" title="✗ Bad">
+        <Callout type="error" title={<TitleWithIcon><X size={16} strokeWidth={1.5} /> Bad</TitleWithIcon>}>
           "Streamline and optimize your workflow with our revolutionary, cutting-edge platform that empowers teams to work smarter, not harder."
         </Callout>
 
-        <Callout type="error" title="✗ Bad">
+        <Callout type="error" title={<TitleWithIcon><X size={16} strokeWidth={1.5} /> Bad</TitleWithIcon>}>
           "Unleash the full potential of your sales organization with game-changing technology."
         </Callout>
-      </Section>
 
-      {/* Voice Principles */}
-      <Section>
-        <SectionTitle>Key Principles</SectionTitle>
+      <S.Subtitle>Key Principles</S.Subtitle>
 
         <CharacteristicsList>
           <CharacteristicCard>
@@ -288,8 +253,7 @@ const ToneOfVoice = () => {
             </CharacteristicText>
           </CharacteristicCard>
         </CharacteristicsList>
-      </Section>
-    </PageContainer>
+    </div>
   );
 };
 

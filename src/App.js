@@ -2,8 +2,8 @@ import "./App.css";
 import styled from "styled-components";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/sidebar/sidebar.jsx";
 import Home from "./components/home/home.jsx";
 import BrandDNA from "./components/brand-dna/brand-dna.jsx";
@@ -11,6 +11,7 @@ import Logo from "./components/logo/logo.jsx";
 import Colors from "./components/colors/ColorsNew.jsx";
 import Typography from "./components/typography/Typography.jsx";
 import ToneOfVoice from "./components/tone-of-voice/ToneOfVoice.jsx";
+import WritingGuidelines from "./components/writing-guidelines/WritingGuidelines.jsx";
 import ForbiddenLanguage from "./components/forbidden-language/ForbiddenLanguage.jsx";
 import Buttons from "./components/buttons/Buttons.jsx";
 import DarkMode from "./components/dark-mode/DarkMode.jsx";
@@ -20,26 +21,46 @@ import Elevation from "./components/elevation/Elevation.jsx";
 import CSSTokens from "./components/css-tokens/CSSTokens.jsx";
 import Inputs from "./components/inputs/Inputs.jsx";
 import Cards from "./components/cards/Cards.jsx";
+import AssetLibrary from "./components/asset-library/AssetLibrary.jsx";
 import Designguide from "./components/designguide/designguide.jsx";
-import ComingSoon from "./components/shared/ComingSoon.jsx";
+// ComingSoon component available for future placeholder pages
+// import ComingSoon from "./components/shared/ComingSoon.jsx";
+import Icons from "./components/icons/Icons.jsx";
+import Motion from "./components/motion/Motion.jsx";
+import GlobalSearch from "./components/shared/GlobalSearch.jsx";
+import BrandEssentials from "./components/brand-essentials/BrandEssentials.jsx";
+
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   font-family: "DM Sans", sans-serif;
-  background-color: #fbfbfb;
+  background-color: var(--color-surface-primary);
+  transition: background-color var(--duration-normal) var(--ease-default);
 `;
 
 const ContentWrapper = styled.div`
-  margin-left: 280px;
-  padding: 0 2rem;
   flex-grow: 1;
-  max-width: 900px;
+  padding: 0 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: calc(250px + 2rem);
+  margin-right: auto;
 
   @media (max-width: 768px) {
-    margin-left: 0;
     padding: 1rem;
+    margin-left: auto;
   }
 `;
 
@@ -85,8 +106,25 @@ const PageWrapper = styled.div`
 })();
 
 const App = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Handle Cmd+K (Mac) / Ctrl+K (Windows) keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Check for Cmd+K (Mac) or Ctrl+K (Windows/Linux)
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <Router>
+      <ScrollToTop />
       <AppWrapper>
         <Header />
         <PageWrapper>
@@ -95,18 +133,11 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/brand-dna" element={<BrandDNA />} />
+              <Route path="/brand-essentials" element={<BrandEssentials />} />
 
               {/* Verbal Identity */}
               <Route path="/tone-of-voice" element={<ToneOfVoice />} />
-              <Route
-                path="/writing-guidelines"
-                element={
-                  <ComingSoon
-                    title="Writing Guidelines"
-                    description="Comprehensive writing guidelines coming soon."
-                  />
-                }
-              />
+              <Route path="/writing-guidelines" element={<WritingGuidelines />} />
               <Route
                 path="/forbidden-language"
                 element={<ForbiddenLanguage />}
@@ -117,11 +148,14 @@ const App = () => {
               <Route path="/colors" element={<Colors />} />
               <Route path="/typography" element={<Typography />} />
               <Route path="/dark-mode" element={<DarkMode />} />
+              <Route path="/asset-library" element={<AssetLibrary />} />
 
               {/* Design System */}
               <Route path="/spacing" element={<Spacing />} />
               <Route path="/border-radius" element={<BorderRadius />} />
               <Route path="/elevation" element={<Elevation />} />
+              <Route path="/motion" element={<Motion />} />
+              <Route path="/icons" element={<Icons />} />
               <Route path="/css-tokens" element={<CSSTokens />} />
 
               {/* Components */}
@@ -135,6 +169,10 @@ const App = () => {
           </ContentWrapper>
         </PageWrapper>
         <Footer />
+        <GlobalSearch
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
       </AppWrapper>
     </Router>
   );

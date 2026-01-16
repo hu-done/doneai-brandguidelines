@@ -1,0 +1,82 @@
+/* Done.ai Design Tokens
+ * Version: 1.0.0
+ * For CSS/Tailwind projects
+ */
+
+:root {
+  /* Colors - Core */
+  --color-pearl: #FBFBFB;
+  --color-midnight: #0B0425;
+  --color-platinum: #F0F0F0;
+  --color-violet: #6A00D5;
+  --color-lavender: #F4EFFF;
+
+  /* Colors - Semantic */
+  --color-success: #006A4E;
+  --color-warning: #B45309;
+  --color-error: #DE350B;
+
+  /* Surface (light mode) */
+  --color-surface-primary: #FBFBFB;
+  --color-surface-secondary: #F0F0F0;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #0B0425;
+  --color-text-secondary: rgba(11, 4, 37, 0.7);
+  --color-border: #E0E0E0;
+  --color-accent: #6A00D5;
+
+  /* Typography */
+  --text-hero: clamp(2rem, 5vw + 1rem, 3.5rem);
+  --text-h1: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+  --text-h2: clamp(1.5rem, 2vw + 0.75rem, 2rem);
+  --text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+  --text-body: 16px;
+  --text-body-small: 14px;
+  --text-caption: 12px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+  --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+  --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+  --shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+
+  /* Motion */
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode */
+:root.dark {
+  --color-surface-primary: #0B0425;
+  --color-surface-secondary: #1A1435;
+  --color-surface-elevated: #251A40;
+  --color-text-primary: #FBFBFB;
+  --color-text-secondary: rgba(251, 251, 251, 0.7);
+  --color-border: #3A2A5A;
+  --color-accent: #8B5CF6;
+  --color-lavender: rgba(138, 92, 246, 0.2);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+}

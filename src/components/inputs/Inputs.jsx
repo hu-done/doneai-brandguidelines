@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import Callout from "../shared/Callout";
+import CodeBlock from "../shared/CodeBlock";
 
 const PageContainer = styled.div`
   max-width: var(--container-md);
@@ -156,7 +157,7 @@ const TableHeader = styled.th`
   text-align: left;
   font-weight: 500;
   color: var(--color-text-primary);
-  background-color: var(--color-platinum);
+  background-color: var(--color-surface-secondary);
   border-bottom: 1px solid var(--color-border);
 `;
 
@@ -167,16 +168,6 @@ const TableCell = styled.td`
   line-height: 1.6;
 `;
 
-const CodeBlock = styled.pre`
-  background-color: var(--color-midnight);
-  color: var(--color-pearl);
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
-  overflow-x: auto;
-  font-size: var(--text-body-small);
-  line-height: 1.6;
-  margin: var(--space-4) 0;
-`;
 
 const Inputs = () => {
   const [email, setEmail] = useState('');
@@ -382,45 +373,158 @@ const Inputs = () => {
 
       {/* Implementation */}
       <Section>
-        <SectionTitle>Implementation</SectionTitle>
+        <SectionTitle>Svelte 5 Implementation</SectionTitle>
 
-        <CodeBlock>{`/* Input Base Styles */
-input, textarea {
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  font-size: var(--text-body);
-  font-family: 'DM Sans', sans-serif;
-  color: var(--color-text-primary);
-  background-color: var(--color-surface-elevated);
-  transition: all var(--duration-normal) var(--ease-default);
-}
+        <SectionDescription>
+          Below are complete Svelte 5 examples using the new runes syntax ($state, $props, $derived, $bindable).
+        </SectionDescription>
 
-input:hover, textarea:hover {
-  border-color: var(--color-text-secondary);
-}
+        <h3 style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-3)', fontSize: 'var(--text-h3)', fontWeight: 500 }}>
+          Text Input Component
+        </h3>
+        <CodeBlock language="svelte" title="TextInput.svelte">
+{`<!-- TextInput.svelte -->
+<script>
+  let {
+    label = '',
+    placeholder = '',
+    error = '',
+    disabled = false,
+    value = $bindable('')
+  } = $props();
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--color-violet);
-  box-shadow: 0 0 0 3px rgba(106, 0, 213, 0.1);
-}
+  let inputId = $derived(\`input-\${label.toLowerCase().replace(/\\s/g, '-')}\`);
+</script>
 
-/* Error State */
-input.error {
-  border-color: var(--color-error);
-}
+<div class="input-wrapper" class:has-error={error}>
+  {#if label}
+    <label for={inputId}>{label}</label>
+  {/if}
 
-input.error:focus {
-  box-shadow: 0 0 0 3px rgba(222, 53, 11, 0.1);
-}
+  <input
+    id={inputId}
+    type="text"
+    bind:value
+    {placeholder}
+    {disabled}
+    aria-invalid={!!error}
+  />
 
-/* Disabled State */
-input:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-color: var(--color-surface-secondary);
-}`}</CodeBlock>
+  {#if error}
+    <span class="error-message">{error}</span>
+  {/if}
+</div>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  input {
+    padding: $space-3;
+    border: 1px solid var(--color-border);
+    border-radius: $radius-md;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    transition: border-color $duration-fast $ease-default;
+
+    &:focus {
+      outline: none;
+      border-color: $royal-violet;
+      box-shadow: 0 0 0 2px rgba($royal-violet, 0.2);
+    }
+
+    &:disabled {
+      background-color: $platinum;
+      cursor: not-allowed;
+    }
+  }
+
+  .has-error input {
+    border-color: $error;
+  }
+
+  .error-message {
+    font-size: 12px;
+    color: $error;
+  }
+</style>`}
+        </CodeBlock>
+
+        <h3 style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-3)', fontSize: 'var(--text-h3)', fontWeight: 500 }}>
+          Textarea Component
+        </h3>
+        <CodeBlock language="svelte" title="Textarea.svelte">
+{`<!-- Textarea.svelte -->
+<script>
+  let {
+    label = '',
+    rows = 4,
+    value = $bindable('')
+  } = $props();
+</script>
+
+<div class="textarea-wrapper">
+  {#if label}
+    <label>{label}</label>
+  {/if}
+
+  <textarea
+    bind:value
+    {rows}
+  />
+</div>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+
+  textarea {
+    width: 100%;
+    padding: $space-3;
+    border: 1px solid var(--color-border);
+    border-radius: $radius-md;
+    font-family: 'DM Sans', sans-serif;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+      border-color: $royal-violet;
+      box-shadow: 0 0 0 2px rgba($royal-violet, 0.2);
+    }
+  }
+</style>`}
+        </CodeBlock>
+
+        <h3 style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-3)', fontSize: 'var(--text-h3)', fontWeight: 500 }}>
+          Usage Example
+        </h3>
+        <CodeBlock language="svelte" title="Example Usage">
+{`<script>
+  import TextInput from '$lib/components/TextInput.svelte';
+
+  let email = $state('');
+  let emailError = $derived(
+    email && !email.includes('@') ? 'Invalid email' : ''
+  );
+</script>
+
+<TextInput
+  label="Email"
+  placeholder="you@example.com"
+  bind:value={email}
+  error={emailError}
+/>`}
+        </CodeBlock>
       </Section>
 
       {/* Usage Guidelines */}

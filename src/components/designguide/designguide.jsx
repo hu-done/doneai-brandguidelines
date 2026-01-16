@@ -95,18 +95,6 @@ export default function Designguide() {
       <S.Section>
         <S.Subtitle>Typography</S.Subtitle>
         <S.SubSubtitle>Font weights</S.SubSubtitle>
-        <S.Bodytext style={{ display: "inline-block" }}>
-          <S.LogoCatchPhrase
-            style={{
-              display: "inline-block",
-              transform: "scale(1.2)",
-              transformOrigin: "left",
-            }}
-          >
-            Soon to be
-            <S.DoneTM />
-          </S.LogoCatchPhrase>
-        </S.Bodytext>
         <S.SubSubtitle>DM Sans</S.SubSubtitle>
         <S.FontBox style={{ fontWeight: 400 }}>
           <S.FontLetters>Aa</S.FontLetters>
@@ -240,18 +228,6 @@ export default function Designguide() {
       </S.Section>
       <S.Section>
         <S.Subtitle>Components</S.Subtitle>
-        <S.Bodytext style={{ display: "inline-block" }}>
-          <S.LogoCatchPhrase
-            style={{
-              display: "inline-block",
-              transform: "scale(1.2)",
-              transformOrigin: "left",
-            }}
-          >
-            Soon to be
-            <S.DoneTM />
-          </S.LogoCatchPhrase>
-        </S.Bodytext>
       </S.Section>
       <S.Section></S.Section>
     </div>

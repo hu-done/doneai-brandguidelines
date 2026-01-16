@@ -44,22 +44,22 @@ export const ColorBox = styled.div`
 `;
 
 export const ColorName = styled.div`
-  font-size: 12px;
-  font-weight: 800;
-  margin: 10px 0;
+  font-size: var(--text-caption);
+  font-weight: 500;
+  margin: var(--space-2) 0;
   text-align: center;
 `;
 
 export const ColorCode = styled.div`
-  font-size: 11px;
+  font-size: var(--text-caption);
   text-align: center;
-  margin: 2px 0;
+  margin: var(--space-1) 0;
 `;
 
 export const RgbCode = styled.div`
-  font-size: 11px;
+  font-size: var(--text-caption);
   text-align: center;
-  margin: 2px 0;
+  margin: var(--space-1) 0;
 `;
 
 export const TitleColorsContainer = styled(ColorsContainer)`

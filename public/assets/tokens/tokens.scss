@@ -1,0 +1,98 @@
+// Done.ai Design Tokens
+// Version: 1.0.0
+// For SvelteKit + SCSS projects
+
+// ============================================
+// COLORS - Core Palette
+// ============================================
+$pearl-white: #FBFBFB;
+$midnight-violet: #0B0425;
+$platinum: #F0F0F0;
+$royal-violet: #6A00D5;
+$lavender: #F4EFFF;
+
+// Semantic Colors
+$success: #006A4E;
+$warning: #B45309;
+$error: #DE350B;
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+$font-family: 'DM Sans', sans-serif;
+$font-weight-default: 500;
+$font-weight-regular: 400;
+
+// Type Scale (with clamp for responsive)
+$text-hero: clamp(2rem, 5vw + 1rem, 3.5rem);
+$text-h1: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+$text-h2: clamp(1.5rem, 2vw + 0.75rem, 2rem);
+$text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+$text-body: 16px;
+$text-body-small: 14px;
+$text-caption: 12px;
+
+// ============================================
+// SPACING (8pt grid)
+// ============================================
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 16px;
+$space-4: 24px;
+$space-5: 32px;
+$space-6: 40px;
+$space-7: 48px;
+$space-8: 64px;
+$space-9: 80px;
+$space-10: 120px;
+
+// ============================================
+// BORDER RADIUS
+// ============================================
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-xxl: 32px;
+$radius-full: 9999px;
+
+// ============================================
+// SHADOWS
+// ============================================
+$shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+$shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+$shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+$shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+
+// ============================================
+// MOTION
+// ============================================
+$duration-fast: 100ms;
+$duration-normal: 200ms;
+$duration-slow: 300ms;
+$ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+// ============================================
+// MIXINS
+// ============================================
+@mixin heading($size) {
+  font-family: $font-family;
+  font-size: $size;
+  font-weight: $font-weight-default;
+  line-height: 1.2;
+}
+
+@mixin button-base {
+  font-family: $font-family;
+  font-weight: $font-weight-default;
+  border: none;
+  cursor: pointer;
+  transition: all $duration-fast $ease-default;
+}
+
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 2px $royal-violet, 0 0 0 4px rgba($royal-violet, 0.2);
+}

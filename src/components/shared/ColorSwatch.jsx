@@ -9,7 +9,7 @@ const SwatchBox = styled.div`
   width: 120px;
   height: 120px;
   background-color: ${props => props.color};
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   box-shadow: var(--shadow-sm);
   margin-bottom: var(--space-3);
   border: 1px solid var(--color-border);

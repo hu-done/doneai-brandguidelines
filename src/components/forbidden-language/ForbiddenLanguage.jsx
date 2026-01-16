@@ -1,39 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { X, Check } from "lucide-react";
+import * as S from "../commonStyles/index.js";
 import Callout from "../shared/Callout";
-
-const PageContainer = styled.div`
-  max-width: var(--container-md);
-  padding: var(--space-7) var(--space-6);
-`;
-
-const PageTitle = styled.h1`
-  font-size: var(--text-h1);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
-`;
-
-const Section = styled.section`
-  margin-top: var(--space-8);
-`;
-
-const SectionTitle = styled.h2`
-  font-size: var(--text-h2);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-4);
-`;
-
-const SectionDescription = styled.p`
-  font-size: var(--text-body);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-5);
-`;
 
 const KillList = styled.div`
   display: grid;
@@ -49,11 +19,16 @@ const KillItem = styled.div`
   font-size: var(--text-body);
   color: var(--color-text-primary);
   font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+`;
 
-  &:before {
-    content: '❌ ';
-    margin-right: var(--space-2);
-  }
+const IconWrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
 `;
 
 const TestBox = styled.div`
@@ -65,6 +40,12 @@ const TestBox = styled.div`
   font-weight: 500;
   text-align: center;
   margin: var(--space-6) 0;
+
+  /* Dark mode: invert to light background */
+  .dark & {
+    background-color: var(--color-pearl);
+    color: var(--color-midnight);
+  }
 `;
 
 const ComparisonTable = styled.table`
@@ -81,6 +62,12 @@ const TableHeader = styled.th`
   color: var(--color-text-primary);
   background-color: ${props => props.good ? 'rgba(0, 106, 78, 0.1)' : 'rgba(222, 53, 11, 0.1)'};
   border-bottom: 2px solid var(--color-border);
+`;
+
+const HeaderWithIcon = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 `;
 
 const TableCell = styled.td`
@@ -107,49 +94,94 @@ const CategoryTitle = styled.div`
 
 const ForbiddenLanguage = () => {
   return (
-    <PageContainer>
+    <div>
       <Helmet>
         <title>Forbidden Language | Done.ai Brand Guidelines</title>
       </Helmet>
 
-      <PageTitle>Forbidden Language</PageTitle>
+      <S.Title>Forbidden Language</S.Title>
 
-      <SectionDescription>
+      <S.Bodytext>
         These words and phrases are banned from Done.ai copy. They're overused, vague, or sound like every other SaaS company. Kill them on sight.
-      </SectionDescription>
+      </S.Bodytext>
 
-      {/* The Kill List */}
-      <Section>
-        <SectionTitle>The Kill List</SectionTitle>
-        <SectionDescription>
-          If you find any of these in your copy, delete them immediately. No exceptions.
-        </SectionDescription>
+      <S.Subtitle>The Kill List</S.Subtitle>
+      <S.Bodytext>
+        If you find any of these in your copy, delete them immediately. No exceptions.
+      </S.Bodytext>
 
         <KillList>
-          <KillItem>"Streamline" / "Optimize" / "Boost" / "Unleash"</KillItem>
-          <KillItem>"Work smarter, not harder"</KillItem>
-          <KillItem>"Game-changing" / "Revolutionary" / "Cutting-edge"</KillItem>
-          <KillItem>"Empower" / "Elevate" / "Transform"</KillItem>
-          <KillItem>"Seamless" (overused to death)</KillItem>
-          <KillItem>"Next-generation" / "Best-in-class"</KillItem>
-          <KillItem>"Leverage" (as a verb for using something)</KillItem>
-          <KillItem>"Synergy" / "Ecosystem" / "Holistic"</KillItem>
-          <KillItem>"Drive growth" / "Accelerate success"</KillItem>
-          <KillItem>"Innovative solution" / "Powerful platform"</KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Streamline" / "Optimize" / "Boost" / "Unleash"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Work smarter, not harder"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Game-changing" / "Revolutionary" / "Cutting-edge"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Empower" / "Elevate" / "Transform"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Seamless" (overused to death)</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Next-generation" / "Best-in-class"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Leverage" (as a verb for using something)</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Synergy" / "Ecosystem" / "Holistic"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Drive growth" / "Accelerate success"</span>
+          </KillItem>
+          <KillItem>
+            <IconWrapper>
+              <X size={16} strokeWidth={1.5} color="var(--color-error)" />
+            </IconWrapper>
+            <span>"Innovative solution" / "Powerful platform"</span>
+          </KillItem>
         </KillList>
-      </Section>
 
-      {/* The Competitor Test */}
-      <Section>
-        <SectionTitle>The Competitor Test</SectionTitle>
+      <S.Subtitle>The Competitor Test</S.Subtitle>
 
         <TestBox>
           "If a competitor could say it, don't say it."
         </TestBox>
 
-        <SectionDescription>
+        <S.Bodytext>
           Generic statements work for any company. That's the problem. Your copy should be so specific to Done.ai that a competitor couldn't use it without lying.
-        </SectionDescription>
+        </S.Bodytext>
 
         <Callout type="error" title="Generic (Bad)">
           "Our platform empowers teams to streamline workflows and boost productivity with innovative solutions."
@@ -158,20 +190,27 @@ const ForbiddenLanguage = () => {
         <Callout type="success" title="Specific (Good)">
           "Track leads, close deals, and invoice clients - all in one place. No more switching between five tools."
         </Callout>
-      </Section>
 
-      {/* What To Do Instead */}
-      <Section>
-        <SectionTitle>What To Do Instead</SectionTitle>
-        <SectionDescription>
-          Be specific about what's actually done. Show, don't tell. Use concrete details instead of abstract claims.
-        </SectionDescription>
+      <S.Subtitle>What To Do Instead</S.Subtitle>
+      <S.Bodytext>
+        Be specific about what's actually done. Show, don't tell. Use concrete details instead of abstract claims.
+      </S.Bodytext>
 
         <ComparisonTable>
           <thead>
             <tr>
-              <TableHeader>❌ Forbidden</TableHeader>
-              <TableHeader good>✓ Write This</TableHeader>
+              <TableHeader>
+                <HeaderWithIcon>
+                  <X size={16} strokeWidth={1.5} />
+                  Forbidden
+                </HeaderWithIcon>
+              </TableHeader>
+              <TableHeader good>
+                <HeaderWithIcon>
+                  <Check size={16} strokeWidth={1.5} />
+                  Write This
+                </HeaderWithIcon>
+              </TableHeader>
             </tr>
           </thead>
           <tbody>
@@ -201,54 +240,48 @@ const ForbiddenLanguage = () => {
             </tr>
           </tbody>
         </ComparisonTable>
-      </Section>
 
-      {/* Category-Specific Guidance */}
-      <Section>
-        <SectionTitle>Why These Words Fail</SectionTitle>
+      <S.Subtitle>Why These Words Fail</S.Subtitle>
 
-        <CategorySection>
-          <CategoryTitle>Empty Verbs</CategoryTitle>
-          <SectionDescription>
-            Words like "streamline," "optimize," "empower," and "transform" sound impressive but mean nothing. They're verbal filler. What specifically are you doing? Say that instead.
-          </SectionDescription>
-        </CategorySection>
+      <CategorySection>
+        <CategoryTitle>Empty Verbs</CategoryTitle>
+        <S.Bodytext>
+          Words like "streamline," "optimize," "empower," and "transform" sound impressive but mean nothing. They're verbal filler. What specifically are you doing? Say that instead.
+        </S.Bodytext>
+      </CategorySection>
 
-        <CategorySection>
-          <CategoryTitle>Hype Adjectives</CategoryTitle>
-          <SectionDescription>
-            "Revolutionary," "game-changing," "cutting-edge" - these are claims, not facts. If your product is truly revolutionary, the features will show it. You don't need to say it.
-          </SectionDescription>
-        </CategorySection>
+      <CategorySection>
+        <CategoryTitle>Hype Adjectives</CategoryTitle>
+        <S.Bodytext>
+          "Revolutionary," "game-changing," "cutting-edge" - these are claims, not facts. If your product is truly revolutionary, the features will show it. You don't need to say it.
+        </S.Bodytext>
+      </CategorySection>
 
-        <CategorySection>
-          <CategoryTitle>Vague Benefits</CategoryTitle>
-          <SectionDescription>
-            "Boost productivity" and "drive growth" could apply to literally anything. Be specific: How much time saved? What percentage increase? What specific problem solved?
-          </SectionDescription>
-        </CategorySection>
+      <CategorySection>
+        <CategoryTitle>Vague Benefits</CategoryTitle>
+        <S.Bodytext>
+          "Boost productivity" and "drive growth" could apply to literally anything. Be specific: How much time saved? What percentage increase? What specific problem solved?
+        </S.Bodytext>
+      </CategorySection>
 
-        <CategorySection>
-          <CategoryTitle>Corporate Jargon</CategoryTitle>
-          <SectionDescription>
-            "Leverage," "synergy," "holistic" - real people don't talk like this. Your customers are humans, not MBA textbooks. Write like one.
-          </SectionDescription>
-        </CategorySection>
-      </Section>
+      <CategorySection>
+        <CategoryTitle>Corporate Jargon</CategoryTitle>
+        <S.Bodytext>
+          "Leverage," "synergy," "holistic" - real people don't talk like this. Your customers are humans, not MBA textbooks. Write like one.
+        </S.Bodytext>
+      </CategorySection>
 
-      {/* The Rule */}
-      <Section>
-        <SectionTitle>The Simple Rule</SectionTitle>
 
-        <Callout type="info" title="When in doubt">
-          If you can replace a word with something more specific, do it. If you can't defend a claim with a concrete fact, cut it. If it sounds like something from a TV commercial, rewrite it.
-        </Callout>
+      <S.Subtitle>The Simple Rule</S.Subtitle>
 
-        <SectionDescription>
-          Done.ai copy should be so clear, so specific, and so direct that there's no room for these empty words. Our customers don't need hype. They need to know what's done.
-        </SectionDescription>
-      </Section>
-    </PageContainer>
+      <Callout type="info" title="When in doubt">
+        If you can replace a word with something more specific, do it. If you can't defend a claim with a concrete fact, cut it. If it sounds like something from a TV commercial, rewrite it.
+      </Callout>
+
+      <S.Bodytext>
+        Done.ai copy should be so clear, so specific, and so direct that there's no room for these empty words. Our customers don't need hype. They need to know what's done.
+      </S.Bodytext>
+    </div>
   );
 };
 
