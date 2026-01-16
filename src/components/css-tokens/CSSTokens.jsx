@@ -497,11 +497,14 @@ export default {
       <PageTitle>CSS Tokens</PageTitle>
 
       <SectionDescription>
-        Copy-paste ready design tokens for SvelteKit 5 + Tailwind CSS v4 + SCSS projects.
+        Copy-paste ready design tokens for SvelteKit 5 + Tailwind CSS v4 + SCSS
+        projects.
       </SectionDescription>
 
       <Callout type="info">
-        These examples are for SvelteKit 5 with Tailwind CSS v4 and SCSS. This documentation site uses React, but your implementation should use Svelte.
+        These examples are for SvelteKit 5 with Tailwind CSS v4 and SCSS. This
+        documentation site uses React, but your implementation should use
+        Svelte.
       </Callout>
 
       {/* SCSS Variables */}
@@ -521,7 +524,9 @@ export default {
         </div>
 
         <Callout type="warning" title="Royal Violet Restriction">
-          $royal-violet (#6A00D5) should only be used for small accents like focus rings and glows. Never as a primary background or large text block.
+          $royal-violet (#6A00D5) should only be used for small accents like
+          focus rings and glows. Never as a primary background or large text
+          block.
         </Callout>
       </Section>
 
@@ -529,7 +534,8 @@ export default {
       <Section>
         <SectionTitle>2. CSS Custom Properties</SectionTitle>
         <SectionDescription>
-          Use CSS custom properties for runtime theme switching and Tailwind integration. Add this to your global CSS file (e.g., app.css).
+          Use CSS custom properties for runtime theme switching and Tailwind
+          integration. Add this to your global CSS file (e.g., app.css).
         </SectionDescription>
 
         <div style={{ position: "relative" }}>
@@ -546,7 +552,8 @@ export default {
       <Section>
         <SectionTitle>3. Tailwind CSS v4 Configuration</SectionTitle>
         <SectionDescription>
-          Configure Tailwind to use Done.ai design tokens. Add this to your tailwind.config.js.
+          Configure Tailwind to use Done.ai design tokens. Add this to your
+          tailwind.config.js.
         </SectionDescription>
 
         <div style={{ position: "relative" }}>
@@ -559,7 +566,8 @@ export default {
         </div>
 
         <Callout type="info">
-          With this config, you can use classes like bg-midnight, text-pearl, rounded-md, shadow-sm, etc.
+          With this config, you can use classes like bg-midnight, text-pearl,
+          rounded-md, shadow-sm, etc.
         </Callout>
       </Section>
 
@@ -567,7 +575,8 @@ export default {
       <Section>
         <SectionTitle>4. Usage in Svelte 5 Components</SectionTitle>
         <SectionDescription>
-          Examples showing how to use SCSS variables and Tailwind classes in Svelte 5 components with the new runes API.
+          Examples showing how to use SCSS variables and Tailwind classes in
+          Svelte 5 components with the new runes API.
         </SectionDescription>
 
         <div style={{ position: "relative" }}>
@@ -602,7 +611,7 @@ export default {
         <SectionTitle>Recommended File Structure</SectionTitle>
 
         <CodeBlock>
-{`src/
+          {`src/
 ├── lib/
 │   ├── styles/
 │   │   ├── _variables.scss    ← SCSS variables
@@ -621,11 +630,13 @@ export default {
         <SectionTitle>Setup Instructions</SectionTitle>
 
         <Callout type="info" title="Step 1: Create _variables.scss">
-          Create src/lib/styles/_variables.scss and paste the SCSS variables from section 1.
+          Create src/lib/styles/_variables.scss and paste the SCSS variables
+          from section 1.
         </Callout>
 
         <Callout type="info" title="Step 2: Add CSS Custom Properties">
-          Add the CSS custom properties to your src/lib/styles/app.css file (section 2).
+          Add the CSS custom properties to your src/lib/styles/app.css file
+          (section 2).
         </Callout>
 
         <Callout type="info" title="Step 3: Configure Tailwind">
@@ -633,7 +644,8 @@ export default {
         </Callout>
 
         <Callout type="success" title="Step 4: Import in Layout">
-          Import your app.css in src/routes/+layout.svelte: import '../lib/styles/app.css'
+          Import your app.css in src/routes/+layout.svelte: import
+          '../lib/styles/app.css'
         </Callout>
       </Section>
 
@@ -642,11 +654,17 @@ export default {
         <SectionTitle>Best Practices</SectionTitle>
 
         <Callout type="success" title="Do">
-          Use SCSS variables for complex calculations and mixins. Use CSS custom properties for theme switching. Use Tailwind utilities for rapid prototyping and common patterns. Mix all three approaches based on what makes sense for each use case.
+          Use SCSS variables for complex calculations and mixins. Use CSS custom
+          properties for theme switching. Use Tailwind utilities for rapid
+          prototyping and common patterns. Mix all three approaches based on
+          what makes sense for each use case.
         </Callout>
 
         <Callout type="error" title="Don't">
-          Don't hardcode values like "16px" or "#FBFBFB" anywhere. Don't mix Tailwind's default colors with Done.ai brand colors. Don't use Royal Violet for large backgrounds or body text. Don't create component-specific tokens without documenting them.
+          Don't hardcode values like "24px" or "#FBFBFB" anywhere. Don't mix
+          Tailwind's default colors with Done.ai brand colors. Don't use Royal
+          Violet for large backgrounds or body text. Don't create
+          component-specific tokens without documenting them.
         </Callout>
       </Section>
 
@@ -654,7 +672,8 @@ export default {
       <Section>
         <SectionTitle>Dark Mode Implementation</SectionTitle>
         <SectionDescription>
-          Add a dark mode toggle to your Svelte app using the :root.dark selector.
+          Add a dark mode toggle to your Svelte app using the :root.dark
+          selector.
         </SectionDescription>
 
         <div style={{ position: "relative" }}>
