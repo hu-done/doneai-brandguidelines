@@ -649,7 +649,7 @@ button:focus-visible {
 
       <S.Subtitle>Guidelines</S.Subtitle>
 
-      <Callout type="success" title="✓ Do">
+      <Callout type="success" title="Do">
         Keep animations under 300ms so users never wait. Use easing functions to
         make motion feel natural. Be consistent - the same interaction should
         animate the same way everywhere. Use transform and opacity for
@@ -657,7 +657,7 @@ button:focus-visible {
         devices.
       </Callout>
 
-      <Callout type="error" title="✗ Don't">
+      <Callout type="error" title="Don't">
         Don't use bounce, spring, or elastic effects - they feel playful, not
         authoritative. Don't animate layout properties like width or height -
         use transform instead. Don't make users wait for animations to complete

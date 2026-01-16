@@ -344,11 +344,11 @@ const Elevation = () => {
       <Section>
         <SectionTitle>Usage Guidelines</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Use shadows to separate elements spatially. Match shadow size to element importance. Use subtle shadows for most elements. Reserve large shadows for critical overlays. Increase opacity in dark mode.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't use borders AND shadows - pick one. Don't use heavy shadows on everything. Don't use the same shadow for all elements. Don't forget to test in dark mode. Don't use shadows on text.
         </Callout>
       </Section>

@@ -15,7 +15,7 @@ const CodeBlockHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: var(--space-3) var(--space-4);
-  background: var(--color-midnight);
+  background: var(--color-nav-bg);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
@@ -72,7 +72,7 @@ const CopyButton = styled.button`
 const CodeContent = styled.pre`
   margin: 0;
   padding: var(--space-4);
-  background: var(--color-midnight);
+  background: var(--color-nav-bg);
   color: var(--color-pearl);
   font-family: 'Courier New', Courier, monospace;
   font-size: var(--text-body-small);

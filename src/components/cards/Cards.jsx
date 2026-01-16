@@ -516,11 +516,11 @@ const Cards = () => {
       <Section>
         <SectionTitle>Usage Guidelines</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Use cards to group related information. Maintain consistent padding (32px). Use interactive cards for clickable items. Follow the radius rule when nesting. Keep card content scannable.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't nest cards more than 2 levels deep. Don't use cards for everything - sometimes plain sections are better. Don't make non-clickable cards look interactive. Don't overcrowd cards with content.
         </Callout>
       </Section>
@@ -530,13 +530,13 @@ const Cards = () => {
         <SectionTitle>When to Use Cards</SectionTitle>
 
         <SectionDescription>
-          <strong>✓ Use cards for:</strong><br/>
+          <strong>Use cards for:</strong><br/>
           • Grouping related data (user profiles, product details)<br/>
           • Lists of similar items (search results, product grid)<br/>
           • Dashboard widgets and metrics<br/>
           • Preview content (blog post previews)<br/><br/>
 
-          <strong>✗ Don't use cards for:</strong><br/>
+          <strong>Avoid using cards for:</strong><br/>
           • Long-form content (use plain sections)<br/>
           • Single pieces of text (unnecessary container)<br/>
           • Every element on the page (creates visual clutter)<br/>

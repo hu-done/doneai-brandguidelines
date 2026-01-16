@@ -531,11 +531,11 @@ const Inputs = () => {
       <Section>
         <SectionTitle>Usage Guidelines</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Always include labels for accessibility. Use placeholder text for examples only, not labels. Provide clear error messages. Use helper text for context. Maintain consistent spacing between form fields.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't use placeholder text as the only label. Don't show error states before the user interacts. Don't use vague error messages like "Invalid input." Don't forget disabled states. Don't remove focus indicators.
         </Callout>
       </Section>

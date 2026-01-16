@@ -517,14 +517,14 @@ Need help? [Support link]`}</CodeBlock>
 
       <TemplateSection>
         <TemplateTitle>CTA Button Text Examples</TemplateTitle>
-        <CodeBlock>{`✓ Good:
+        <CodeBlock>{`GOOD:
 - "Get started"
 - "See pricing"
 - "Try it free"
 - "Export data"
 - "Send invite"
 
-✗ Bad:
+AVOID:
 - "Click here"
 - "Learn more"
 - "Submit"

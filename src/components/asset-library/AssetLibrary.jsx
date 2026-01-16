@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
-import { FileCode, Download, ExternalLink, Image, FileText, Layout } from "lucide-react";
+import { ExternalLink, Image, FileText, Layout, Palette } from "lucide-react";
 import * as S from "../commonStyles/index.js";
 import Callout from "../shared/Callout";
 
@@ -114,12 +114,6 @@ const IconWrapper = styled.div`
   border-radius: var(--radius-md);
   color: var(--color-violet);
   margin-bottom: var(--space-2);
-`;
-
-const FileSize = styled.span`
-  font-size: var(--text-caption);
-  color: var(--color-text-secondary);
-  margin-top: var(--space-1);
 `;
 
 const ViewReferenceButton = styled.a`
@@ -236,78 +230,6 @@ const AssetLibrary = () => {
       <Callout type="info" title="Usage Guidelines">
         These assets are for Done.ai official use. Maintain proper spacing, use only approved colors, and never distort logo proportions.
       </Callout>
-
-      {/* DESIGN TOKENS - FOR DEVELOPERS */}
-      <CategorySection>
-        <CategoryTitle>Design Tokens</CategoryTitle>
-        <S.Bodytext>
-          Import these files into your project to use Done.ai design system tokens. Available in CSS, JSON, and SCSS formats.
-        </S.Bodytext>
-        <AssetGrid>
-          <AssetCard>
-            <IconWrapper>
-              <FileCode size={24} strokeWidth={1.5} />
-            </IconWrapper>
-            <AssetTitle>tokens.css</AssetTitle>
-            <AssetDescription>
-              CSS Custom Properties for modern web projects. Import and use CSS variables.
-            </AssetDescription>
-            <FileSize>~5 KB</FileSize>
-            <FormatGrid>
-              <DownloadButton
-                href="/assets/tokens/tokens.css"
-                download="done-tokens.css"
-                onClick={() => showToast('Downloading tokens.css')}
-              >
-                <Download size={14} strokeWidth={1.5} />
-                Download CSS
-              </DownloadButton>
-            </FormatGrid>
-          </AssetCard>
-
-          <AssetCard>
-            <IconWrapper>
-              <FileCode size={24} strokeWidth={1.5} />
-            </IconWrapper>
-            <AssetTitle>tokens.json</AssetTitle>
-            <AssetDescription>
-              JSON format for JavaScript/TypeScript projects. Perfect for React, Vue, or Node.js.
-            </AssetDescription>
-            <FileSize>~3 KB</FileSize>
-            <FormatGrid>
-              <DownloadButton
-                href="/assets/tokens/tokens.json"
-                download="done-tokens.json"
-                onClick={() => showToast('Downloading tokens.json')}
-              >
-                <Download size={14} strokeWidth={1.5} />
-                Download JSON
-              </DownloadButton>
-            </FormatGrid>
-          </AssetCard>
-
-          <AssetCard>
-            <IconWrapper>
-              <FileCode size={24} strokeWidth={1.5} />
-            </IconWrapper>
-            <AssetTitle>tokens.scss</AssetTitle>
-            <AssetDescription>
-              Sass variables and mixins for SCSS projects. Includes responsive breakpoint helpers.
-            </AssetDescription>
-            <FileSize>~6 KB</FileSize>
-            <FormatGrid>
-              <DownloadButton
-                href="/assets/tokens/tokens.scss"
-                download="done-tokens.scss"
-                onClick={() => showToast('Downloading tokens.scss')}
-              >
-                <Download size={14} strokeWidth={1.5} />
-                Download SCSS
-              </DownloadButton>
-            </FormatGrid>
-          </AssetCard>
-        </AssetGrid>
-      </CategorySection>
 
       {/* DESIGN REFERENCES - FOR DESIGNERS */}
       <CategorySection>
@@ -582,7 +504,7 @@ const AssetLibrary = () => {
         <CategoryTitle>Design Resources</CategoryTitle>
         <AssetGrid>
           <AssetCard>
-            <PlaceholderPreview>🎨</PlaceholderPreview>
+            <PlaceholderPreview><Palette size={48} strokeWidth={1.5} /></PlaceholderPreview>
             <AssetTitle>Color Palette File</AssetTitle>
             <AssetDescription>
               Adobe ASE and Figma-ready color swatches.

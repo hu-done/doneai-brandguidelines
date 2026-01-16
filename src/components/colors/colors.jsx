@@ -91,7 +91,7 @@ export default function Colors() {
         </S.ColorsContainer>
         <S.SubSubtitle>Interactive</S.SubSubtitle>
         <S.Bodytext>
-          Drag your mouse across the container for some digital ✨magic✨
+          Drag your mouse across the container for an interactive experience.
         </S.Bodytext>
         <div className="div-block-33">
           <div className="gradient-bg">

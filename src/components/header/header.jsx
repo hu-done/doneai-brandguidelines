@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { Sun, Moon } from "lucide-react";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 const HeaderWrapper = styled.header`
@@ -49,7 +50,8 @@ const DarkModeToggle = styled.button`
 `;
 
 const ToggleIcon = styled.span`
-  font-size: 16px;
+  display: flex;
+  align-items: center;
 `;
 
 const Header = () => {
@@ -65,7 +67,7 @@ const Header = () => {
           />
         </NavLink>
         <DarkModeToggle onClick={toggleDarkMode} $isDark={isDarkMode}>
-          <ToggleIcon>{isDarkMode ? "☀️" : "🌙"}</ToggleIcon>
+          <ToggleIcon>{isDarkMode ? <Sun size={16} strokeWidth={2} /> : <Moon size={16} strokeWidth={2} />}</ToggleIcon>
           {isDarkMode ? "Light" : "Dark"}
         </DarkModeToggle>
       </Container>

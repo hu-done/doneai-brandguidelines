@@ -36,7 +36,7 @@ const SectionDescription = styled.p`
 `;
 
 const CodeBlock = styled.pre`
-  background-color: var(--color-midnight);
+  background-color: var(--color-nav-bg);
   color: var(--color-pearl);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
@@ -53,9 +53,9 @@ const CopyButton = styled.button`
   top: var(--space-3);
   right: var(--space-3);
   padding: var(--space-2) var(--space-3);
-  background-color: var(--color-midnight);
+  background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-pearl);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-md);
   font-size: var(--text-body-small);
   font-weight: 500;
@@ -63,7 +63,7 @@ const CopyButton = styled.button`
   transition: all var(--duration-fast) var(--ease-default);
 
   &:hover {
-    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   &:active {
@@ -431,6 +431,7 @@ export default {
   const darkModeExample = `<!-- DarkModeToggle.svelte -->
 <script>
   import { onMount } from 'svelte';
+  import { Sun, Moon } from 'lucide-svelte';
 
   let isDark = $state(false);
 
@@ -459,7 +460,11 @@ export default {
 </script>
 
 <button onclick={toggleTheme} class="theme-toggle">
-  {isDark ? '☀️' : '🌙'}
+  {#if isDark}
+    <Sun size={20} strokeWidth={1.5} />
+  {:else}
+    <Moon size={20} strokeWidth={1.5} />
+  {/if}
 </button>
 
 <style lang="scss">
@@ -471,7 +476,9 @@ export default {
     border: none;
     border-radius: $radius-md;
     cursor: pointer;
-    font-size: $text-h3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all $duration-fast $ease-default;
 
     &:hover {
@@ -634,11 +641,11 @@ export default {
       <Section>
         <SectionTitle>Best Practices</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Use SCSS variables for complex calculations and mixins. Use CSS custom properties for theme switching. Use Tailwind utilities for rapid prototyping and common patterns. Mix all three approaches based on what makes sense for each use case.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't hardcode values like "16px" or "#FBFBFB" anywhere. Don't mix Tailwind's default colors with Done.ai brand colors. Don't use Royal Violet for large backgrounds or body text. Don't create component-specific tokens without documenting them.
         </Callout>
       </Section>

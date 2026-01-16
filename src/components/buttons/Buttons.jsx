@@ -586,13 +586,13 @@ const Buttons = () => {
 
       <S.Subtitle>Usage Guidelines</S.Subtitle>
 
-      <Callout type="success" title="✓ Do">
+      <Callout type="success" title="Do">
         Use primary buttons for main actions. Limit to one primary button per
         view. Use secondary for alternative actions. Use ghost for navigation or
         low-priority actions.
       </Callout>
 
-      <Callout type="error" title="✗ Don't">
+      <Callout type="error" title="Don't">
         Don't use multiple primary buttons competing for attention. Don't use
         destructive buttons for non-destructive actions. Don't remove focus
         states for accessibility.

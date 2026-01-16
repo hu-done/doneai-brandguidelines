@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { Palette } from "lucide-react";
 import * as S from "../commonStyles/index.js";
 import Callout from "../shared/Callout";
 import CodeBlock from "../shared/CodeBlock";
@@ -160,7 +161,7 @@ const DarkMode = () => {
             <ModeCard $isDark={false}>
               <ModeCardHeader>
                 <StatusBadge $isDark={false}>Active</StatusBadge>
-                <CardIcon>🎨</CardIcon>
+                <CardIcon><Palette size={30} strokeWidth={1.5} /></CardIcon>
               </ModeCardHeader>
               <ModeTitle $isDark={false}>Colors</ModeTitle>
               <ModeText $isDark={false}>
@@ -180,7 +181,7 @@ const DarkMode = () => {
             <ModeCard $isDark={true}>
               <ModeCardHeader>
                 <StatusBadge $isDark={true}>Available</StatusBadge>
-                <CardIcon>🎨</CardIcon>
+                <CardIcon><Palette size={30} strokeWidth={1.5} /></CardIcon>
               </ModeCardHeader>
               <ModeTitle $isDark={true}>Colors</ModeTitle>
               <ModeText $isDark={true}>

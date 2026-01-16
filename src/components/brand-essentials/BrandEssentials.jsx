@@ -10,7 +10,8 @@ import {
   Shield,
   Users,
   TrendingUp,
-  AlertTriangle
+  AlertTriangle,
+  X
 } from "lucide-react";
 import * as S from "../commonStyles/index.js";
 
@@ -235,6 +236,10 @@ const RuleCard = styled.div`
   padding: var(--space-5);
   border: 2px solid var(--color-violet);
   text-align: center;
+
+  .dark & {
+    background-color: rgba(106, 0, 213, 0.3);
+  }
 `;
 
 const RuleIcon = styled.div`
@@ -250,6 +255,10 @@ const RuleText = styled.p`
   font-weight: 500;
   color: var(--color-midnight);
   line-height: 1.5;
+
+  .dark & {
+    color: var(--color-pearl);
+  }
 `;
 
 // Voice Snapshot
@@ -314,7 +323,7 @@ const ForbiddenTag = styled.span`
   font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 4px;
 `;
 
 // Download Section
@@ -450,20 +459,20 @@ Hook: "Done." - Question format → Done.
 Example: "Need to manage leads without the mess? Done."
 
 NEVER SAY
-❌ Streamline
-❌ Optimize
-❌ Game-changing
-❌ Empower
-❌ Seamless
+[x] Streamline
+[x] Optimize
+[x] Game-changing
+[x] Empower
+[x] Seamless
 (If a competitor could say it, don't say it.)
 
 QUALITY CHECK
 Before shipping any brand material:
-✓ Using DM Sans?
-✓ Colors from the defined palette only?
-✓ Royal Violet used sparingly?
-✓ Tone matches brand (direct, confident, not hype-y)?
-✓ No forbidden words?
+[ ] Using DM Sans?
+[ ] Colors from the defined palette only?
+[ ] Royal Violet used sparingly?
+[ ] Tone matches brand (direct, confident, not hype-y)?
+[ ] No forbidden words?
 
 ---
 Done.ai Brand Guidelines
@@ -626,7 +635,7 @@ Generated ${new Date().toLocaleDateString()}
             <ForbiddenList>
               {forbiddenWords.map((word, index) => (
                 <ForbiddenTag key={index}>
-                  ❌ {word}
+                  <X size={14} strokeWidth={2.5} /> {word}
                 </ForbiddenTag>
               ))}
             </ForbiddenList>

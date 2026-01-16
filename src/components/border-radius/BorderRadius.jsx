@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { Check, X } from "lucide-react";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
@@ -145,17 +146,23 @@ const ExampleBox = styled.div`
   border-left: 4px solid ${props => props.good ? 'var(--color-success)' : 'var(--color-error)'};
 `;
 
-const ExampleLabel = styled.div`
+const ExampleLabelWrapper = styled.div`
   font-size: var(--text-body);
   font-weight: 500;
   color: var(--color-text-primary);
   margin-bottom: var(--space-3);
-
-  &:before {
-    content: '${props => props.icon} ';
-    margin-right: var(--space-2);
-  }
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 `;
+
+const ExampleLabel = ({ icon, children }) => (
+  <ExampleLabelWrapper>
+    {icon === "check" && <Check size={18} strokeWidth={2.5} color="var(--color-success)" />}
+    {icon === "x" && <X size={18} strokeWidth={2.5} color="var(--color-error)" />}
+    {children}
+  </ExampleLabelWrapper>
+);
 
 const GoodNesting = styled.div`
   padding: ${props => props.outer ? 'var(--space-5)' : 'var(--space-3)'};
@@ -273,7 +280,7 @@ const BorderRadius = () => {
             </div>
             <InnerCard>
               Inner Card: 8px radius (--radius-md)<br/>
-              16px - 8px padding = 8px ✓
+              16px - 8px padding = 8px (correct)
             </InnerCard>
           </OuterCard>
         </NestingDemo>
@@ -285,7 +292,7 @@ const BorderRadius = () => {
 
         <ExampleGrid>
           <ExampleBox good>
-            <ExampleLabel icon="✓">Correct Nesting</ExampleLabel>
+            <ExampleLabel icon="check">Correct Nesting</ExampleLabel>
             <GoodNesting outer>
               Outer: 16px radius
               <div style={{ marginTop: 'var(--space-3)' }}>
@@ -301,7 +308,7 @@ const BorderRadius = () => {
           </ExampleBox>
 
           <ExampleBox>
-            <ExampleLabel icon="✗">Incorrect Nesting</ExampleLabel>
+            <ExampleLabel icon="x">Incorrect Nesting</ExampleLabel>
             <BadNesting outer>
               Outer: 16px radius
               <div style={{ marginTop: 'var(--space-3)' }}>
@@ -322,11 +329,11 @@ const BorderRadius = () => {
       <Section>
         <SectionTitle>Usage Guidelines</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Use consistent radius for similar elements (all buttons use 8px). Apply the nesting rule when stacking rounded elements. Use larger radius for larger elements. Match radius to the weight of the element.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't mix different radius values randomly. Don't use the same radius for nested elements. Don't use tiny radius on large elements or huge radius on small elements. Don't forget to adjust for mobile.
         </Callout>
       </Section>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
-import { Download } from "lucide-react";
+import { Download, Check, X } from "lucide-react";
 import * as S from "../commonStyles/index.js";
 
 const ColorSliderSection = styled.div`
@@ -10,6 +10,7 @@ const ColorSliderSection = styled.div`
   padding: var(--space-5);
   margin: var(--space-6) 0;
   max-width: 600px;
+  border: 1px solid var(--color-border);
 `;
 
 const ColorOptions = styled.div`
@@ -50,7 +51,7 @@ const LogoPreview = styled.div`
   justify-content: center;
   margin: var(--space-4) 0;
   min-height: 150px;
-  border: 1px solid var(--color-border);
+  border: 2px solid ${props => props.$bgColor === '#0B0425' ? 'rgba(255,255,255,0.2)' : 'var(--color-border)'};
 `;
 
 const DownloadButtons = styled.div`
@@ -194,7 +195,8 @@ export default function Logo() {
         margin: '2rem 0',
         padding: '2rem',
         borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--color-border)'
+        border: '1px solid var(--color-border)',
+        backgroundColor: 'var(--color-surface-secondary)'
       }}>
         Done.
       </div>
@@ -234,7 +236,7 @@ export default function Logo() {
         </LogoPreview>
 
         <ContrastInfo $pass={meetsWCAG}>
-          {meetsWCAG ? '✓' : '✗'} Contrast Ratio: {contrastRatio.toFixed(2)}:1 - {meetsWCAG ? 'WCAG AA Compliant' : 'Below WCAG AA Standard'}
+          {meetsWCAG ? <Check size={16} strokeWidth={2.5} style={{ display: 'inline', verticalAlign: 'middle' }} /> : <X size={16} strokeWidth={2.5} style={{ display: 'inline', verticalAlign: 'middle' }} />} Contrast Ratio: {contrastRatio.toFixed(2)}:1 - {meetsWCAG ? 'WCAG AA Compliant' : 'Below WCAG AA Standard'}
         </ContrastInfo>
 
         <ColorLabel style={{ marginTop: 'var(--space-4)' }}>Download Formats</ColorLabel>

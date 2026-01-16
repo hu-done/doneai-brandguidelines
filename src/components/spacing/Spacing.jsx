@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
+import { Check, X } from "lucide-react";
 import Callout from "../shared/Callout";
 
 const PageContainer = styled.div`
@@ -157,17 +158,23 @@ const ExampleBox = styled.div`
   border-left: 4px solid ${props => props.good ? 'var(--color-success)' : 'var(--color-error)'};
 `;
 
-const ExampleLabel = styled.div`
+const ExampleLabelWrapper = styled.div`
   font-size: var(--text-body);
   font-weight: 500;
   color: var(--color-text-primary);
   margin-bottom: var(--space-3);
-
-  &:before {
-    content: '${props => props.icon} ';
-    margin-right: var(--space-2);
-  }
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 `;
+
+const ExampleLabel = ({ icon, children }) => (
+  <ExampleLabelWrapper>
+    {icon === "check" && <Check size={18} strokeWidth={2.5} color="var(--color-success)" />}
+    {icon === "x" && <X size={18} strokeWidth={2.5} color="var(--color-error)" />}
+    {children}
+  </ExampleLabelWrapper>
+);
 
 const ExampleContent = styled.div`
   display: flex;
@@ -359,7 +366,7 @@ const Spacing = () => {
 
         <ExampleGrid>
           <ExampleBox good>
-            <ExampleLabel icon="✓">Good Spacing</ExampleLabel>
+            <ExampleLabel icon="check">Good Spacing</ExampleLabel>
             <ExampleContent gap="var(--space-2)">
               <ExampleElement>Label</ExampleElement>
               <ExampleElement>Input Field</ExampleElement>
@@ -370,7 +377,7 @@ const Spacing = () => {
           </ExampleBox>
 
           <ExampleBox>
-            <ExampleLabel icon="✗">Bad Spacing</ExampleLabel>
+            <ExampleLabel icon="x">Bad Spacing</ExampleLabel>
             <ExampleContent gap="var(--space-8)">
               <ExampleElement>Label</ExampleElement>
               <ExampleElement>Input Field</ExampleElement>
@@ -386,11 +393,11 @@ const Spacing = () => {
       <Section>
         <SectionTitle>Usage Guidelines</SectionTitle>
 
-        <Callout type="success" title="✓ Do">
+        <Callout type="success" title="Do">
           Use spacing tokens exclusively - no hardcoded pixel values. Stick to the 8pt grid. Use smaller spacing (1-3) within components, larger spacing (5-8) between sections. Group related elements with tighter spacing.
         </Callout>
 
-        <Callout type="error" title="✗ Don't">
+        <Callout type="error" title="Don't">
           Don't use arbitrary spacing values like 13px or 27px. Don't make everything evenly spaced - vary it based on relationships. Don't forget mobile - adjust spacing for smaller screens.
         </Callout>
       </Section>
