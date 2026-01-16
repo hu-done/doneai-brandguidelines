@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import * as S from "../commonStyles/index.js";
+// import * as S from "../commonStyles/index.js";
 import styled from "styled-components";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
