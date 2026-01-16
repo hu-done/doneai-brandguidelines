@@ -377,7 +377,7 @@ export default function Home() {
 
       {/* Developer Quick Links Section */}
       <CardsSection>
-        <SectionTitle>For Developers (Hi Mattias 👋)</SectionTitle>
+        <SectionTitle>For Developers (Hi there, Mattias 👋)</SectionTitle>
 
         <CardsContainer>
           <CardsGrid>
