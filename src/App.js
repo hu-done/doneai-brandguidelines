@@ -3,7 +3,12 @@ import styled from "styled-components";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import Sidebar from "./components/sidebar/sidebar.jsx";
 import Home from "./components/home/home.jsx";
 import BrandDNA from "./components/brand-dna/brand-dna.jsx";
@@ -77,7 +82,7 @@ const PageWrapper = styled.div`
 
 (function () {
   const darkmodeIcon =
-    "https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/680a21178b7b6c75d13cf079_8622e6fb9f12b4d74ecc31317c32511f_fav-icon_dark-mode.png";
+    "https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/692cf5ee062c7d8fc6cad998_fav-icon_light.png";
   const matcher = window.matchMedia("(prefers-color-scheme: dark)");
 
   const origLink = document.querySelector(
@@ -137,7 +142,10 @@ const App = () => {
 
               {/* Verbal Identity */}
               <Route path="/tone-of-voice" element={<ToneOfVoice />} />
-              <Route path="/writing-guidelines" element={<WritingGuidelines />} />
+              <Route
+                path="/writing-guidelines"
+                element={<WritingGuidelines />}
+              />
               <Route
                 path="/forbidden-language"
                 element={<ForbiddenLanguage />}
