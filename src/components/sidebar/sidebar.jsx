@@ -33,6 +33,7 @@ const SidebarWrapper = styled.nav`
     white-space: nowrap;
     border-radius: var(--radius-xxl) 0 0 var(--radius-xxl);
     background-color: var(--color-nav-bg);
+    margin-bottom: var(--space-3);
   }
 `;
 
