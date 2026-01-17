@@ -25,13 +25,13 @@ const SidebarWrapper = styled.nav`
     position: relative;
     width: 100%;
     height: auto;
-    padding: var(--space-3) 0;
+    padding: var(--space-3);
     display: flex;
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: visible;
     white-space: nowrap;
-    border-radius: 0;
+    border-radius: var(--radius-xxl) 0 0 var(--radius-xxl);
     background-color: var(--color-nav-bg);
   }
 `;
@@ -78,6 +78,7 @@ const StyledNavLink = styled(NavLink)`
   @media (max-width: 768px) {
     display: inline-block;
     padding: var(--space-2) var(--space-3);
+    padding-bottom: 5px;
     margin-right: var(--space-2);
     border-left: none;
     border-bottom: 3px solid transparent;
