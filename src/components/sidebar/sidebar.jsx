@@ -52,6 +52,10 @@ const SectionHeader = styled.div`
   }
 `;
 
+/* Note: Sidebar uses hardcoded pearl white rgba values intentionally.
+   The sidebar has a dark background (--color-nav-bg) in both light and dark modes,
+   so white text is always readable. */
+
 const StyledNavLink = styled(NavLink)`
   display: block;
   color: #fbfbfb;

@@ -11,7 +11,7 @@ import {
   Users,
   TrendingUp,
   AlertTriangle,
-  X
+  X,
 } from "lucide-react";
 import * as S from "../commonStyles/index.js";
 
@@ -210,10 +210,12 @@ const ColorSwatch = styled.div`
   height: 60px;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-2);
-  background-color: ${props => props.$color};
-  border: ${props => {
+  background-color: ${(props) => props.$color};
+  border: ${(props) => {
     const lightColors = ["#FBFBFB", "#F0F0F0"];
-    return lightColors.includes(props.$color) ? "1px solid var(--color-border)" : "none";
+    return lightColors.includes(props.$color)
+      ? "1px solid var(--color-border)"
+      : "none";
   }};
 `;
 
@@ -328,7 +330,7 @@ const ForbiddenTag = styled.span`
 
 // Download Section
 const DownloadSection = styled.div`
-  background: linear-gradient(135deg, var(--color-violet) 0%, #8b2dd8 100%);
+  background: linear-gradient(135deg, var(--color-midnight) 0%, #1a0b3d 100%);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   text-align: center;
@@ -382,34 +384,34 @@ const BrandEssentials = () => {
     {
       icon: Shield,
       title: "Trust",
-      description: "We earn it through transparency and reliability"
+      description: "We earn it through transparency and reliability",
     },
     {
       icon: Target,
       title: "Ownership",
-      description: "We take responsibility, not excuses"
+      description: "We take responsibility, not excuses",
     },
     {
       icon: Sparkles,
       title: "Clarity",
-      description: "We communicate simply and directly"
+      description: "We communicate simply and directly",
     },
     {
       icon: Users,
       title: "Collaboration",
-      description: "We build together, succeed together"
+      description: "We build together, succeed together",
     },
     {
       icon: TrendingUp,
       title: "Progress",
-      description: "We ship, learn, iterate"
-    }
+      description: "We ship, learn, iterate",
+    },
   ];
 
   const keyColors = [
     { name: "Pearl White", hex: "#FBFBFB", usage: "Primary background" },
     { name: "Midnight Violet", hex: "#0B0425", usage: "Primary text" },
-    { name: "Royal Violet", hex: "#6A00D5", usage: "Accents only" }
+    { name: "Royal Violet", hex: "#6A00D5", usage: "Accents only" },
   ];
 
   const forbiddenWords = [
@@ -417,7 +419,7 @@ const BrandEssentials = () => {
     "Optimize",
     "Game-changing",
     "Empower",
-    "Seamless"
+    "Seamless",
   ];
 
   const handleDownload = () => {
@@ -499,7 +501,9 @@ Generated ${new Date().toLocaleDateString()}
       {/* Hero */}
       <HeroSection>
         <HeroTitle>Brand Essentials</HeroTitle>
-        <HeroSubtitle>Everything you need to know about Done.ai in 5 minutes</HeroSubtitle>
+        <HeroSubtitle>
+          Everything you need to know about Done.ai in 5 minutes
+        </HeroSubtitle>
       </HeroSection>
 
       {/* The Done.ai Story */}
@@ -511,13 +515,18 @@ Generated ${new Date().toLocaleDateString()}
           </StoryTitle>
           <StoryContent>
             <p>
-              <strong>What we do:</strong> Done.ai is a unified business platform that brings CRM, projects, communication, and automation together.
+              <strong>What we do:</strong> Done.ai is a unified business
+              platform that brings CRM, projects, communication, and automation
+              together.
             </p>
             <p>
-              <strong>Why we're different:</strong> We don't stitch together acquisitions. We build one unified core. Simple, authoritative, complete.
+              <strong>Why we're different:</strong> We don't stitch together
+              acquisitions. We build one unified core. Simple, authoritative,
+              complete.
             </p>
             <p>
-              <strong>Our name is our promise:</strong> When you use Done.ai, things get <strong>Done.</strong>
+              <strong>Our name is our promise:</strong> When you use Done.ai,
+              things get <strong>Done.</strong>
             </p>
           </StoryContent>
         </StoryCard>
@@ -549,13 +558,17 @@ Generated ${new Date().toLocaleDateString()}
           <PrincipleCard>
             <PrincipleTitle>Authority Through Simplicity</PrincipleTitle>
             <PrincipleDescription>
-              The best brands don't shout. They state. We make complex business infrastructure feel simple and authoritative through whisper-quiet confidence.
+              The best brands don't shout. They state. We make complex business
+              infrastructure feel simple and authoritative through whisper-quiet
+              confidence.
             </PrincipleDescription>
           </PrincipleCard>
           <PrincipleCard>
             <PrincipleTitle>Resolution Over Process</PrincipleTitle>
             <PrincipleDescription>
-              We focus on outcomes, not steps. The name says it: Done. Our communication emphasizes what's accomplished, not how we get there.
+              We focus on outcomes, not steps. The name says it: Done. Our
+              communication emphasizes what's accomplished, not how we get
+              there.
             </PrincipleDescription>
           </PrincipleCard>
         </PrinciplesGrid>
@@ -587,15 +600,26 @@ Generated ${new Date().toLocaleDateString()}
                 <AlertTriangle size={32} strokeWidth={1.5} />
               </RuleIcon>
               <RuleText>
-                The Royal Violet Rule: Use sparingly - only for accents and active states. When everything glows, nothing does.
+                The Royal Violet Rule: Use sparingly - only for accents and
+                active states. When everything glows, nothing does.
               </RuleText>
             </RuleCard>
             <VisualCard>
               <VisualTitle>Key Principle</VisualTitle>
-              <ColorInfo style={{ marginTop: "var(--space-4)", fontSize: "var(--text-body)" }}>
+              <ColorInfo
+                style={{
+                  marginTop: "var(--space-4)",
+                  fontSize: "var(--text-body)",
+                }}
+              >
                 90% Canvas Colors
               </ColorInfo>
-              <ColorInfo style={{ fontSize: "var(--text-body)", marginTop: "var(--space-2)" }}>
+              <ColorInfo
+                style={{
+                  fontSize: "var(--text-body)",
+                  marginTop: "var(--space-2)",
+                }}
+              >
                 10% Brand Accent
               </ColorInfo>
             </VisualCard>
@@ -609,7 +633,12 @@ Generated ${new Date().toLocaleDateString()}
         <VoiceGrid>
           <VoiceCard>
             <VoiceTitle>
-              <MessageSquare size={20} strokeWidth={1.5} style={{ display: "inline" }} /> Our Voice
+              <MessageSquare
+                size={20}
+                strokeWidth={1.5}
+                style={{ display: "inline" }}
+              />{" "}
+              Our Voice
             </VoiceTitle>
             <VoiceList>
               <VoiceItem>
@@ -619,10 +648,12 @@ Generated ${new Date().toLocaleDateString()}
                 <strong>Hook:</strong> "Done." - Question format → Done.
               </VoiceItem>
               <VoiceItem>
-                <strong>Example:</strong> "Need to manage leads without the mess? Done."
+                <strong>Example:</strong> "Need to manage leads without the
+                mess? Done."
               </VoiceItem>
               <VoiceItem>
-                <strong>Test:</strong> If a competitor could say it, don't say it.
+                <strong>Test:</strong> If a competitor could say it, don't say
+                it.
               </VoiceItem>
             </VoiceList>
           </VoiceCard>
@@ -630,7 +661,8 @@ Generated ${new Date().toLocaleDateString()}
           <VoiceCard>
             <VoiceTitle>Never Say</VoiceTitle>
             <S.Bodytext style={{ marginBottom: 0 }}>
-              Kill these on sight. Generic SaaS speak that could apply to any competitor:
+              Kill these on sight. Generic SaaS speak that could apply to any
+              competitor:
             </S.Bodytext>
             <ForbiddenList>
               {forbiddenWords.map((word, index) => (
@@ -648,7 +680,8 @@ Generated ${new Date().toLocaleDateString()}
         <DownloadSection>
           <DownloadTitle>Quick Reference Card</DownloadTitle>
           <DownloadDescription>
-            Download a text summary of these essentials for quick reference. Perfect for keeping on hand or sharing with your team.
+            Download a text summary of these essentials for quick reference.
+            Perfect for keeping on hand or sharing with your team (or AI 🤫).
           </DownloadDescription>
           <DownloadButton onClick={handleDownload}>
             <Download size={20} strokeWidth={1.5} />

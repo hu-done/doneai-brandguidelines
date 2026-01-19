@@ -49,7 +49,7 @@ export const Bodytext = styled.p`
 export const HomeTitleContainer = styled.div`
   position: absolute;
   z-index: 10;
-  color: #fbfbfb;
+  color: var(--color-pearl);
 
   & > h1 {
     font-weight: 600;

@@ -68,7 +68,7 @@ const CopyableValue = styled.button`
   font-family: inherit;
 
   &:hover {
-    background-color: rgba(11, 4, 37, 0.04);
+    background-color: var(--color-surface-secondary);
     color: var(--color-text-primary);
   }
 
@@ -171,13 +171,13 @@ const TokenTable = styled.table`
   }
 
   tbody tr:hover {
-    background-color: rgba(11, 4, 37, 0.02);
+    background-color: var(--color-surface-secondary);
   }
 
   code {
     font-family: 'Courier New', Courier, monospace;
     font-size: var(--text-caption);
-    background-color: rgba(11, 4, 37, 0.04);
+    background-color: var(--color-surface-secondary);
     padding: 2px 6px;
     border-radius: var(--radius-sm);
     color: var(--color-text-primary);

@@ -65,7 +65,7 @@ const ExampleList = styled.div`
 
 const ExampleItem = styled.div`
   padding: var(--space-4);
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-md);
   font-size: var(--text-body);
   color: var(--color-text-primary);
@@ -78,7 +78,7 @@ const Question = styled.span`
 
 const Answer = styled.span`
   font-weight: 500;
-  color: var(--color-midnight);
+  color: var(--color-text-primary);
   margin-left: var(--space-2);
 `;
 
@@ -176,7 +176,7 @@ const Textarea = styled.textarea`
   font-family: "DM Sans", sans-serif;
   font-size: var(--text-body);
   color: var(--color-text-primary);
-  background-color: white;
+  background-color: var(--color-card-bg);
   resize: vertical;
   line-height: 1.6;
 
@@ -184,11 +184,6 @@ const Textarea = styled.textarea`
     outline: 2px solid var(--color-violet);
     outline-offset: 2px;
     border-color: var(--color-violet);
-  }
-
-  .dark & {
-    background-color: var(--color-surface-primary);
-    color: var(--color-text-primary);
   }
 `;
 
@@ -253,13 +248,9 @@ const IssuesList = styled.div`
 
 const IssueItem = styled.div`
   padding: var(--space-3);
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-sm);
   font-size: var(--text-body-small);
-
-  .dark & {
-    background-color: var(--color-surface-primary);
-  }
 `;
 
 const IssueTerm = styled.span`
@@ -277,16 +268,12 @@ const IssueSuggestion = styled.div`
 
 const HighlightedText = styled.div`
   padding: var(--space-4);
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-md);
   font-size: var(--text-body-small);
   line-height: 1.8;
   white-space: pre-wrap;
   word-wrap: break-word;
-
-  .dark & {
-    background-color: var(--color-surface-primary);
-  }
 `;
 
 const HighlightedWord = styled.span`

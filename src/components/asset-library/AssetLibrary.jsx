@@ -128,7 +128,7 @@ const ViewReferenceButton = styled.a`
   gap: var(--space-1);
   padding: var(--space-2) var(--space-3);
   background-color: transparent;
-  color: var(--color-midnight);
+  color: var(--color-text-primary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   text-decoration: none;
