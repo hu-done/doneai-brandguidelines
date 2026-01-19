@@ -9,7 +9,6 @@ const FooterWrapper = styled.footer`
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -40,16 +39,14 @@ const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   return (
     <FooterWrapper>
       <Container>
-        <GoToTopLink onClick={scrollToTop}>
-          Go to top
-        </GoToTopLink>
+        <GoToTopLink onClick={scrollToTop}>Go to top</GoToTopLink>
       </Container>
     </FooterWrapper>
   );

@@ -11,6 +11,15 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* Fixed header on desktop */
+  @media (min-width: 769px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
 `;
 
 const LogoContainerImage = styled.img`

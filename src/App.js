@@ -73,6 +73,11 @@ const PageWrapper = styled.div`
   display: flex;
   flex-grow: 1;
 
+  /* Account for fixed header height on desktop */
+  @media (min-width: 769px) {
+    padding-top: 80px;
+  }
+
   @media (max-width: 768px) {
     display: block;
   }
