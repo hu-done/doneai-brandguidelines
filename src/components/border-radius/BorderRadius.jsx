@@ -239,6 +239,15 @@ const BorderRadius = () => {
           </RadiusItem>
 
           <RadiusItem>
+            <RadiusVisual radius="var(--radius-xxl)" />
+            <RadiusInfo>
+              <RadiusName>Extra Extra Large</RadiusName>
+              <RadiusValue>32px | --radius-xxl</RadiusValue>
+              <RadiusUsage>Navigation panels, sidebars, large floating elements</RadiusUsage>
+            </RadiusInfo>
+          </RadiusItem>
+
+          <RadiusItem>
             <RadiusVisual radius="var(--radius-full)" />
             <RadiusInfo>
               <RadiusName>Full</RadiusName>
@@ -352,6 +361,7 @@ const BorderRadius = () => {
           <strong>Buttons/Inputs:</strong> 8px (--radius-md)<br/>
           <strong>Cards/Modals:</strong> 16px (--radius-lg)<br/>
           <strong>Large Sections:</strong> 24px (--radius-xl)<br/>
+          <strong>Sidebars/Panels:</strong> 32px (--radius-xxl)<br/>
           <strong>Avatars/Pills:</strong> 9999px (--radius-full)
         </Callout>
       </Section>
