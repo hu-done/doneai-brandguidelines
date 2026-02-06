@@ -359,23 +359,28 @@ const DownloadButton = styled.button`
   background-color: var(--color-pearl);
   color: var(--color-midnight);
   border: none;
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-5);
+  border-radius: 100px;
+  padding: 16px 40px;
   font-size: var(--text-body);
   font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
   &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 

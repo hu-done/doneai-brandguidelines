@@ -209,7 +209,7 @@ const Spacing = () => {
         <GridPrinciple>8px</GridPrinciple>
 
         <SectionDescription>
-          All spacing in Done.ai derives from a base unit of 8 pixels. This creates consistent rhythm, makes designs easier to implement, and ensures everything aligns perfectly. Spacing tokens are multiples of 8: 4px, 8px, 16px, 24px, 32px, etc.
+          All spacing in Done.ai uses a progressive scale for generous whitespace. The scale starts linear (4px, 8px, 16px, 24px) then grows more aggressively for larger values, creating breathing room in layouts.
         </SectionDescription>
 
         <Callout type="info" title="Why 8pt?">
@@ -259,56 +259,65 @@ const Spacing = () => {
           </SpacingItem>
 
           <SpacingItem>
-            <SpacingVisual size="32px" />
+            <SpacingVisual size="40px" />
             <SpacingInfo>
               <SpacingName>Space 5</SpacingName>
-              <SpacingValue>32px | --space-5</SpacingValue>
+              <SpacingValue>40px | --space-5</SpacingValue>
               <SpacingUsage>Section padding (small), between subsections</SpacingUsage>
             </SpacingInfo>
           </SpacingItem>
 
           <SpacingItem>
-            <SpacingVisual size="40px" />
+            <SpacingVisual size="56px" />
             <SpacingInfo>
               <SpacingName>Space 6</SpacingName>
-              <SpacingValue>40px | --space-6</SpacingValue>
+              <SpacingValue>56px | --space-6</SpacingValue>
               <SpacingUsage>Section padding (medium), card padding</SpacingUsage>
             </SpacingInfo>
           </SpacingItem>
 
           <SpacingItem>
-            <SpacingVisual size="48px" />
+            <SpacingVisual size="72px" />
             <SpacingInfo>
               <SpacingName>Space 7</SpacingName>
-              <SpacingValue>48px | --space-7</SpacingValue>
+              <SpacingValue>72px | --space-7</SpacingValue>
               <SpacingUsage>Section padding (large), page padding</SpacingUsage>
             </SpacingInfo>
           </SpacingItem>
 
           <SpacingItem>
-            <SpacingVisual size="64px" />
+            <SpacingVisual size="96px" />
             <SpacingInfo>
               <SpacingName>Space 8</SpacingName>
-              <SpacingValue>64px | --space-8</SpacingValue>
+              <SpacingValue>96px | --space-8</SpacingValue>
               <SpacingUsage>Major section breaks, hero padding</SpacingUsage>
-            </SpacingInfo>
-          </SpacingItem>
-
-          <SpacingItem>
-            <SpacingVisual size="80px" />
-            <SpacingInfo>
-              <SpacingName>Space 9</SpacingName>
-              <SpacingValue>80px | --space-9</SpacingValue>
-              <SpacingUsage>Large section breaks</SpacingUsage>
             </SpacingInfo>
           </SpacingItem>
 
           <SpacingItem>
             <SpacingVisual size="120px" />
             <SpacingInfo>
+              <SpacingName>Space 9</SpacingName>
+              <SpacingValue>120px | --space-9</SpacingValue>
+              <SpacingUsage>Page-level spacing</SpacingUsage>
+            </SpacingInfo>
+          </SpacingItem>
+
+          <SpacingItem>
+            <SpacingVisual size="160px" />
+            <SpacingInfo>
               <SpacingName>Space 10</SpacingName>
-              <SpacingValue>120px | --space-10</SpacingValue>
-              <SpacingUsage>Extra large section breaks, hero sections</SpacingUsage>
+              <SpacingValue>160px | --space-10</SpacingValue>
+              <SpacingUsage>Hero sections, extra large breaks</SpacingUsage>
+            </SpacingInfo>
+          </SpacingItem>
+
+          <SpacingItem>
+            <SpacingVisual size="80px" />
+            <SpacingInfo>
+              <SpacingName>Section Gap</SpacingName>
+              <SpacingValue>80px | --section-gap</SpacingValue>
+              <SpacingUsage>Consistent vertical rhythm between major sections</SpacingUsage>
             </SpacingInfo>
           </SpacingItem>
         </SpacingScale>

@@ -30,8 +30,8 @@ const Button = styled.button`
     switch (props.variant) {
       case "primary":
         return `
-          background-color: var(--color-midnight);
-          color: var(--color-pearl);
+          background-color: var(--color-button-primary-bg);
+          color: var(--color-button-primary-text);
           border: none;
 
           &:hover:not(:disabled) {
@@ -239,21 +239,21 @@ const Buttons = () => {
         <tbody>
           <tr>
             <TableCell>Small</TableCell>
-            <TableCell>8px × 16px</TableCell>
-            <TableCell>14px</TableCell>
-            <TableCell>32px</TableCell>
+            <TableCell>12px × 32px</TableCell>
+            <TableCell>16px</TableCell>
+            <TableCell>~48px</TableCell>
           </tr>
           <tr>
             <TableCell>Medium</TableCell>
-            <TableCell>12px × 20px</TableCell>
+            <TableCell>16px × 40px</TableCell>
             <TableCell>16px</TableCell>
-            <TableCell>40px</TableCell>
+            <TableCell>~56px</TableCell>
           </tr>
           <tr>
             <TableCell>Large</TableCell>
-            <TableCell>16px × 24px</TableCell>
+            <TableCell>20px × 48px</TableCell>
             <TableCell>16px</TableCell>
-            <TableCell>48px</TableCell>
+            <TableCell>~64px</TableCell>
           </tr>
         </tbody>
       </SpecTable>
@@ -294,7 +294,7 @@ const Buttons = () => {
           </tr>
           <tr>
             <TableCell>Destructive</TableCell>
-            <TableCell>Error Red</TableCell>
+            <TableCell>Error</TableCell>
             <TableCell>Pearl White</TableCell>
             <TableCell>None</TableCell>
             <TableCell>Delete, remove, destructive actions</TableCell>
@@ -371,9 +371,13 @@ const Buttons = () => {
 <style lang="scss">
   @use '../styles/variables' as *;
 
+  // Required CSS variables (defined in :root, inverted in .dark):
+  // --color-button-primary-bg: light=#0b0425, dark=#fbfbfb
+  // --color-button-primary-text: light=#fbfbfb, dark=#0b0425
+
   .btn {
     font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     border: none;
     cursor: pointer;
     transition: all $duration-fast $ease-default;
@@ -386,12 +390,12 @@ const Buttons = () => {
   }
 
   .btn-primary {
-    background-color: $midnight-violet;
-    color: $pearl-white;
+    background-color: var(--color-button-primary-bg);
+    color: var(--color-button-primary-text);
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: $shadow-md;
+      box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
     }
 
     &:active:not(:disabled) {
@@ -399,7 +403,7 @@ const Buttons = () => {
     }
 
     &:focus-visible {
-      outline: 2px solid $violet;
+      outline: 2px solid $royal-violet;
       outline-offset: 2px;
     }
   }
@@ -418,7 +422,7 @@ const Buttons = () => {
     }
 
     &:focus-visible {
-      outline: 2px solid $violet;
+      outline: 2px solid $royal-violet;
       outline-offset: 2px;
     }
   }
@@ -428,7 +432,7 @@ const Buttons = () => {
     color: $midnight-violet;
 
     &:hover:not(:disabled) {
-      background-color: $platinum;
+      background-color: $lavender;
     }
 
     &:active:not(:disabled) {
@@ -436,13 +440,13 @@ const Buttons = () => {
     }
 
     &:focus-visible {
-      outline: 2px solid $violet;
+      outline: 2px solid $royal-violet;
       outline-offset: 2px;
     }
   }
 
   .btn-destructive {
-    background-color: $error-red;
+    background-color: $error;
     color: $pearl-white;
 
     &:hover:not(:disabled) {
@@ -455,23 +459,23 @@ const Buttons = () => {
     }
 
     &:focus-visible {
-      outline: 2px solid $violet;
+      outline: 2px solid $royal-violet;
       outline-offset: 2px;
     }
   }
 
   .btn-sm {
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 12px 32px;
+    font-size: 16px;
   }
 
   .btn-md {
-    padding: 12px 20px;
+    padding: 16px 40px;
     font-size: 16px;
   }
 
   .btn-lg {
-    padding: 16px 24px;
+    padding: 20px 48px;
     font-size: 16px;
   }
 
@@ -573,7 +577,7 @@ const Buttons = () => {
   px-5 py-3
   rounded-full
   font-medium
-  hover:bg-platinum
+  hover:bg-lavender
   active:scale-98
   transition-all duration-100
   disabled:opacity-50 disabled:cursor-not-allowed

@@ -98,11 +98,12 @@ $error: #DE350B;
 // Dark Mode Colors
 $dark-surface-primary: #0B0425;
 $dark-surface-secondary: #1A1435;
-$dark-surface-elevated: #2A2645;
-$dark-border: #3A3655;
+$dark-surface-elevated: #251A40;
+$dark-border: #3A2A5A;
 $dark-text-primary: #FBFBFB;
 $dark-text-secondary: rgba(251, 251, 251, 0.7);
 $dark-accent: #8B5CF6;
+$dark-lavender: rgba(138, 92, 246, 0.2);
 
 // Typography
 $font-family: 'DM Sans', sans-serif;
@@ -118,23 +119,28 @@ $text-body: 16px;
 $text-body-small: 14px;
 $text-caption: 12px;
 
-// Spacing (8pt grid)
+// Spacing (progressive scale)
 $space-1: 4px;
 $space-2: 8px;
 $space-3: 16px;
 $space-4: 24px;
-$space-5: 32px;
-$space-6: 40px;
-$space-7: 48px;
-$space-8: 64px;
-$space-9: 80px;
-$space-10: 120px;
+$space-5: 40px;
+$space-6: 56px;
+$space-7: 72px;
+$space-8: 96px;
+$space-9: 120px;
+$space-10: 160px;
+$section-gap: 80px;
 
 // Border Radius
 $radius-sm: 4px;
 $radius-md: 8px;
 $radius-lg: 16px;
 $radius-xl: 24px;
+$radius-xxl: 32px;
+$radius-card: 2.75rem;
+$radius-container: 3rem;
+$radius-hero: 100px;
 $radius-full: 9999px;
 
 // Shadows
@@ -143,11 +149,11 @@ $shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
 $shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
 $shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
 
-// Dark mode shadows
-$shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-$shadow-dark-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-$shadow-dark-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-$shadow-dark-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+// Dark mode shadows (higher opacity)
+$shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+$shadow-dark-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+$shadow-dark-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+$shadow-dark-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
 
 // Motion
 $duration-fast: 100ms;
@@ -185,12 +191,21 @@ $breakpoint-2xl: 1536px;`;
 
   /* Surface & Text (mode-aware - change in dark mode) */
   --color-surface-primary: #FBFBFB;
-  --color-surface-secondary: #F0F0F0;
-  --color-surface-elevated: #FFFFFF;
-  --color-border: #E0E0E0;
+  --color-surface-secondary: #FBFBFB;
+  --color-surface-elevated: #FBFBFB;
+  --color-surface-elevated-dark: #1A1435;
+  --color-border: rgba(11, 4, 37, 0.08);
   --color-text-primary: #0B0425;
-  --color-text-secondary: #6B6B6B;
+  --color-text-secondary: rgba(11, 4, 37, 0.6);
   --color-accent: #6A00D5;
+
+  /* Nav and card backgrounds */
+  --color-nav-bg: #0B0425;
+  --color-card-bg: #FBFBFB;
+
+  /* Button colors (invert in dark mode) */
+  --color-button-primary-bg: #0B0425;
+  --color-button-primary-text: #FBFBFB;
 
   /* Typography */
   --text-hero: 40px;
@@ -206,16 +221,23 @@ $breakpoint-2xl: 1536px;`;
   --space-2: 8px;
   --space-3: 16px;
   --space-4: 24px;
-  --space-5: 32px;
-  --space-6: 40px;
-  --space-7: 48px;
-  --space-8: 64px;
+  --space-5: 40px;
+  --space-6: 56px;
+  --space-7: 72px;
+  --space-8: 96px;
+  --space-9: 120px;
+  --space-10: 160px;
+  --section-gap: 80px;
 
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-xxl: 32px;
+  --radius-card: 2.75rem;
+  --radius-container: 3rem;
+  --radius-hero: 100px;
   --radius-full: 9999px;
 
   /* Shadows */
@@ -229,22 +251,37 @@ $breakpoint-2xl: 1536px;`;
   --duration-normal: 200ms;
   --duration-slow: 300ms;
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 }
 
 /* Dark Mode - Class-based toggle */
-:root.dark {
+.dark {
+  /* Violet-tinted dark surfaces */
   --color-surface-primary: #0B0425;
   --color-surface-secondary: #1A1435;
-  --color-surface-elevated: #2A2645;
-  --color-border: #3A3655;
+  --color-surface-elevated: #251A40;
+  --color-surface-elevated-dark: #0A0320;
+  --color-platinum: #1A1435;
+  --color-border: #3A2A5A;
   --color-text-primary: #FBFBFB;
   --color-text-secondary: rgba(251, 251, 251, 0.7);
   --color-accent: #8B5CF6;
+  --color-lavender: rgba(138, 92, 246, 0.2);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  /* Nav and card backgrounds */
+  --color-nav-bg: #1A1435;
+  --color-card-bg: #1A1435;
+
+  /* Button colors inverted */
+  --color-button-primary-bg: #FBFBFB;
+  --color-button-primary-text: #0B0425;
+
+  /* Shadows - higher opacity for dark backgrounds */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
 }`;
 
   const tailwindConfig = `// tailwind.config.js
@@ -266,7 +303,7 @@ export default {
         'dark-surface': {
           primary: '#0B0425',
           secondary: '#1A1435',
-          elevated: '#2A2645',
+          elevated: '#251A40',
         },
       },
 
@@ -275,12 +312,13 @@ export default {
         2: '8px',
         3: '16px',
         4: '24px',
-        5: '32px',
-        6: '40px',
-        7: '48px',
-        8: '64px',
-        9: '80px',
-        10: '120px',
+        5: '40px',
+        6: '56px',
+        7: '72px',
+        8: '96px',
+        9: '120px',
+        10: '160px',
+        'section': '80px',
       },
 
       borderRadius: {
@@ -288,6 +326,10 @@ export default {
         md: '8px',
         lg: '16px',
         xl: '24px',
+        xxl: '32px',
+        card: '2.75rem',
+        container: '3rem',
+        hero: '100px',
         full: '9999px',
       },
 
@@ -343,22 +385,22 @@ export default {
   .btn-primary {
     background-color: $midnight-violet;
     color: $pearl-white;
-    border-radius: $radius-md;
-    padding: $space-3 $space-4;
+    border-radius: $radius-full;
+    padding: 16px 40px;
     font-size: $text-body;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-default;
     box-shadow: $shadow-sm;
     transition: all $duration-normal $ease-default;
     border: none;
     cursor: pointer;
 
     &:hover {
-      box-shadow: $shadow-md;
-      background-color: lighten($midnight-violet, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
     }
 
     &:active {
-      transform: scale(0.98);
+      transform: translateY(0);
     }
 
     &:focus-visible {
@@ -371,7 +413,7 @@ export default {
     background-color: transparent;
     color: $midnight-violet;
     border: 1px solid $midnight-violet;
-    border-radius: $radius-md;
+    border-radius: $radius-full;
     padding: $space-3 $space-4;
 
     &:hover {
@@ -380,12 +422,12 @@ export default {
   }
 
   .size-sm {
-    padding: $space-2 $space-3;
+    padding: 12px 32px;
     font-size: $text-body-small;
   }
 
   .size-lg {
-    padding: $space-4 $space-5;
+    padding: 20px 48px;
     font-size: $text-h3;
   }
 

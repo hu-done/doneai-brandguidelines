@@ -98,7 +98,7 @@ const RadiusUsage = styled.div`
 
 const NestingDemo = styled.div`
   padding: var(--space-6);
-  background-color: rgba(11, 4, 37, 0.03);
+  background-color: var(--color-surface-secondary);
   border-radius: var(--radius-xl);
   margin: var(--space-6) 0;
 `;
@@ -248,11 +248,38 @@ const BorderRadius = () => {
           </RadiusItem>
 
           <RadiusItem>
+            <RadiusVisual radius="var(--radius-card)" />
+            <RadiusInfo>
+              <RadiusName>Card</RadiusName>
+              <RadiusValue>2.75rem (44px) | --radius-card</RadiusValue>
+              <RadiusUsage>Standard card containers, content blocks</RadiusUsage>
+            </RadiusInfo>
+          </RadiusItem>
+
+          <RadiusItem>
+            <RadiusVisual radius="var(--radius-container)" />
+            <RadiusInfo>
+              <RadiusName>Container</RadiusName>
+              <RadiusValue>3rem (48px) | --radius-container</RadiusValue>
+              <RadiusUsage>Section containers, large content areas</RadiusUsage>
+            </RadiusInfo>
+          </RadiusItem>
+
+          <RadiusItem>
+            <RadiusVisual radius="var(--radius-hero)" />
+            <RadiusInfo>
+              <RadiusName>Hero</RadiusName>
+              <RadiusValue>100px | --radius-hero</RadiusValue>
+              <RadiusUsage>Hero sections, prominent feature cards</RadiusUsage>
+            </RadiusInfo>
+          </RadiusItem>
+
+          <RadiusItem>
             <RadiusVisual radius="var(--radius-full)" />
             <RadiusInfo>
               <RadiusName>Full</RadiusName>
               <RadiusValue>9999px | --radius-full</RadiusValue>
-              <RadiusUsage>Pills, avatars, circular elements</RadiusUsage>
+              <RadiusUsage>Pills, avatars, buttons, circular elements</RadiusUsage>
             </RadiusInfo>
           </RadiusItem>
         </RadiusScale>

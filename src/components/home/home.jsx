@@ -137,7 +137,7 @@ const CardIconWrapper = styled.div`
 
 const CardTitle = styled.h3`
   font-size: var(--text-h2);
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
   display: flex;
   align-items: center;

@@ -80,23 +80,24 @@ Never use #6A00D5 as a background for large areas or as body text. It's energy�
 
 ### Dark Mode Palette
 
-Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Notion: warm/neutral grays, not pure black or cold grays.
+Dark mode is "Command Mode" - where users go to work. Uses violet-tinted dark surfaces for brand cohesion.
 
 | Element | Light Mode | Dark Mode | CSS Variable |
 |---------|-----------|-----------|--------------|
-| Background | #FBFBFB | #1A1A1A | `--color-surface-primary` |
-| Surface/Cards | #F0F0F0 | #2A2A2A | `--color-surface-secondary` |
-| Elevated Surface | - | #333333 | `--color-surface-elevated` |
-| Borders | #E0E0E0 | #3A3A3A | `--color-border` |
-| Text Primary | #0B0425 | #EBEBEB | `--color-text-primary` |
-| Text Secondary | #6B6B6B | #A0A0A0 | `--color-text-secondary` |
+| Background | #FBFBFB | #0B0425 | `--color-surface-primary` |
+| Surface/Cards | #FBFBFB | #1A1435 | `--color-surface-secondary` |
+| Elevated Surface | #FBFBFB | #251A40 | `--color-surface-elevated` |
+| Borders | rgba(11,4,37,0.08) | #3A2A5A | `--color-border` |
+| Text Primary | #0B0425 | #FBFBFB | `--color-text-primary` |
+| Text Secondary | rgba(11,4,37,0.6) | rgba(251,251,251,0.7) | `--color-text-secondary` |
 | Accent | #6A00D5 | #8B5CF6 | `--color-accent` |
+| Lavender | #F4EFFF | rgba(138,92,246,0.2) | `--color-lavender` |
 
 **Dark Mode Notes:**
 - Accent color shifts lighter (#8B5CF6) for contrast on dark backgrounds
-- Background (#1A1A1A) is warm, not pure black - easier on eyes
-- Surface hierarchy: Background → Cards → Elevated (hover/focus states)
-- The inverse relationship should feel intentional, not simply swapped
+- Background uses Midnight Violet (#0B0425) for brand continuity
+- Surfaces are violet-tinted, not neutral gray
+- Lavender becomes a semi-transparent violet overlay in dark mode
 
 ### Typography
 
@@ -115,7 +116,7 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
 
 ### Spacing
 
-**Base unit: 8px.** All spacing derives from this.
+**Base unit: 8px.** Spacing scale grows progressively for generous whitespace.
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -123,20 +124,28 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
 | `--space-2` | 8px | Between related elements |
 | `--space-3` | 16px | Default between elements |
 | `--space-4` | 24px | Between groups |
-| `--space-5` | 32px | Section padding (small) |
-| `--space-6` | 40px | Section padding (medium) |
-| `--space-7` | 48px | Section padding (large) |
-| `--space-8` | 64px | Major section breaks |
+| `--space-5` | 40px | Section padding (small) |
+| `--space-6` | 56px | Section padding (medium) |
+| `--space-7` | 72px | Section padding (large) |
+| `--space-8` | 96px | Major section breaks |
+| `--space-9` | 120px | Page-level spacing |
+| `--space-10` | 160px | Hero sections |
+
+**Section Gap:** `--section-gap: 80px` for consistent vertical rhythm between major sections.
 
 ### Border Radius
 
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--radius-sm` | 4px | Tags, badges |
-| `--radius-md` | 8px | Buttons, inputs |
-| `--radius-lg` | 16px | Cards, modals |
-| `--radius-xl` | 24px | Large cards |
-| `--radius-full` | 9999px | Pills, avatars |
+| `--radius-md` | 8px | Inputs, small buttons |
+| `--radius-lg` | 16px | Dropdowns, tooltips |
+| `--radius-xl` | 24px | Cards, modals |
+| `--radius-xxl` | 32px | Large cards |
+| `--radius-card` | 2.75rem (44px) | Standard card containers |
+| `--radius-container` | 3rem (48px) | Section containers |
+| `--radius-hero` | 100px | Hero sections, feature cards |
+| `--radius-full` | 9999px | Pills, avatars, buttons |
 
 **The Radius Rule:** When nesting elements:
 > Inner radius = Outer radius − Padding between them
@@ -155,25 +164,29 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
 ### Buttons
 
 **Variants:**
-| Variant | Background | Text | Usage |
-|---------|------------|------|-------|
-| Primary | `--color-midnight` | `--color-pearl` | Main CTAs |
-| Secondary | Transparent | `--color-midnight` | Secondary actions (1px border) |
-| Ghost | Transparent | `--color-midnight` | Tertiary, nav |
-| Destructive | `--color-error` | `--color-pearl` | Delete actions |
+| Variant | Background | Text | Border | Usage |
+|---------|------------|------|--------|-------|
+| Primary | `--color-midnight` | `--color-pearl` | None | Main CTAs |
+| Secondary | Transparent | `--color-text-primary` | 1px `--color-text-primary` | Secondary actions |
+| Ghost | Transparent | `--color-text-primary` | None | Tertiary, nav |
+| Destructive | `--color-error` | `--color-pearl` | None | Delete actions |
 
 **Sizing:**
-| Size | Padding | Font | Height |
-|------|---------|------|--------|
-| Small | 8px × 16px | 14px | 32px |
-| Medium | 12px × 20px | 16px | 40px |
-| Large | 16px × 24px | 16px | 48px |
+| Size | Padding (v × h) | Font | Approx Height |
+|------|-----------------|------|---------------|
+| Small | 12px × 32px | 16px | ~48px |
+| Medium | 16px × 40px | 16px | ~56px |
+| Large | 20px × 48px | 16px | ~64px |
+
+**Border Radius:** `100px` (pill shape)
 
 **States:**
-- Hover: Opacity reduction or subtle shadow
-- Active: Scale 0.98
-- Focus: 2px violet ring, 2px offset
-- Disabled: 50% opacity
+| State | Primary | Secondary/Ghost | Destructive |
+|-------|---------|-----------------|-------------|
+| Hover | translateY(-2px) + violet shadow | Lavender background | opacity 0.9 + shadow |
+| Active | translateY(0) | scale(0.98) | scale(0.98) |
+| Focus | 2px violet ring, 2px offset | 2px violet ring, 2px offset | 2px violet ring, 2px offset |
+| Disabled | 50% opacity | 50% opacity | 50% opacity |
 
 ---
 
@@ -193,13 +206,22 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
   
   /* Surface & Text (semantic, mode-aware) */
   --color-surface-primary: #FBFBFB;
-  --color-surface-secondary: #F0F0F0;
-  --color-surface-elevated: #FFFFFF;
-  --color-border: #E0E0E0;
+  --color-surface-secondary: #FBFBFB;
+  --color-surface-elevated: #FBFBFB;
+  --color-surface-elevated-dark: #1A1435;
+  --color-border: rgba(11, 4, 37, 0.08);
   --color-text-primary: #0B0425;
-  --color-text-secondary: #6B6B6B;
+  --color-text-secondary: rgba(11, 4, 37, 0.6);
   --color-accent: #6A00D5;
-  
+
+  /* Nav and card backgrounds */
+  --color-nav-bg: #0B0425;
+  --color-card-bg: #FBFBFB;
+
+  /* Button colors (invert in dark mode) */
+  --color-button-primary-bg: #0B0425;
+  --color-button-primary-text: #FBFBFB;
+
   /* Typography */
   --text-hero: 40px;
   --text-h1: 32px;
@@ -214,18 +236,23 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
   --space-2: 8px;
   --space-3: 16px;
   --space-4: 24px;
-  --space-5: 32px;
-  --space-6: 40px;
-  --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 80px;
-  --space-10: 120px;
-  
+  --space-5: 40px;
+  --space-6: 56px;
+  --space-7: 72px;
+  --space-8: 96px;
+  --space-9: 120px;
+  --space-10: 160px;
+  --section-gap: 80px;
+
   /* Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-xxl: 32px;
+  --radius-card: 2.75rem;
+  --radius-container: 3rem;
+  --radius-hero: 100px;
   --radius-full: 9999px;
   
   /* Shadows */
@@ -256,39 +283,33 @@ Dark mode is "Command Mode" - where users go to work. Inspired by Claude and Not
   --breakpoint-2xl: 1536px;
 }
 
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-surface-primary: #1A1A1A;
-    --color-surface-secondary: #2A2A2A;
-    --color-surface-elevated: #333333;
-    --color-border: #3A3A3A;
-    --color-text-primary: #EBEBEB;
-    --color-text-secondary: #A0A0A0;
-    --color-accent: #8B5CF6;
-    
-    /* Shadows need adjustment for dark mode */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-    --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
-  }
-}
-
-/* Or use a class-based toggle */
+/* Dark Mode - Class-based toggle (recommended) */
 .dark {
-  --color-surface-primary: #1A1A1A;
-  --color-surface-secondary: #2A2A2A;
-  --color-surface-elevated: #333333;
-  --color-border: #3A3A3A;
-  --color-text-primary: #EBEBEB;
-  --color-text-secondary: #A0A0A0;
+  /* Violet-tinted dark surfaces */
+  --color-surface-primary: #0B0425;
+  --color-surface-secondary: #1A1435;
+  --color-surface-elevated: #251A40;
+  --color-surface-elevated-dark: #0A0320;
+  --color-platinum: #1A1435;
+  --color-border: #3A2A5A;
+  --color-text-primary: #FBFBFB;
+  --color-text-secondary: rgba(251, 251, 251, 0.7);
   --color-accent: #8B5CF6;
-  
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
-  --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
+  --color-lavender: rgba(138, 92, 246, 0.2);
+
+  /* Nav and card backgrounds */
+  --color-nav-bg: #1A1435;
+  --color-card-bg: #1A1435;
+
+  /* Button colors inverted */
+  --color-button-primary-bg: #FBFBFB;
+  --color-button-primary-text: #0B0425;
+
+  /* Shadows - higher opacity for dark backgrounds */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
 }
 ```
 
@@ -462,3 +483,33 @@ Before shipping any update:
 5. **Keep copy direct** - This is documentation. State, don't sell.
 
 When in doubt about brand decisions, refer back to the core principle: **Authority through Simplicity.**
+
+---
+
+## HARD RULES (DO NOT BREAK)
+
+These rules exist because they were broken before. Follow them exactly.
+
+### Colors
+- **The only background color is Pearl (#FBFBFB).** There is no #FFFFFF in this brand. Elevation is achieved through shadow, not background color shifts.
+- **Never hardcode colors.** Always use CSS variables (`var(--color-card-bg)`, `var(--color-text-primary)`, etc.). If a color needs to change in dark mode, use a `.dark &` override on the styled component — not a ternary with hardcoded hex values.
+- **The home page (home.jsx) is the reference implementation for cards.** When building or fixing card-like components anywhere on the site, match the home page pattern: `var(--color-card-bg)` background, `var(--color-text-primary)` text, `.dark &` override block. Do not invent a new pattern.
+
+### Dark Mode
+- Dark mode surfaces are **violet-tinted** (#0B0425, #1A1435, #251A40), never neutral grays.
+- Use `.dark &` CSS overrides on styled-components. Do not use JS props to toggle between hardcoded light/dark color values — that breaks when CSS variables change.
+- **Button colors use `var(--color-button-primary-bg)` and `var(--color-button-primary-text)`.** These variables automatically invert in dark mode. Never hardcode button colors.
+
+### Typography
+- **Headings are font-weight 500.** Not 600, not 700. The only weights in the brand are 400 (body) and 500 (headings).
+- **Buttons are font-weight 400**, border-radius 100px (pill), padding 16px 40px (medium size).
+
+### Visual Demos and Examples
+- **Demo components must match the actual components they represent.** If the Cards page shows example cards, those cards must use the same styled-component patterns, spacing, font sizes, and colors as the real cards used on the home page. Do not create one-off styled components with different values for "demo purposes."
+- **Before creating a visual example, read the existing working implementation first.** Copy its patterns.
+- **Every code example is copy-pasted by developers.** Values in code blocks MUST match the CSS tokens in index.css exactly. Verify before committing.
+
+### Process
+- **Never introduce colors, values, or patterns that don't exist in this file.** If it's not defined here, don't use it.
+- **When fixing something, trace the full chain.** A card has a background → text color → description color → button background → button text. If you change one, verify all of them still work in both light and dark mode.
+- **No redundant examples.** If two demo cards look identical, one of them shouldn't exist.

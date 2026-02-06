@@ -112,7 +112,7 @@ const ElevationDemo = styled.div`
   gap: var(--space-6);
   margin: var(--space-6) 0;
   padding: var(--space-6);
-  background-color: rgba(11, 4, 37, 0.03);
+  background-color: var(--color-surface-secondary);
   border-radius: var(--radius-lg);
 `;
 
@@ -126,7 +126,7 @@ const ElevationCard = styled.div`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: ${props => props.$hoverShadow || 'var(--shadow-lg)'};
   }
 `;
 
@@ -233,7 +233,7 @@ const Elevation = () => {
           </ShadowItem>
 
           <ShadowItem>
-            <ShadowVisual shadow="var(--shadow-xl)" $hoverShadow="0 24px 64px rgba(11,4,37,0.24)">
+            <ShadowVisual shadow="var(--shadow-xl)" $hoverShadow="var(--shadow-xxl)">
               Hover to see elevation
             </ShadowVisual>
             <ShadowInfo>
@@ -254,22 +254,22 @@ const Elevation = () => {
         </SectionDescription>
 
         <ElevationDemo>
-          <ElevationCard shadow="var(--shadow-sm)">
+          <ElevationCard shadow="var(--shadow-sm)" $hoverShadow="var(--shadow-md)">
             <ElevationLabel>Level 1</ElevationLabel>
             <ElevationLevel>Resting</ElevationLevel>
           </ElevationCard>
 
-          <ElevationCard shadow="var(--shadow-md)">
+          <ElevationCard shadow="var(--shadow-md)" $hoverShadow="var(--shadow-lg)">
             <ElevationLabel>Level 2</ElevationLabel>
             <ElevationLevel>Elevated</ElevationLevel>
           </ElevationCard>
 
-          <ElevationCard shadow="var(--shadow-lg)">
+          <ElevationCard shadow="var(--shadow-lg)" $hoverShadow="var(--shadow-xl)">
             <ElevationLabel>Level 3</ElevationLabel>
             <ElevationLevel>Floating</ElevationLevel>
           </ElevationCard>
 
-          <ElevationCard shadow="var(--shadow-xl)">
+          <ElevationCard shadow="var(--shadow-xl)" $hoverShadow="var(--shadow-xxl)">
             <ElevationLabel>Level 4</ElevationLabel>
             <ElevationLevel>Critical</ElevationLevel>
           </ElevationCard>
@@ -332,12 +332,12 @@ const Elevation = () => {
         <SectionTitle>Dark Mode Adjustments</SectionTitle>
 
         <Callout type="warning" title="Important">
-          Shadows need higher opacity in dark mode. Light shadows disappear on dark backgrounds. Our dark mode CSS increases shadow opacity from 0.05-0.16 to 0.3-0.6.
+          Shadows need higher opacity in dark mode. Light shadows disappear on dark backgrounds. Our dark mode CSS increases shadow opacity from 0.05-0.16 to 0.4-0.7.
         </Callout>
 
         <SectionDescription>
-          Light mode: <code>rgba(11,4,37,0.08)</code> (Midnight Violet base)<br/>
-          Dark mode: <code>rgba(0,0,0,0.4)</code> (Pure black, higher opacity)
+          Light mode: <code>rgba(11,4,37,0.05-0.16)</code> (Midnight Violet base)<br/>
+          Dark mode: <code>rgba(0,0,0,0.4-0.7)</code> (Pure black, higher opacity)
         </SectionDescription>
       </Section>
 

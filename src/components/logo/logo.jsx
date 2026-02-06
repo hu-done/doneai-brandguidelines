@@ -65,24 +65,28 @@ const DownloadButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-3);
-  background-color: var(--color-midnight);
-  color: var(--color-pearl);
+  padding: 12px 24px;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   font-size: var(--text-body-small);
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
-  /* Dark mode: lighter background */
-  .dark & {
-    background-color: var(--color-nav-bg);
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 
@@ -120,9 +124,8 @@ const Toast = styled.div`
     }
   }
 
-  /* Dark mode: lighter background */
   .dark & {
-    background-color: var(--color-nav-bg);
+    background-color: var(--color-surface-elevated);
   }
 `;
 

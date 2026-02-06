@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
-import { Palette, FileText, Puzzle, Zap, MessageCircle, Wrench } from "lucide-react";
+import { Palette, FileText, Zap, MessageCircle } from "lucide-react";
 import Callout from "../shared/Callout";
 import CodeBlock from "../shared/CodeBlock";
 
@@ -45,16 +45,15 @@ const CardGrid = styled.div`
 `;
 
 const Card = styled.div`
-  /* Primary cards always have light bg with dark text (ignores theme) */
-  background-color: ${props => props.$isPrimary ? '#FBFBFB' : 'var(--color-surface-elevated-dark)'};
-  color: ${props => props.$isPrimary ? '#0B0425' : 'var(--color-pearl)'};
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
   border-radius: var(--radius-card);
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
   min-height: 280px;
   transition: all var(--duration-normal) var(--ease-default);
-  box-shadow: ${props => props.$isPrimary ? 'var(--shadow-md)' : 'none'};
+  box-shadow: var(--shadow-md);
 
   ${props => props.interactive && `
     cursor: pointer;
@@ -65,16 +64,9 @@ const Card = styled.div`
     }
   `}
 
-  ${props => props.flat && `
-    background-color: var(--color-surface-elevated);
-    color: var(--color-text-primary);
-    box-shadow: var(--shadow-sm);
-  `}
-
-  /* Dark mode: adjust only non-primary cards */
   .dark & {
-    background-color: ${props => props.$isPrimary ? '#FBFBFB' : 'var(--color-nav-bg)'};
-    color: ${props => props.$isPrimary ? '#0B0425' : 'var(--color-pearl)'};
+    background-color: var(--color-nav-bg);
+    color: var(--color-pearl);
   }
 `;
 
@@ -107,28 +99,32 @@ const CardIcon = styled.div`
 
 const CardTitle = styled.h3`
   font-size: var(--text-h2);
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: var(--space-2);
-  /* Inherit color from parent Card */
 `;
 
 const CardDescription = styled.p`
   font-size: var(--text-body-small);
-  /* Primary cards always have light bg, so use dark text regardless of theme */
-  color: ${props => props.$isPrimary ? '#6B6B6B' : 'rgba(251, 251, 251, 0.7)'};
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-5);
   flex-grow: 1;
+
+  .dark & {
+    color: rgba(251, 251, 251, 0.7);
+  }
 `;
 
 const CardButton = styled.div`
   width: 100%;
   text-align: center;
-  padding: var(--space-3);
+  padding: 16px 40px;
   border-radius: 100px;
-  font-weight: 500;
-  background-color: ${props => props.$isPrimary ? 'var(--color-midnight)' : 'var(--color-pearl)'};
-  color: ${props => props.$isPrimary ? 'var(--color-pearl)' : 'var(--color-midnight)'};
-  transition: all var(--duration-normal) var(--ease-default);
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  transition: transform var(--duration-normal) var(--ease-default), box-shadow var(--duration-normal) var(--ease-default);
 
   ${Card}:hover & {
     transform: translateY(-2px);
@@ -162,7 +158,7 @@ const TableCell = styled.td`
 
 const NestedCardDemo = styled.div`
   padding: var(--space-6);
-  background-color: rgba(11, 4, 37, 0.03);
+  background-color: var(--color-surface-secondary);
   border-radius: var(--radius-xl);
   margin: var(--space-5) 0;
 `;
@@ -199,16 +195,16 @@ const Cards = () => {
         </SectionDescription>
 
         <CardGrid>
-          <Card $isPrimary={true} interactive>
+          <Card interactive>
             <CardHeader>
               <StatusBadge $variant="active">Active</StatusBadge>
               <CardIcon><Palette size={20} strokeWidth={1.5} /></CardIcon>
             </CardHeader>
-            <CardTitle>Primary Card</CardTitle>
-            <CardDescription $isPrimary={true}>
-              Light background with dark text. Use for the most important or featured item.
+            <CardTitle>Colors</CardTitle>
+            <CardDescription>
+              Our visual identity palette with usage rules and color specifications.
             </CardDescription>
-            <CardButton $isPrimary={true}>Explore</CardButton>
+            <CardButton>Explore</CardButton>
           </Card>
 
           <Card interactive>
@@ -216,67 +212,48 @@ const Cards = () => {
               <StatusBadge $variant="available">Available</StatusBadge>
               <CardIcon><FileText size={20} strokeWidth={1.5} /></CardIcon>
             </CardHeader>
-            <CardTitle>Secondary Card</CardTitle>
+            <CardTitle>Typography</CardTitle>
             <CardDescription>
-              Dark background with light text. Hover to see the interactive lift effect.
+              DM Sans type system with clear hierarchy and scale.
+            </CardDescription>
+            <CardButton>Explore</CardButton>
+          </Card>
+
+        </CardGrid>
+      </Section>
+
+      {/* Card with Hover */}
+      <Section>
+        <SectionTitle>Interactive Cards</SectionTitle>
+        <SectionDescription>
+          Cards with the interactive prop lift on hover with a shadow transition. Use for clickable items like navigation or links.
+        </SectionDescription>
+
+        <CardGrid>
+          <Card interactive>
+            <CardHeader>
+              <StatusBadge $variant="available">Available</StatusBadge>
+              <CardIcon><Zap size={20} strokeWidth={1.5} /></CardIcon>
+            </CardHeader>
+            <CardTitle>Motion</CardTitle>
+            <CardDescription>
+              Animation timing, easing functions, and transition patterns.
             </CardDescription>
             <CardButton>Explore</CardButton>
           </Card>
 
           <Card interactive>
             <CardHeader>
-              <StatusBadge $variant="available">Available</StatusBadge>
-              <CardIcon><Puzzle size={20} strokeWidth={1.5} /></CardIcon>
-            </CardHeader>
-            <CardTitle>Interactive Card</CardTitle>
-            <CardDescription>
-              All cards have smooth hover animations that lift the card and button.
-            </CardDescription>
-            <CardButton>Explore</CardButton>
-          </Card>
-        </CardGrid>
-      </Section>
-
-      {/* Card Variants */}
-      <Section>
-        <SectionTitle>Card Variants</SectionTitle>
-
-        <CardGrid>
-          <Card>
-            <CardHeader>
-              <StatusBadge $variant="available">Available</StatusBadge>
-              <CardIcon><Zap size={20} strokeWidth={1.5} /></CardIcon>
-            </CardHeader>
-            <CardTitle>Standard Dark</CardTitle>
-            <CardDescription>
-              Dark cards are the default secondary style for most navigation items.
-            </CardDescription>
-            <CardButton>Explore</CardButton>
-          </Card>
-
-          <Card $isPrimary={true}>
-            <CardHeader>
-              <StatusBadge $variant="active">Featured</StatusBadge>
+              <StatusBadge $variant="active">Active</StatusBadge>
               <CardIcon><MessageCircle size={20} strokeWidth={1.5} /></CardIcon>
             </CardHeader>
-            <CardTitle>Featured Light</CardTitle>
-            <CardDescription $isPrimary={true}>
-              Use light cards to highlight the primary or most important item.
-            </CardDescription>
-            <CardButton $isPrimary={true}>Explore</CardButton>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <StatusBadge $variant="available">Coming Soon</StatusBadge>
-              <CardIcon><Wrench size={20} strokeWidth={1.5} /></CardIcon>
-            </CardHeader>
-            <CardTitle>With Status</CardTitle>
+            <CardTitle>Tone of Voice</CardTitle>
             <CardDescription>
-              Use status badges to indicate availability, coming soon, or active states.
+              Authority through Simplicity. How we speak as a brand.
             </CardDescription>
             <CardButton>Explore</CardButton>
           </Card>
+
         </CardGrid>
       </Section>
 
@@ -296,32 +273,18 @@ const Cards = () => {
           </thead>
           <tbody>
             <tr>
-              <TableCell>Primary (Light)</TableCell>
-              <TableCell>24px (1.5rem)</TableCell>
-              <TableCell>44px</TableCell>
+              <TableCell>Card</TableCell>
+              <TableCell>40px (--space-5)</TableCell>
+              <TableCell>44px (--radius-card)</TableCell>
               <TableCell>280px</TableCell>
-              <TableCell>#FBFBFB (Pearl)</TableCell>
+              <TableCell>--color-card-bg</TableCell>
             </tr>
             <tr>
-              <TableCell>Secondary (Dark)</TableCell>
-              <TableCell>24px (1.5rem)</TableCell>
-              <TableCell>44px</TableCell>
-              <TableCell>280px</TableCell>
-              <TableCell>#1a1435 (Dark Purple)</TableCell>
-            </tr>
-            <tr>
-              <TableCell>Button (Primary)</TableCell>
-              <TableCell>16px (1rem)</TableCell>
-              <TableCell>100px (full pill)</TableCell>
+              <TableCell>Card Button</TableCell>
+              <TableCell>16px 40px</TableCell>
+              <TableCell>100px (pill)</TableCell>
               <TableCell>-</TableCell>
-              <TableCell>#0B0425 (Midnight)</TableCell>
-            </tr>
-            <tr>
-              <TableCell>Button (Secondary)</TableCell>
-              <TableCell>16px (1rem)</TableCell>
-              <TableCell>100px (full pill)</TableCell>
-              <TableCell>-</TableCell>
-              <TableCell>#FBFBFB (Pearl)</TableCell>
+              <TableCell>--color-button-primary-bg</TableCell>
             </tr>
           </tbody>
         </SpecTable>
@@ -522,7 +485,7 @@ const Cards = () => {
         <SectionTitle>Usage Guidelines</SectionTitle>
 
         <Callout type="success" title="Do">
-          Use cards to group related information. Maintain consistent padding (32px). Use interactive cards for clickable items. Follow the radius rule when nesting. Keep card content scannable.
+          Use cards to group related information. Maintain consistent padding (40px / --space-5). Use interactive cards for clickable items. Follow the radius rule when nesting. Keep card content scannable.
         </Callout>
 
         <Callout type="error" title="Don't">

@@ -24,7 +24,7 @@ const HeroContent = styled.div`
 
 const HeroTitle = styled.h1`
   font-size: var(--text-hero);
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
   margin-bottom: var(--space-3);
   color: var(--color-pearl);

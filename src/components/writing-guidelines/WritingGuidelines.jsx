@@ -188,28 +188,28 @@ const Textarea = styled.textarea`
 `;
 
 const CheckButton = styled.button`
-  background-color: var(--color-midnight);
-  color: var(--color-pearl);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-md);
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  padding: 16px 40px;
+  border-radius: 100px;
   border: none;
   font-family: "DM Sans", sans-serif;
   font-size: var(--text-body);
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   margin-top: var(--space-3);
   display: flex;
   align-items: center;
   gap: var(--space-2);
 
   &:hover:not(:disabled) {
-    opacity: 0.9;
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
   &:active:not(:disabled) {
-    transform: scale(0.98);
+    transform: translateY(0);
   }
 
   &:focus-visible {

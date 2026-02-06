@@ -274,7 +274,7 @@ const Inputs = () => {
             </tr>
             <tr>
               <TableCell>Border (default)</TableCell>
-              <TableCell>1px solid #E0E0E0</TableCell>
+              <TableCell>1px solid rgba(11,4,37,0.08)</TableCell>
               <TableCell>--color-border</TableCell>
             </tr>
             <tr>

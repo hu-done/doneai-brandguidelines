@@ -262,7 +262,7 @@ export const searchIndex = [
   },
   {
     id: 'color-error',
-    title: 'Error Red',
+    title: 'Error',
     category: 'Colors',
     type: 'color',
     path: '/colors',

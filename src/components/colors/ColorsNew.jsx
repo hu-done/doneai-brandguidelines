@@ -86,7 +86,7 @@ const CopyableValue = styled.button`
   }
 `;
 
-const CopiedToast = styled.span`
+const CopiedToast = styled.div`
   position: fixed;
   bottom: var(--space-5);
   left: 50%;
@@ -102,6 +102,10 @@ const CopiedToast = styled.span`
   display: flex;
   align-items: center;
   gap: var(--space-2);
+
+  .dark & {
+    background-color: var(--color-surface-elevated);
+  }
 `;
 
 const ProportionBar = styled.div`

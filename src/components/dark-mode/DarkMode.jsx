@@ -54,25 +54,27 @@ const ModeLabel = styled.div`
 `;
 
 const ModeContent = styled.div`
-  background-color: ${props => props.$isDark ? '#1A1A1A' : '#F0F0F0'};
+  background-color: ${props => props.$isDark ? '#0B0425' : '#FBFBFB'};
   padding: var(--space-5);
   min-height: 300px;
 `;
 
 const ModeCard = styled.div`
-  background-color: ${props => props.$isDark ? '#1a1435' : '#FBFBFB'};
+  background-color: ${props => props.$isDark ? '#1A1435' : '#FBFBFB'};
   color: ${props => props.$isDark ? '#FBFBFB' : '#0B0425'};
   border-radius: 44px;
-  padding: 1.5rem;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  min-height: 220px;
+  min-height: 280px;
   margin-bottom: var(--space-4);
-  transition: transform var(--duration-normal) var(--ease-default);
+  box-shadow: ${props => props.$isDark ? '0 4px 12px rgba(0, 0, 0, 0.5)' : '0 4px 12px rgba(11, 4, 37, 0.08)'};
+  transition: transform var(--duration-normal) var(--ease-default), box-shadow var(--duration-normal) var(--ease-default);
   cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
+    box-shadow: ${props => props.$isDark ? '0 8px 24px rgba(0, 0, 0, 0.6)' : '0 8px 24px rgba(11, 4, 37, 0.12)'};
   }
 `;
 
@@ -80,49 +82,52 @@ const ModeCardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 `;
 
 const StatusBadge = styled.span`
-  background-color: ${props => props.$isDark ? 'rgba(251, 183, 68, 0.4)' : '#C6F6D5'};
-  color: ${props => props.$isDark ? '#FBB744' : '#0B0425'};
-  font-size: 0.75rem;
+  background-color: ${props => props.$isDark ? 'rgba(180, 83, 9, 0.15)' : 'rgba(0, 106, 78, 0.15)'};
+  color: ${props => props.$isDark ? '#B45309' : '#006A4E'};
+  font-size: 12px;
   font-weight: 500;
-  padding: 0.25rem 0.75rem;
+  padding: 4px 16px;
   border-radius: 9999px;
 `;
 
 const CardIcon = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.875rem;
+  background-color: rgba(106, 0, 213, 0.15);
+  color: ${props => props.$isDark ? '#8B5CF6' : '#6A00D5'};
 `;
 
 const ModeTitle = styled.h3`
   color: ${props => props.$isDark ? '#FBFBFB' : '#0B0425'};
-  font-size: 1.875rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
 `;
 
 const ModeText = styled.p`
-  color: ${props => props.$isDark ? 'rgba(251, 251, 251, 0.7)' : '#6B6B6B'};
-  font-size: 0.875rem;
+  color: ${props => props.$isDark ? 'rgba(251, 251, 251, 0.7)' : 'rgba(11, 4, 37, 0.6)'};
+  font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 2rem;
+  margin-bottom: 40px;
   flex-grow: 1;
 `;
 
 const ModeButton = styled.button`
   width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding: 16px 40px;
   border-radius: 100px;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
   background-color: ${props => props.$isDark ? '#FBFBFB' : '#0B0425'};
   color: ${props => props.$isDark ? '#0B0425' : '#FBFBFB'};
   border: none;
@@ -146,12 +151,12 @@ const DarkMode = () => {
 
       <S.Subtitle>Overview</S.Subtitle>
       <S.Bodytext>
-        Dark mode uses warm, neutral grays instead of pure black or cold grays. The inverse relationship between light and dark mode should feel intentional, not simply swapped. This approach reduces eye strain during extended use.
+        Dark mode uses violet-tinted surfaces instead of pure black or neutral grays. The inverse relationship between light and dark mode should feel intentional, not simply swapped. This approach reduces eye strain during extended use.
       </S.Bodytext>
 
       <S.Subtitle>Visual Comparison</S.Subtitle>
       <S.Bodytext>
-        See how the same interface looks in light mode versus dark mode. Notice the warm grays, adjusted shadows, and slightly brighter accent color in dark mode.
+        See how the same interface looks in light mode versus dark mode. Notice the violet-tinted surfaces, adjusted shadows, and slightly brighter accent color in dark mode.
       </S.Bodytext>
 
       <ComparisonGrid>
@@ -161,7 +166,7 @@ const DarkMode = () => {
             <ModeCard $isDark={false}>
               <ModeCardHeader>
                 <StatusBadge $isDark={false}>Active</StatusBadge>
-                <CardIcon><Palette size={30} strokeWidth={1.5} /></CardIcon>
+                <CardIcon $isDark={false}><Palette size={20} strokeWidth={1.5} /></CardIcon>
               </ModeCardHeader>
               <ModeTitle $isDark={false}>Colors</ModeTitle>
               <ModeText $isDark={false}>
@@ -181,7 +186,7 @@ const DarkMode = () => {
             <ModeCard $isDark={true}>
               <ModeCardHeader>
                 <StatusBadge $isDark={true}>Available</StatusBadge>
-                <CardIcon><Palette size={30} strokeWidth={1.5} /></CardIcon>
+                <CardIcon $isDark={true}><Palette size={20} strokeWidth={1.5} /></CardIcon>
               </ModeCardHeader>
               <ModeTitle $isDark={true}>Colors</ModeTitle>
               <ModeText $isDark={true}>
@@ -189,8 +194,8 @@ const DarkMode = () => {
               </ModeText>
               <ModeButton $isDark={true}>Explore</ModeButton>
             </ModeCard>
-            <S.Bodytext style={{ color: '#A0A0A0' }}>
-              Dark mode uses #1A1A1A (warm gray) for backgrounds and #EBEBEB for primary text. The warm tone reduces eye strain during extended use.
+            <S.Bodytext style={{ color: 'rgba(251, 251, 251, 0.7)' }}>
+              Dark mode uses violet-tinted surfaces (#0B0425) for brand cohesion. Text uses #FBFBFB (Pearl White) for maximum contrast.
             </S.Bodytext>
           </ModeContent>
         </ModeExample>
@@ -211,37 +216,37 @@ const DarkMode = () => {
             <tr>
               <TableCell>Background</TableCell>
               <TableCell>#FBFBFB</TableCell>
-              <TableCell>#1A1A1A</TableCell>
+              <TableCell>#0B0425</TableCell>
               <TableCell>--color-surface-primary</TableCell>
             </tr>
             <tr>
               <TableCell>Surface/Cards</TableCell>
-              <TableCell>#F0F0F0</TableCell>
-              <TableCell>#2A2A2A</TableCell>
+              <TableCell>#FBFBFB</TableCell>
+              <TableCell>#1A1435</TableCell>
               <TableCell>--color-surface-secondary</TableCell>
             </tr>
             <tr>
               <TableCell>Elevated Surface</TableCell>
-              <TableCell>#FFFFFF</TableCell>
-              <TableCell>#333333</TableCell>
+              <TableCell>#FBFBFB</TableCell>
+              <TableCell>#251A40</TableCell>
               <TableCell>--color-surface-elevated</TableCell>
             </tr>
             <tr>
               <TableCell>Borders</TableCell>
-              <TableCell>#E0E0E0</TableCell>
-              <TableCell>#3A3A3A</TableCell>
+              <TableCell>rgba(11,4,37,0.08)</TableCell>
+              <TableCell>#3A2A5A</TableCell>
               <TableCell>--color-border</TableCell>
             </tr>
             <tr>
               <TableCell>Text Primary</TableCell>
               <TableCell>#0B0425</TableCell>
-              <TableCell>#EBEBEB</TableCell>
+              <TableCell>#FBFBFB</TableCell>
               <TableCell>--color-text-primary</TableCell>
             </tr>
             <tr>
               <TableCell>Text Secondary</TableCell>
-              <TableCell>#6B6B6B</TableCell>
-              <TableCell>#A0A0A0</TableCell>
+              <TableCell>rgba(11,4,37,0.6)</TableCell>
+              <TableCell>rgba(251,251,251,0.7)</TableCell>
               <TableCell>--color-text-secondary</TableCell>
             </tr>
             <tr>
@@ -250,13 +255,19 @@ const DarkMode = () => {
               <TableCell>#8B5CF6</TableCell>
               <TableCell>--color-accent</TableCell>
             </tr>
+            <tr>
+              <TableCell>Lavender</TableCell>
+              <TableCell>#F4EFFF</TableCell>
+              <TableCell>rgba(138,92,246,0.2)</TableCell>
+              <TableCell>--color-lavender</TableCell>
+            </tr>
           </tbody>
         </PaletteTable>
 
       <S.Subtitle>Key Implementation Notes</S.Subtitle>
 
-        <Callout type="info" title="Background Color">
-          Background (#1A1A1A) is warm, not pure black (#000000). Pure black creates too much contrast and can cause eye strain. The warm tone is more comfortable for extended use.
+        <Callout type="info" title="Violet-Tinted Surfaces">
+          Dark mode uses Midnight Violet (#0B0425) as the base, with progressively lighter violet tints for surfaces. This maintains brand identity rather than switching to neutral grays.
         </Callout>
 
         <Callout type="info" title="Accent Shift">
@@ -264,11 +275,15 @@ const DarkMode = () => {
         </Callout>
 
         <Callout type="info" title="Shadow Opacity">
-          Shadows need higher opacity in dark mode. Light shadows disappear on dark backgrounds, so we increase the opacity from rgba(11,4,37,0.08) to rgba(0,0,0,0.4).
+          Shadows need higher opacity in dark mode. We use rgba(0,0,0,0.4) to rgba(0,0,0,0.7) for visible shadows on dark backgrounds.
         </Callout>
 
         <Callout type="info" title="Surface Hierarchy">
-          Create depth through layered surfaces: Background (#1A1A1A) → Cards (#2A2A2A) → Elevated (#333333) for hover/focus states.
+          Create depth through layered surfaces: Background (#0B0425) → Cards (#1A1435) → Elevated (#251A40) for hover/focus states.
+        </Callout>
+
+        <Callout type="info" title="Button Inversion">
+          Primary buttons invert in dark mode: Pearl White background with Midnight Violet text, ensuring visibility on the dark surface.
         </Callout>
 
       <S.Subtitle>Implementation in Svelte 5 / SvelteKit</S.Subtitle>
@@ -285,11 +300,11 @@ const DarkMode = () => {
 {`:root {
   /* Light Mode (default) */
   --color-surface-primary: #FBFBFB;
-  --color-surface-secondary: #F0F0F0;
-  --color-surface-elevated: #FFFFFF;
+  --color-surface-secondary: #FBFBFB;
+  --color-surface-elevated: #FBFBFB;
   --color-text-primary: #0B0425;
-  --color-text-secondary: rgba(11, 4, 37, 0.7);
-  --color-border: #E0E0E0;
+  --color-text-secondary: rgba(11, 4, 37, 0.6);
+  --color-border: rgba(11, 4, 37, 0.08);
   --color-accent: #6A00D5;
 }
 

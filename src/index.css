@@ -12,7 +12,7 @@
   /* Surface & Text (semantic, mode-aware) */
   --color-surface-primary: #fbfbfb;
   --color-surface-secondary: #fbfbfb;
-  --color-surface-elevated: #ffffff;
+  --color-surface-elevated: #fbfbfb;
   --color-surface-elevated-dark: #1a1435;
   --color-border: rgba(11, 4, 37, 0.08);
   --color-text-primary: #0b0425;
@@ -21,7 +21,11 @@
 
   /* Nav and card backgrounds - for consistency */
   --color-nav-bg: #0b0425;
-  --color-card-bg: #ffffff;
+  --color-card-bg: #fbfbfb;
+
+  /* Button colors - invert in dark mode */
+  --color-button-primary-bg: #0b0425;
+  --color-button-primary-text: #fbfbfb;
 
   /* Typography */
   --text-hero: 40px;
@@ -63,6 +67,7 @@
   --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
   --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
   --shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+  --shadow-xxl: 0 24px 64px rgba(11, 4, 37, 0.24);
 
   /* Motion */
   --duration-fast: 100ms;
@@ -123,10 +128,15 @@
   --color-nav-bg: #1a1435;
   --color-card-bg: #1a1435;
 
+  /* Button colors - inverted for dark mode */
+  --color-button-primary-bg: #fbfbfb;
+  --color-button-primary-text: #0b0425;
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-xxl: 0 24px 64px rgba(0, 0, 0, 0.8);
 }
 
 * {

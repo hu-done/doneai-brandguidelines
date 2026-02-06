@@ -87,25 +87,29 @@ const DownloadButton = styled.a`
   align-items: center;
   justify-content: center;
   gap: var(--space-1);
-  padding: var(--space-2) var(--space-3);
-  background-color: var(--color-midnight);
-  color: var(--color-pearl);
-  border-radius: var(--radius-md);
+  padding: 8px 24px;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border-radius: 100px;
   text-decoration: none;
   font-size: var(--text-body-small);
   font-weight: 500;
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   border: none;
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
-  /* Dark mode: lighter background */
-  .dark & {
-    background-color: var(--color-nav-bg);
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 
@@ -126,21 +130,28 @@ const ViewReferenceButton = styled.a`
   align-items: center;
   justify-content: center;
   gap: var(--space-1);
-  padding: var(--space-2) var(--space-3);
+  padding: 8px 24px;
   background-color: transparent;
   color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-text-primary);
+  border-radius: 100px;
   text-decoration: none;
   font-size: var(--text-body-small);
   font-weight: 500;
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   cursor: pointer;
 
   &:hover {
-    border-color: var(--color-violet);
-    color: var(--color-violet);
     background-color: var(--color-lavender);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 
@@ -148,10 +159,10 @@ const ComingSoonBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-2) var(--space-3);
+  padding: 8px 24px;
   background-color: var(--color-lavender);
   color: var(--color-violet);
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   font-size: var(--text-body-small);
   font-weight: 500;
 `;
@@ -191,9 +202,8 @@ const Toast = styled.div`
     }
   }
 
-  /* Dark mode: lighter background */
   .dark & {
-    background-color: var(--color-nav-bg);
+    background-color: var(--color-surface-elevated);
   }
 `;
 

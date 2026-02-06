@@ -79,31 +79,31 @@ const AnimatedBox = styled.div`
 `;
 
 const TriggerButton = styled.button`
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-midnight);
-  color: var(--color-pearl);
+  padding: 8px 24px;
+  background: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   font-size: var(--text-body-small);
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0);
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--color-violet);
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 
@@ -183,23 +183,28 @@ const DemoArea = styled.div`
 
 // Specific pattern components
 const DemoButton = styled.button`
-  padding: var(--space-3) var(--space-5);
-  background: var(--color-midnight);
-  color: var(--color-pearl);
+  padding: 16px 40px;
+  background: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
   border: none;
   border-radius: 100px;
   font-size: var(--text-body);
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-default);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
   }
 `;
 
@@ -261,6 +266,10 @@ const DemoToast = styled.div`
   box-shadow: var(--shadow-lg);
   animation: ${toastSlide} var(--duration-normal) var(--ease-out);
   font-size: var(--text-body-small);
+
+  .dark & {
+    background-color: var(--color-surface-elevated);
+  }
 `;
 
 const FocusableBox = styled.div`

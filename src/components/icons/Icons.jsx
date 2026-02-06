@@ -449,7 +449,8 @@ const Icons = () => {
     color: $pearl-white;
 
     &:hover {
-      background: lighten($midnight-violet, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
     }
   }
 </style>`}
