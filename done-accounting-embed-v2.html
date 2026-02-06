@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Done Accounting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & Base ── */
+      .da-embed *,
+      .da-embed *::before,
+      .da-embed *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-pearl: #fbfbfb;
+        --color-midnight: #0b0425;
+        --color-platinum: #f0f0f0;
+        --color-violet: #6a00d5;
+        --color-lavender: #f4efff;
+        --color-text-secondary: rgba(11, 4, 37, 0.6);
+        --color-border: rgba(11, 4, 37, 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-xxl: 32px;
+        --radius-card: 2.75rem;
+        --radius-container: 3rem;
+        --radius-hero: 100px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+        --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+        --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+        --shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+
+        --duration-normal: 200ms;
+        --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .da-embed {
+        font-family: "DM Sans", sans-serif;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      /* ── Layout ── */
+      .da-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ── */
+      .da-hero {
+        padding: 48px 24px 72px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .da-hero-inner {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0b0425 0%,
+          #240046 50%,
+          #6a00d5 100%
+        );
+        border-radius: var(--radius-hero);
+        padding: 96px 48px;
+        overflow: hidden;
+        min-height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .da-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        text-align: center;
+      }
+
+      .da-hero-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(106, 0, 213, 0.4) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 60%,
+            rgba(42, 12, 80, 0.5) 0%,
+            transparent 50%
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .da-hero h1 {
+        font-size: clamp(44px, 7vw, 64px);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        color: var(--color-pearl);
+        margin-bottom: 24px;
+      }
+
+      .da-hero p {
+        font-size: clamp(16px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.6);
+        line-height: 1.6;
+        max-width: 520px;
+        margin: 0 auto 40px;
+      }
+
+      /* ── Buttons ── */
+      .da-btn {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        padding: 16px 40px;
+        border-radius: var(--radius-full);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .da-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+      }
+
+      .da-btn:active {
+        transform: translateY(0);
+      }
+
+      .da-btn:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: 2px;
+      }
+
+      /* ── Value Proposition ── */
+      .da-value-prop {
+        padding: 0 24px 80px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .da-value-prop-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .da-value-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .da-value-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+        transition: box-shadow var(--duration-normal) var(--ease-default),
+          transform var(--duration-normal) var(--ease-default);
+      }
+
+      .da-value-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+      }
+
+      .da-value-card-number {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--color-violet);
+        margin-bottom: 16px;
+        letter-spacing: 0.04em;
+      }
+
+      .da-value-card-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .da-value-card-text {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        line-height: 1.5;
+      }
+
+      /* ── Services Grid ── */
+      .da-services {
+        padding: 0 24px 80px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .da-services-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .da-services-header {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .da-services-label {
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-violet);
+        margin-bottom: 12px;
+      }
+
+      .da-services-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--color-midnight);
+      }
+
+      .da-services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .da-service-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 40px;
+        box-shadow: var(--shadow-md);
+        transition: box-shadow var(--duration-normal) var(--ease-default),
+          transform var(--duration-normal) var(--ease-default);
+      }
+
+      .da-service-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+      }
+
+      .da-service-icon {
+        width: 36px;
+        height: 36px;
+        color: var(--color-violet);
+        margin-bottom: 20px;
+      }
+
+      .da-service-card-title {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .da-service-card-desc {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .da-service-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .da-tag {
+        font-size: 14px;
+        font-weight: 400;
+        padding: 6px 16px;
+        border-radius: var(--radius-full);
+        background-color: var(--color-platinum);
+        color: var(--color-midnight);
+        white-space: nowrap;
+      }
+
+      /* ── Pricing Section (consolidated dark) ── */
+      .da-pricing {
+        padding: 0 24px 80px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .da-pricing-inner {
+        background-color: var(--color-midnight);
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        color: var(--color-pearl);
+      }
+
+      .da-pricing-header {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+
+      .da-pricing-label {
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(251, 251, 251, 0.5);
+        margin-bottom: 12px;
+      }
+
+      .da-pricing-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--color-pearl);
+        margin-bottom: 12px;
+      }
+
+      .da-pricing-desc {
+        font-size: clamp(16px, 2vw, 18px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      /* Table groups within pricing */
+      .da-pricing-group {
+        margin-bottom: 48px;
+      }
+
+      .da-pricing-group:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .da-pricing-group-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(251, 251, 251, 0.1);
+      }
+
+      .da-pricing-tables-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .da-table-label {
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(251, 251, 251, 0.5);
+        margin-bottom: 12px;
+      }
+
+      .da-table-card {
+        background-color: rgba(251, 251, 251, 0.05);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+      }
+
+      .da-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      .da-table thead th {
+        padding: 16px 24px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        background-color: rgba(251, 251, 251, 0.05);
+        color: rgba(251, 251, 251, 0.5);
+      }
+
+      .da-table thead th:last-child {
+        text-align: right;
+      }
+
+      .da-table tbody td {
+        padding: 14px 24px;
+        font-weight: 400;
+        color: var(--color-pearl);
+        border-bottom: 1px solid rgba(251, 251, 251, 0.06);
+      }
+
+      .da-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .da-table .da-price {
+        text-align: right;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      /* ── Conditions Box ── */
+      .da-conditions {
+        background-color: rgba(251, 251, 251, 0.05);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        margin-top: 48px;
+      }
+
+      .da-conditions h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 20px;
+      }
+
+      .da-conditions ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px;
+      }
+
+      .da-conditions li {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.8;
+        padding-left: 24px;
+        position: relative;
+        color: rgba(251, 251, 251, 0.7);
+      }
+
+      .da-conditions li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: rgba(251, 251, 251, 0.4);
+      }
+
+      .da-conditions-footer {
+        font-size: 15px;
+        font-weight: 400;
+        padding-top: 16px;
+        border-top: 1px solid rgba(251, 251, 251, 0.1);
+        color: rgba(251, 251, 251, 0.5);
+      }
+
+      /* ── Testimonials ── */
+      .da-testimonials {
+        padding: 72px 24px;
+        background-color: var(--color-pearl);
+      }
+
+      .da-testimonials-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .da-slides-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .da-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 48px;
+        box-sizing: border-box;
+      }
+
+      .da-slide-logo {
+        height: 48px;
+        width: auto;
+        margin-bottom: 32px;
+      }
+
+      .da-slide-quote {
+        font-size: clamp(22px, 3vw, 32px);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color-midnight);
+        line-height: 1.5;
+        margin: 0 0 24px;
+        max-width: 800px;
+        border: none;
+        padding: 0;
+      }
+
+      .da-slide-author {
+        font-size: 16px;
+        color: var(--color-midnight);
+      }
+
+      .da-slide-author strong {
+        font-weight: 500;
+      }
+
+      .da-slide-author span {
+        color: var(--color-text-secondary);
+      }
+
+      .da-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .da-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--color-platinum);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .da-dot.active {
+        background-color: var(--color-midnight);
+      }
+
+      /* ── CTA ── */
+      .da-cta {
+        padding: 0 24px 48px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .da-cta-inner {
+        background-color: var(--color-midnight);
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        text-align: center;
+      }
+
+      .da-cta h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .da-cta p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        margin: 0 auto 32px;
+        line-height: 1.6;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .da-value-cards {
+          grid-template-columns: 1fr;
+        }
+        .da-services-grid {
+          grid-template-columns: 1fr;
+        }
+        .da-pricing-tables-row {
+          grid-template-columns: 1fr;
+        }
+        .da-hero-content {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .da-hero-inner {
+          border-radius: 40px;
+          padding: 64px 24px;
+          min-height: 300px;
+        }
+        .da-hero h1 {
+          font-size: 36px;
+        }
+        .da-hero p {
+          font-size: 16px;
+        }
+        .da-services-title {
+          font-size: 24px;
+        }
+        .da-pricing-title {
+          font-size: 24px;
+        }
+        .da-pricing-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .da-service-card {
+          padding: 32px;
+        }
+        .da-slide-quote {
+          font-size: 20px;
+        }
+        .da-slide {
+          padding: 0 24px;
+        }
+        .da-cta-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .da-cta h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="da-embed">
+      <!-- Hero -->
+      <section class="da-hero">
+        <div class="da-hero-inner">
+          <div class="da-hero-glow"></div>
+          <div class="da-hero-content">
+            <h1>Your accountant, included.</h1>
+            <p>
+              Bookkeeping, payroll, invoicing, and advisory — one fixed monthly
+              price.
+            </p>
+            <a href="/contact" class="da-btn">Get started</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Value Proposition -->
+      <section class="da-value-prop">
+        <div class="da-wrap">
+          <div class="da-value-prop-inner">
+            <div class="da-value-cards">
+              <div class="da-value-card">
+                <div class="da-value-card-number">01</div>
+                <h3 class="da-value-card-title">Accountant included</h3>
+                <p class="da-value-card-text">
+                  Software and accountant in one price. Most providers sell them
+                  separately — we don't.
+                </p>
+              </div>
+              <div class="da-value-card">
+                <div class="da-value-card-number">02</div>
+                <h3 class="da-value-card-title">One fixed price</h3>
+                <p class="da-value-card-text">
+                  No hourly billing. Same number every month, regardless of
+                  questions or follow-ups.
+                </p>
+              </div>
+              <div class="da-value-card">
+                <div class="da-value-card-number">03</div>
+                <h3 class="da-value-card-title">Professional follow-up</h3>
+                <p class="da-value-card-text">
+                  Not just bookkeeping. Ongoing advisory on VAT, tax, and
+                  business structure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Grid -->
+      <section class="da-services">
+        <div class="da-services-inner">
+          <div class="da-services-header">
+            <div class="da-services-label">Core Services</div>
+            <h2 class="da-services-title">Everything your business needs</h2>
+          </div>
+
+          <div class="da-services-grid">
+            <!-- Bookkeeping -->
+            <div class="da-service-card">
+              <svg
+                class="da-service-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+                />
+              </svg>
+              <h3 class="da-service-card-title">Bookkeeping</h3>
+              <p class="da-service-card-desc">
+                Your books, handled. Accurate, compliant, always current.
+              </p>
+              <div class="da-service-tags">
+                <span class="da-tag">Bookkeeping</span>
+                <span class="da-tag">VAT reporting</span>
+                <span class="da-tag">Annual accounts</span>
+                <span class="da-tag">Reconciliation</span>
+                <span class="da-tag">Tax returns</span>
+              </div>
+            </div>
+
+            <!-- Payroll -->
+            <div class="da-service-card">
+              <svg
+                class="da-service-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <h3 class="da-service-card-title">Payroll</h3>
+              <p class="da-service-card-desc">
+                Payslips, tax deductions, employer contributions, holiday pay —
+                all handled.
+              </p>
+              <div class="da-service-tags">
+                <span class="da-tag">Monthly payslips</span>
+                <span class="da-tag">All business sizes</span>
+                <span class="da-tag">Self-service options</span>
+              </div>
+            </div>
+
+            <!-- Invoicing -->
+            <div class="da-service-card">
+              <svg
+                class="da-service-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
+                />
+                <path d="M14 2v6h6" />
+                <path d="M16 13H8" />
+                <path d="M16 17H8" />
+                <path d="M10 9H8" />
+              </svg>
+              <h3 class="da-service-card-title">Invoicing</h3>
+              <p class="da-service-card-desc">
+                Invoice directly from the accounting system. Payments post
+                automatically when they arrive.
+              </p>
+              <div class="da-service-tags">
+                <span class="da-tag">Integrated</span>
+                <span class="da-tag">Bank integration</span>
+                <span class="da-tag">Auto-posting</span>
+              </div>
+            </div>
+
+            <!-- Advisory -->
+            <div class="da-service-card">
+              <svg
+                class="da-service-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+              <h3 class="da-service-card-title">Advisory</h3>
+              <p class="da-service-card-desc">
+                VAT, tax, business structure — we advise. When you need a
+                specialist, we connect you.
+              </p>
+              <div class="da-service-tags">
+                <span class="da-tag">VAT guidance</span>
+                <span class="da-tag">Tax planning</span>
+                <span class="da-tag">Structure advice</span>
+                <span class="da-tag">Specialist network</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Consolidated Pricing Section (dark) -->
+      <section class="da-pricing">
+        <div class="da-pricing-inner">
+          <div class="da-pricing-header">
+            <div class="da-pricing-label">Pricing</div>
+            <h2 class="da-pricing-title">Transparent, fixed pricing</h2>
+            <p class="da-pricing-desc">
+              No surprises. Know exactly what you pay each month.
+            </p>
+          </div>
+
+          <!-- Bookkeeping Pricing -->
+          <div class="da-pricing-group">
+            <h3 class="da-pricing-group-title">Bookkeeping</h3>
+            <div class="da-pricing-tables-row">
+              <div>
+                <div class="da-table-label">Monthly pricing</div>
+                <div class="da-table-card">
+                  <table class="da-table">
+                    <thead>
+                      <tr>
+                        <th>Transactions / month</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1–49</td>
+                        <td class="da-price">1,100 kr</td>
+                      </tr>
+                      <tr>
+                        <td>50–99</td>
+                        <td class="da-price">1,530 kr</td>
+                      </tr>
+                      <tr>
+                        <td>100–149</td>
+                        <td class="da-price">2,000 kr</td>
+                      </tr>
+                      <tr>
+                        <td>150–199</td>
+                        <td class="da-price">2,450 kr</td>
+                      </tr>
+                      <tr>
+                        <td>200–249</td>
+                        <td class="da-price">2,875 kr</td>
+                      </tr>
+                      <tr>
+                        <td>250–299</td>
+                        <td class="da-price">3,300 kr</td>
+                      </tr>
+                      <tr>
+                        <td>300–349</td>
+                        <td class="da-price">3,750 kr</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <div class="da-table-label">Additional services</div>
+                <div class="da-table-card">
+                  <table class="da-table">
+                    <thead>
+                      <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Annual accounts</td>
+                        <td class="da-price">From 6,000 kr</td>
+                      </tr>
+                      <tr>
+                        <td>Shareholder register (RF-1086)</td>
+                        <td class="da-price">From 990 kr</td>
+                      </tr>
+                      <tr>
+                        <td>Travel expenses (manual)</td>
+                        <td class="da-price">From 250 kr each</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payroll Pricing -->
+          <div class="da-pricing-group">
+            <h3 class="da-pricing-group-title">Payroll</h3>
+            <div class="da-table-card">
+              <table class="da-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Payslip</td>
+                    <td class="da-price">From 149 kr each</td>
+                  </tr>
+                  <tr>
+                    <td>A-melding + system access</td>
+                    <td class="da-price">80 kr/month</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Invoicing & Advisory Pricing -->
+          <div class="da-pricing-group">
+            <h3 class="da-pricing-group-title">Invoicing & Advisory</h3>
+            <div class="da-pricing-tables-row">
+              <div>
+                <div class="da-table-card">
+                  <table class="da-table">
+                    <thead>
+                      <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Invoicing support</td>
+                        <td class="da-price">From 500 kr/hour</td>
+                      </tr>
+                      <tr>
+                        <td>Advisory</td>
+                        <td class="da-price">950 kr/hour</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <div class="da-table-card">
+                  <table class="da-table">
+                    <thead>
+                      <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Phone support</td>
+                        <td class="da-price">From 500 kr/hour</td>
+                      </tr>
+                      <tr>
+                        <td>Setup and training</td>
+                        <td class="da-price">From 1,250 kr</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Services -->
+          <div class="da-pricing-group">
+            <h3 class="da-pricing-group-title">Other Services</h3>
+            <div class="da-table-card">
+              <table class="da-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AML verification (onboarding)</td>
+                    <td class="da-price">From 1,250 kr</td>
+                  </tr>
+                  <tr>
+                    <td>Annual AML verification</td>
+                    <td class="da-price">From 650 kr</td>
+                  </tr>
+                  <tr>
+                    <td>NAV messages</td>
+                    <td class="da-price">From 450 kr each</td>
+                  </tr>
+                  <tr>
+                    <td>Sick leave reporting</td>
+                    <td class="da-price">From 450 kr each</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Conditions -->
+          <div class="da-conditions">
+            <h3>Fixed pricing requires</h3>
+            <ul>
+              <li>Receipts submitted digitally (app or web)</li>
+              <li>
+                Receipts submitted same day or day before transaction
+              </li>
+              <li>All bank accounts integrated</li>
+              <li>No foreign currency accounts</li>
+              <li>Sales in accounting module or integrated POS</li>
+              <li>Incoming invoices as EHF (or scanned)</li>
+              <li>Payments approved with BankID</li>
+            </ul>
+            <div class="da-conditions-footer">
+              Work outside these conditions is billed at 950 kr/hour.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="da-testimonials">
+        <div class="da-testimonials-inner">
+          <div class="da-slides-track">
+            <div class="da-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="da-slide-logo"
+              />
+              <blockquote class="da-slide-quote">
+                "We handed off our bookkeeping and payroll. Haven't thought
+                about it since."
+              </blockquote>
+              <div class="da-slide-author">
+                <strong>Henrik Dahl</strong>
+                <span>| CEO at Oslo Dynamics</span>
+              </div>
+            </div>
+            <div class="da-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="da-slide-logo"
+              />
+              <blockquote class="da-slide-quote">
+                "Real financial guidance — not just number crunching."
+              </blockquote>
+              <div class="da-slide-author">
+                <strong>Ingrid Solberg</strong>
+                <span>| Founder at Solberg Consulting</span>
+              </div>
+            </div>
+            <div class="da-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="da-slide-logo"
+              />
+              <blockquote class="da-slide-quote">
+                "Finago integration made the transition painless. Everything
+                just works."
+              </blockquote>
+              <div class="da-slide-author">
+                <strong>Olav Henriksen</strong>
+                <span>| CFO at Fjell Industries</span>
+              </div>
+            </div>
+          </div>
+          <div class="da-dots">
+            <button class="da-dot active" aria-label="Slide 1"></button>
+            <button class="da-dot" aria-label="Slide 2"></button>
+            <button class="da-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="da-cta">
+        <div class="da-cta-inner">
+          <h2>Ready to hand off your accounting?</h2>
+          <p>
+            One fixed price. Software and accountant included. Tell us about
+            your business — we'll find the right plan.
+          </p>
+          <a href="/contact" class="da-btn">Reach out</a>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        var track = document.querySelector(".da-slides-track");
+        var slides = document.querySelectorAll(".da-slide");
+        var dots = document.querySelectorAll(".da-dot");
+        var total = slides.length;
+        var current = 0;
+
+        var firstClone = slides[0].cloneNode(true);
+        track.appendChild(firstClone);
+
+        function goTo(idx, animate) {
+          if (animate !== false) {
+            track.style.transition =
+              "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          } else {
+            track.style.transition = "none";
+          }
+          track.style.transform = "translateX(-" + idx * 100 + "%)";
+        }
+
+        function updateDots(idx) {
+          dots.forEach(function (d) {
+            d.classList.remove("active");
+          });
+          dots[idx % total].classList.add("active");
+        }
+
+        track.addEventListener("transitionend", function () {
+          if (current === total) {
+            current = 0;
+            goTo(0, false);
+          }
+        });
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            current = i;
+            goTo(current, true);
+            updateDots(current);
+          });
+        });
+
+        setInterval(function () {
+          current++;
+          goTo(current, true);
+          updateDots(current);
+        }, 5000);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Done MRP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & Base ── */
+      .mr-embed *,
+      .mr-embed *::before,
+      .mr-embed *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-pearl: #fbfbfb;
+        --color-midnight: #0b0425;
+        --color-platinum: #f0f0f0;
+        --color-violet: #6a00d5;
+        --color-lavender: #f4efff;
+        --color-text-secondary: rgba(11, 4, 37, 0.6);
+        --color-border: rgba(11, 4, 37, 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-xxl: 32px;
+        --radius-card: 2.75rem;
+        --radius-container: 3rem;
+        --radius-hero: 100px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+        --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+        --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+        --shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+
+        --duration-normal: 200ms;
+        --duration-slow: 300ms;
+        --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .mr-embed {
+        font-family: "DM Sans", sans-serif;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      /* ── Layout ── */
+      .mr-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ── */
+      .mr-hero {
+        padding: 48px 24px 72px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .mr-hero-inner {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0b0425 0%,
+          #240046 50%,
+          #6a00d5 100%
+        );
+        border-radius: var(--radius-hero);
+        padding: 80px 64px;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+      }
+
+      .mr-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 560px;
+      }
+
+      .mr-hero-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(106, 0, 213, 0.4) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 80% 40%,
+            rgba(42, 12, 80, 0.5) 0%,
+            transparent 50%
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Visual element on the right */
+      .mr-hero-visual {
+        position: absolute;
+        right: 64px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 280px;
+        height: 280px;
+        border-radius: var(--radius-xl);
+        background: rgba(251, 251, 251, 0.06);
+        border: 1px solid rgba(251, 251, 251, 0.1);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mr-hero-visual-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 32px;
+        width: 100%;
+      }
+
+      .mr-hero-visual-cell {
+        aspect-ratio: 1;
+        border-radius: var(--radius-md);
+        background: rgba(251, 251, 251, 0.08);
+        border: 1px solid rgba(251, 251, 251, 0.06);
+      }
+
+      .mr-hero-visual-cell.--active {
+        background: rgba(106, 0, 213, 0.4);
+        border-color: rgba(106, 0, 213, 0.3);
+      }
+
+      .mr-hero h1 {
+        font-size: clamp(36px, 5vw, 52px);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--color-pearl);
+        margin-bottom: 16px;
+      }
+
+      .mr-hero p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+        margin-bottom: 32px;
+      }
+
+      .mr-btn-primary {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        padding: 16px 40px;
+        border-radius: var(--radius-full);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .mr-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+      }
+
+      .mr-btn-primary:active {
+        transform: translateY(0);
+      }
+
+      .mr-btn-primary:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: 2px;
+      }
+
+      /* ── Section (shared) ── */
+      .mr-section {
+        padding: 80px 0;
+      }
+
+      .mr-section.--light {
+        background-color: var(--color-pearl);
+        color: var(--color-midnight);
+      }
+
+      .mr-section-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+      }
+
+      .mr-section-title.--with-spacing {
+        margin-top: 64px;
+      }
+
+      .mr-section-desc {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.7;
+      }
+
+      .--light .mr-section-desc {
+        color: var(--color-text-secondary);
+      }
+
+      /* ── Intro ── */
+      .mr-intro {
+        padding: 0 0 80px;
+      }
+
+      .mr-intro-text {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      /* ── Pain Points ── */
+      .mr-pain-list {
+        list-style: none;
+        padding: 0;
+        margin: 32px 0 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .mr-pain-item {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--color-midnight);
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .mr-pain-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .mr-pain-item svg {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        color: var(--color-violet);
+        stroke-width: 2;
+      }
+
+      .mr-pain-closing {
+        font-size: 16px;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+      }
+
+      /* ── Accordion ── */
+      .mr-accordion {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .mr-acc-item {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        transition: box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .mr-acc-item:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .mr-acc-trigger {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        text-align: left;
+        gap: 16px;
+      }
+
+      .mr-acc-trigger:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: -2px;
+        border-radius: var(--radius-xl);
+      }
+
+      .mr-acc-trigger svg.mr-acc-icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        color: var(--color-violet);
+        stroke-width: 1.5;
+      }
+
+      .mr-acc-chevron {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        color: var(--color-text-secondary);
+        transition: transform var(--duration-slow) var(--ease-default);
+      }
+
+      .mr-acc-trigger[aria-expanded="true"] .mr-acc-chevron {
+        transform: rotate(180deg);
+      }
+
+      .mr-acc-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows var(--duration-slow) var(--ease-default);
+      }
+
+      .mr-acc-panel[data-open="true"] {
+        grid-template-rows: 1fr;
+      }
+
+      .mr-acc-panel-inner {
+        overflow: hidden;
+      }
+
+      .mr-acc-content {
+        padding: 0 24px 24px;
+        font-size: 16px;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+      }
+
+      /* ── Finago Integration ── */
+      .mr-finago {
+        padding: 0 24px 80px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .mr-finago-inner {
+        background-color: var(--color-midnight);
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        color: var(--color-pearl);
+      }
+
+      .mr-finago-desc {
+        margin-bottom: 0;
+        color: rgba(251, 251, 251, 0.7);
+      }
+
+      .mr-integration-points {
+        list-style: none;
+        padding: 0;
+        margin: 32px 0 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      @media (max-width: 700px) {
+        .mr-integration-points {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .mr-int-item {
+        background-color: rgba(251, 251, 251, 0.05);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        font-size: 16px;
+        color: var(--color-pearl);
+        line-height: 1.5;
+      }
+
+      .mr-int-icon {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: var(--radius-sm);
+        background-color: rgba(251, 251, 251, 0.08);
+        color: var(--color-pearl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mr-int-icon svg {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2;
+      }
+
+      .mr-int-closing {
+        font-size: 16px;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+      }
+
+      .mr-finago-logo {
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mr-finago-logo span {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--color-pearl);
+        letter-spacing: -0.01em;
+      }
+
+      /* ── Testimonials Slider ── */
+      .mr-testimonials {
+        padding: 72px 24px;
+        background-color: var(--color-pearl);
+      }
+
+      .mr-testimonials-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .mr-slides-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .mr-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 48px;
+        box-sizing: border-box;
+      }
+
+      .mr-slide-logo {
+        height: 48px;
+        width: auto;
+        margin-bottom: 32px;
+      }
+
+      .mr-slide-quote {
+        font-size: clamp(22px, 3vw, 32px);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color-midnight);
+        line-height: 1.5;
+        margin: 0 0 24px;
+        max-width: 800px;
+        border: none;
+        padding: 0;
+      }
+
+      .mr-slide-author {
+        font-size: 16px;
+        color: var(--color-midnight);
+      }
+
+      .mr-slide-author strong {
+        font-weight: 500;
+      }
+
+      .mr-slide-author span {
+        color: var(--color-text-secondary);
+      }
+
+      .mr-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .mr-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--color-platinum);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .mr-dot.active {
+        background-color: var(--color-midnight);
+      }
+
+      /* ── Why Section ── */
+      .mr-why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 40px;
+      }
+
+      .mr-why-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 28px 24px;
+        box-shadow: var(--shadow-md);
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .mr-why-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .mr-why-card svg {
+        color: var(--color-violet);
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.5;
+        margin-bottom: 16px;
+      }
+
+      .mr-why-card h3 {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        line-height: 1.4;
+      }
+
+      /* ── CTA ── */
+      .mr-cta {
+        padding: 0 24px 48px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .mr-cta-inner {
+        background-color: var(--color-midnight);
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        text-align: center;
+      }
+
+      .mr-cta h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 900px) {
+        .mr-hero-visual {
+          display: none;
+        }
+        .mr-hero-inner {
+          padding: 72px 48px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mr-pain-list {
+          grid-template-columns: 1fr;
+        }
+        .mr-accordion {
+          grid-template-columns: 1fr;
+        }
+        .mr-why-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .mr-hero-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+          min-height: 300px;
+        }
+        .mr-hero h1 {
+          font-size: 32px;
+        }
+        .mr-hero p {
+          font-size: 17px;
+        }
+        .mr-section-title {
+          font-size: 24px;
+        }
+        .mr-section-desc {
+          font-size: 16px;
+        }
+        .mr-intro-text {
+          font-size: 16px;
+        }
+        .mr-slide-quote {
+          font-size: 20px;
+        }
+        .mr-slide {
+          padding: 0 24px;
+        }
+        .mr-finago-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .mr-cta-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .mr-cta h2 {
+          font-size: 24px;
+        }
+        .mr-section {
+          padding: 56px 0;
+        }
+        .mr-why-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mr-embed">
+      <!-- 1. Hero -->
+      <section class="mr-hero">
+        <div class="mr-hero-inner">
+          <div class="mr-hero-glow"></div>
+          <div class="mr-hero-content">
+            <h1>Production and logistics. Done.</h1>
+            <p>
+              Full MRP built for manufacturing operations — integrated with
+              Finago Office.
+            </p>
+            <a href="/contact" class="mr-btn-primary">Request a demo</a>
+          </div>
+          <div class="mr-hero-visual">
+            <div class="mr-hero-visual-grid">
+              <div class="mr-hero-visual-cell"></div>
+              <div class="mr-hero-visual-cell --active"></div>
+              <div class="mr-hero-visual-cell"></div>
+              <div class="mr-hero-visual-cell --active"></div>
+              <div class="mr-hero-visual-cell"></div>
+              <div class="mr-hero-visual-cell --active"></div>
+              <div class="mr-hero-visual-cell"></div>
+              <div class="mr-hero-visual-cell"></div>
+              <div class="mr-hero-visual-cell --active"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Introduction -->
+      <section class="mr-intro">
+        <div class="mr-wrap">
+          <p class="mr-intro-text">
+            Done MRP gives manufacturing companies reliable control of
+            production and logistics, without unnecessary complexity. Planning,
+            execution, inventory, purchasing, and shop floor operations — all in
+            one system. Financial processes stay in Finago through a dedicated
+            integration. Clear responsibilities, consistent data, predictable
+            days.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Pain Points -->
+      <section class="mr-section --light">
+        <div class="mr-wrap">
+          <h2 class="mr-section-title">What gets in the way</h2>
+
+          <ul class="mr-pain-list">
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span
+                >Loss of control across production, inventory, and
+                logistics</span
+              >
+            </li>
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span>Manual replanning when demand or capacity changes</span>
+            </li>
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span
+                >Limited visibility into production orders, material
+                availability, and lead times</span
+              >
+            </li>
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span
+                >Weak traceability of items, revisions, and goods
+                movements</span
+              >
+            </li>
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span
+                >ERP systems that are broad in scope but difficult to adapt to
+                operational needs</span
+              >
+            </li>
+            <li class="mr-pain-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path
+                  d="M3.586 15.424 10.576 3.45a1.65 1.65 0 0 1 2.848 0l6.99 11.974A1.65 1.65 0 0 1 18.99 18H5.01a1.65 1.65 0 0 1-1.424-2.576Z"
+                />
+              </svg>
+              <span
+                >Disconnected systems for sales, production, and finance</span
+              >
+            </li>
+          </ul>
+
+          <p class="mr-pain-closing">
+            Done MRP focuses on what matters in day-to-day manufacturing and
+            integrates directly with financial systems like Finago.
+          </p>
+
+          <h2 class="mr-section-title --with-spacing">
+            Functionality
+          </h2>
+
+          <div class="mr-accordion">
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  />
+                </svg>
+                Inventory Management
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Manage raw materials, work in progress, and finished goods
+                    with clear stock levels, locations, and movements.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+                Traceability
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Maintain traceability across materials, revisions, and
+                    production steps. Support controlled changes without
+                    disrupting ongoing work.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
+                  />
+                  <path d="M14 2v6h6" />
+                  <path d="M16 13H8" />
+                  <path d="M16 17H8" />
+                  <path d="M10 9H8" />
+                </svg>
+                Production Orders
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Create, release, and follow up production orders. Track
+                    progress by operation and maintain an accurate overview of
+                    production status.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"
+                  />
+                  <path d="M15 3v4a2 2 0 0 0 2 2h4" />
+                </svg>
+                Bills of Materials and Routings
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Maintain structured BOMs and routings with revision control.
+                    Updates are traceable and consistently applied throughout
+                    planning and execution.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                  <path d="M16 2v4" />
+                  <path d="M8 2v4" />
+                  <path d="M3 10h18" />
+                </svg>
+                Production Planning
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Plan and adjust production based on demand, confirmed
+                    orders, and available capacity. Changes are reflected
+                    directly in schedules and production orders. Plan and
+                    balance machines, work centers, and labor capacity to
+                    identify constraints and support realistic schedules.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="8" cy="21" r="1" />
+                  <circle cx="19" cy="21" r="1" />
+                  <path
+                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+                  />
+                </svg>
+                Purchasing
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Full control over purchase orders. Generate purchasing
+                    suggestions based on demand and inventory levels. Follow up
+                    suppliers, lead times, and deliveries.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 3v18h18" />
+                  <path d="m19 9-5 5-4-4-3 3" />
+                </svg>
+                Reports and Statistics
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Custom build your own reports with drag-and-drop
+                    functionality. Custom built reports can easily be accessed
+                    with access control to allow employees to only see relevant
+                    information.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mr-acc-item">
+              <button
+                class="mr-acc-trigger"
+                aria-expanded="false"
+                onclick="toggleAcc(this)"
+              >
+                <svg
+                  class="mr-acc-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+                Shop Floor Operations
+                <svg
+                  class="mr-acc-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mr-acc-panel">
+                <div class="mr-acc-panel-inner">
+                  <div class="mr-acc-content">
+                    Manage daily shop floor activities including time
+                    registration, material consumption, and operation reporting.
+                    Give operators a clear view of their tasks and progress.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Finago Integration -->
+      <section class="mr-finago">
+        <div class="mr-finago-inner">
+          <div class="mr-finago-logo">
+            <span>Finago</span>
+          </div>
+
+          <h2 class="mr-section-title">Integration with Finago</h2>
+          <p class="mr-section-desc mr-finago-desc">
+            Done MRP integrates with Finago to ensure consistent and reliable
+            data flow between the two systems.
+          </p>
+
+          <ul class="mr-integration-points">
+            <li class="mr-int-item">
+              <div class="mr-int-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                  <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                  <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                  <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                </svg>
+              </div>
+              <span>Two-way sync of customers and suppliers</span>
+            </li>
+            <li class="mr-int-item">
+              <div class="mr-int-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                  <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                  <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                  <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                </svg>
+              </div>
+              <span>Two-way sync of Sales Orders and Invoices</span>
+            </li>
+            <li class="mr-int-item">
+              <div class="mr-int-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                  <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                  <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                  <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                </svg>
+              </div>
+              <span
+                >Two-way sync of items, stock-levels and actual production
+                costs</span
+              >
+            </li>
+            <li class="mr-int-item">
+              <div class="mr-int-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                  <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                  <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                  <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                </svg>
+              </div>
+              <span
+                >General Ledger transactions are automatically posted in
+                Finago</span
+              >
+            </li>
+          </ul>
+
+          <p class="mr-int-closing">
+            This approach supports both operational teams and finance without
+            overlap or duplication.
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. Why Done MRP -->
+      <section class="mr-section --light">
+        <div class="mr-wrap">
+          <h2 class="mr-section-title">Why Done MRP</h2>
+
+          <div class="mr-why-grid">
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                />
+              </svg>
+              <h3>Built specifically for manufacturing operations</h3>
+            </div>
+
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+              <h3>Focused scope with clear system boundaries</h3>
+            </div>
+
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+              </svg>
+              <h3>Predictable implementation and maintenance</h3>
+            </div>
+
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
+                />
+              </svg>
+              <h3>Adaptable to different production environments</h3>
+            </div>
+
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <h3>Supported by Done's experience with ERP and integrations</h3>
+            </div>
+
+            <div class="mr-why-card">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+              </svg>
+              <h3>Native integration with Finago financial systems</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Testimonials Slider -->
+      <section class="mr-testimonials">
+        <div class="mr-testimonials-inner">
+          <div class="mr-slides-track">
+            <div class="mr-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="mr-slide-logo"
+              />
+              <blockquote class="mr-slide-quote">
+                "Done MRP gave us full visibility into production without the
+                complexity of a traditional ERP."
+              </blockquote>
+              <div class="mr-slide-author">
+                <strong>Thomas Radtke</strong> <span>| CEO at Tri Gemini</span>
+              </div>
+            </div>
+            <div class="mr-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="mr-slide-logo"
+              />
+              <blockquote class="mr-slide-quote">
+                "Planning and inventory finally work together. Our lead times
+                dropped significantly."
+              </blockquote>
+              <div class="mr-slide-author">
+                <strong>Anna Lindqvist</strong>
+                <span>| COO at Nordic Manufacturing</span>
+              </div>
+            </div>
+            <div class="mr-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="mr-slide-logo"
+              />
+              <blockquote class="mr-slide-quote">
+                "The Finago integration means our finance team and production
+                team are finally on the same page."
+              </blockquote>
+              <div class="mr-slide-author">
+                <strong>Erik Johansson</strong>
+                <span>| CFO at Scandia Parts</span>
+              </div>
+            </div>
+          </div>
+          <div class="mr-dots">
+            <button class="mr-dot active" aria-label="Slide 1"></button>
+            <button class="mr-dot" aria-label="Slide 2"></button>
+            <button class="mr-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Final CTA -->
+      <section class="mr-cta">
+        <div class="mr-cta-inner">
+          <h2>Learn more about Done MRP</h2>
+          <a href="/contact" class="mr-btn-primary">Request a demo</a>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function toggleAcc(btn) {
+        var expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        var panel = btn.nextElementSibling;
+        panel.setAttribute("data-open", String(!expanded));
+      }
+
+      // Testimonial slider
+      (function () {
+        var track = document.querySelector(".mr-slides-track");
+        var slides = document.querySelectorAll(".mr-slide");
+        var dots = document.querySelectorAll(".mr-dot");
+        var total = slides.length;
+        var current = 0;
+
+        var firstClone = slides[0].cloneNode(true);
+        track.appendChild(firstClone);
+
+        function goTo(idx, animate) {
+          if (animate !== false) {
+            track.style.transition =
+              "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          } else {
+            track.style.transition = "none";
+          }
+          track.style.transform = "translateX(-" + idx * 100 + "%)";
+        }
+
+        function updateDots(idx) {
+          dots.forEach(function (d) {
+            d.classList.remove("active");
+          });
+          dots[idx % total].classList.add("active");
+        }
+
+        track.addEventListener("transitionend", function () {
+          if (current === total) {
+            current = 0;
+            goTo(0, false);
+          }
+        });
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            current = i;
+            goTo(current, true);
+            updateDots(current);
+          });
+        });
+
+        setInterval(function () {
+          current++;
+          goTo(current, true);
+          updateDots(current);
+        }, 5000);
+      })();
+    </script>
+  </body>
+</html>

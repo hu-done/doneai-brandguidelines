@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Done Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & Base ── */
+      .dm-embed *,
+      .dm-embed *::before,
+      .dm-embed *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-pearl: #fbfbfb;
+        --color-midnight: #0b0425;
+        --color-platinum: #f0f0f0;
+        --color-violet: #6a00d5;
+        --color-lavender: #f4efff;
+        --color-text-secondary: rgba(11, 4, 37, 0.6);
+        --color-border: rgba(11, 4, 37, 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-xxl: 32px;
+        --radius-card: 2.75rem;
+        --radius-container: 3rem;
+        --radius-hero: 100px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+        --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+        --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+        --shadow-xl: 0 16px 48px rgba(11, 4, 37, 0.16);
+
+        --duration-normal: 200ms;
+        --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .dm-embed {
+        font-family: "DM Sans", sans-serif;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      /* ── Layout ── */
+      .dm-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ── */
+      .dm-hero {
+        padding: 48px 24px 72px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dm-hero-inner {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0b0425 0%,
+          #240046 50%,
+          #6a00d5 100%
+        );
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        overflow: hidden;
+        min-height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dm-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        text-align: center;
+      }
+
+      .dm-hero h1 {
+        font-size: clamp(40px, 6vw, 56px);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--color-pearl);
+        margin-bottom: 16px;
+      }
+
+      .dm-hero p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+
+      /* Subtle gradient glow overlay */
+      .dm-hero-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(106, 0, 213, 0.4) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 60%,
+            rgba(42, 12, 80, 0.5) 0%,
+            transparent 50%
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* ── Services Section ── */
+      .dm-services {
+        padding: 0 0 80px;
+      }
+
+      .dm-section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 56px;
+      }
+
+      .dm-section-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--color-violet);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 12px;
+      }
+
+      .dm-section-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin: 0;
+      }
+
+      .dm-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      @media (max-width: 960px) {
+        .dm-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .dm-hero-content {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .dm-grid {
+          grid-template-columns: 1fr;
+        }
+        .dm-hero-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+          min-height: 260px;
+        }
+        .dm-hero h1 {
+          font-size: 32px;
+        }
+        .dm-hero p {
+          font-size: 17px;
+        }
+        .dm-section-title {
+          font-size: 24px;
+        }
+        .dm-slide-quote {
+          font-size: 20px;
+        }
+        .dm-slide {
+          padding: 0 24px;
+        }
+        .dm-cta-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .dm-cta h2 {
+          font-size: 24px;
+        }
+      }
+
+      /* ── Card ── */
+      .dm-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        min-height: 220px;
+        box-shadow: var(--shadow-md);
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .dm-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .dm-card-icon {
+        width: 28px;
+        height: 28px;
+        color: var(--color-violet);
+        margin-bottom: 16px;
+      }
+
+      .dm-card-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke-width: 1.5;
+      }
+
+      .dm-card h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 8px;
+      }
+
+      .dm-card p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        flex-grow: 1;
+        margin-bottom: 20px;
+      }
+
+      /* ── Tags ── */
+      .dm-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .dm-tag {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--color-midnight);
+        background-color: var(--color-platinum);
+        padding: 5px 12px;
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+      }
+
+      /* ── Testimonials ── */
+      .dm-testimonials {
+        padding: 72px 24px;
+        background-color: var(--color-pearl);
+      }
+
+      .dm-testimonials-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .dm-slides-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .dm-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 48px;
+        box-sizing: border-box;
+      }
+
+      .dm-slide-logo {
+        height: 48px;
+        width: auto;
+        margin-bottom: 32px;
+      }
+
+      .dm-slide-quote {
+        font-size: clamp(22px, 3vw, 32px);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color-midnight);
+        line-height: 1.5;
+        margin: 0 0 24px;
+        max-width: 800px;
+        border: none;
+        padding: 0;
+      }
+
+      .dm-slide-author {
+        font-size: 16px;
+        color: var(--color-midnight);
+      }
+
+      .dm-slide-author strong {
+        font-weight: 500;
+      }
+
+      .dm-slide-author span {
+        color: var(--color-text-secondary);
+      }
+
+      .dm-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .dm-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--color-platinum);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .dm-dot.active {
+        background-color: var(--color-midnight);
+      }
+
+      /* ── CTA ── */
+      .dm-cta {
+        padding: 0 24px 48px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dm-cta-inner {
+        background-color: var(--color-midnight);
+        border-radius: var(--radius-hero);
+        padding: 72px 48px;
+        text-align: center;
+      }
+
+      .dm-cta h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .dm-cta p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        margin: 0 auto 32px;
+        line-height: 1.6;
+      }
+
+      /* ── Button ── */
+      .dm-btn {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        padding: 16px 40px;
+        border-radius: var(--radius-full);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .dm-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+      }
+
+      .dm-btn:active {
+        transform: translateY(0);
+      }
+
+      .dm-btn:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dm-embed">
+      <!-- Hero -->
+      <section class="dm-hero">
+        <div class="dm-hero-inner">
+          <div class="dm-hero-glow"></div>
+          <div class="dm-hero-content">
+            <h1>Done Marketing</h1>
+            <p>
+              Full-service marketing delivered by WeAssist, our in-house agency.
+              Paid media, SEO, content, and web design—handled.
+            </p>
+            <a href="/contact" class="dm-btn">Reach out</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="dm-services">
+        <div class="dm-wrap">
+          <div class="dm-section-header">
+            <div class="dm-section-label">Our Services</div>
+            <h2 class="dm-section-title">Full-service marketing, handled.</h2>
+          </div>
+          <div class="dm-grid">
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                  <path d="M12 18V6" />
+                </svg>
+              </div>
+              <h3>Paid Social</h3>
+              <p>
+                Meta, TikTok, LinkedIn campaigns that reach the right audience.
+                We handle strategy, creative, and optimization.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Meta Ads</span>
+                <span class="dm-tag">TikTok</span>
+                <span class="dm-tag">LinkedIn</span>
+              </div>
+            </div>
+
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </div>
+              <h3>Google Ads</h3>
+              <p>
+                Search, Shopping, and Performance Max campaigns. We find
+                customers who are already looking for what you sell.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Search</span>
+                <span class="dm-tag">Shopping</span>
+                <span class="dm-tag">Display</span>
+              </div>
+            </div>
+
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3>SEO</h3>
+              <p>
+                Technical audits, content strategy, and link building. Organic
+                traffic that compounds over time.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Technical</span>
+                <span class="dm-tag">On-page</span>
+                <span class="dm-tag">Link building</span>
+              </div>
+            </div>
+
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <h3>Email &amp; Automation</h3>
+              <p>
+                Klaviyo flows, newsletters, and lifecycle campaigns. Keep
+                customers engaged without the manual work.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Klaviyo</span>
+                <span class="dm-tag">Flows</span>
+                <span class="dm-tag">Newsletters</span>
+              </div>
+            </div>
+
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+              </div>
+              <h3>Content &amp; Social Media</h3>
+              <p>
+                Strategy, creation, and management for your social channels.
+                Consistent presence, authentic voice.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Strategy</span>
+                <span class="dm-tag">Content</span>
+                <span class="dm-tag">Management</span>
+              </div>
+            </div>
+
+            <div class="dm-card">
+              <div class="dm-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                  />
+                  <path
+                    d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"
+                  />
+                </svg>
+              </div>
+              <h3>Web Design &amp; E-commerce</h3>
+              <p>
+                Webflow and Shopify sites that convert. From landing pages to
+                full storefronts.
+              </p>
+              <div class="dm-tags">
+                <span class="dm-tag">Webflow</span>
+                <span class="dm-tag">Shopify</span>
+                <span class="dm-tag">Conversion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="dm-testimonials">
+        <div class="dm-testimonials-inner">
+          <div class="dm-slides-track">
+            <div class="dm-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="dm-slide-logo"
+              />
+              <blockquote class="dm-slide-quote">
+                "Our digital presence went from invisible to industry-leading in
+                six months."
+              </blockquote>
+              <div class="dm-slide-author">
+                <strong>Maria Svensson</strong>
+                <span>| Marketing Director at TechNord</span>
+              </div>
+            </div>
+            <div class="dm-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="dm-slide-logo"
+              />
+              <blockquote class="dm-slide-quote">
+                "WeAssist delivered what three previous agencies couldn't. Real
+                results, clear reporting."
+              </blockquote>
+              <div class="dm-slide-author">
+                <strong>Lars Eriksen</strong>
+                <span>| CEO at Bergen Solutions</span>
+              </div>
+            </div>
+            <div class="dm-slide">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Company"
+                class="dm-slide-logo"
+              />
+              <blockquote class="dm-slide-quote">
+                "From SEO to paid media, everything is handled. We just focus on
+                running our business."
+              </blockquote>
+              <div class="dm-slide-author">
+                <strong>Katrine Haugen</strong>
+                <span>| Founder at Fjord Retail</span>
+              </div>
+            </div>
+          </div>
+          <div class="dm-dots">
+            <button class="dm-dot active" aria-label="Slide 1"></button>
+            <button class="dm-dot" aria-label="Slide 2"></button>
+            <button class="dm-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="dm-cta">
+        <div class="dm-cta-inner">
+          <h2>Need marketing support?</h2>
+          <p>Tell us about your goals. We'll put together a plan that fits.</p>
+          <a href="/contact" class="dm-btn">Reach out</a>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        var track = document.querySelector(".dm-slides-track");
+        var slides = document.querySelectorAll(".dm-slide");
+        var dots = document.querySelectorAll(".dm-dot");
+        var total = slides.length;
+        var current = 0;
+
+        var firstClone = slides[0].cloneNode(true);
+        track.appendChild(firstClone);
+
+        function goTo(idx, animate) {
+          if (animate !== false) {
+            track.style.transition =
+              "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          } else {
+            track.style.transition = "none";
+          }
+          track.style.transform = "translateX(-" + idx * 100 + "%)";
+        }
+
+        function updateDots(idx) {
+          dots.forEach(function (d) {
+            d.classList.remove("active");
+          });
+          dots[idx % total].classList.add("active");
+        }
+
+        track.addEventListener("transitionend", function () {
+          if (current === total) {
+            current = 0;
+            goTo(0, false);
+          }
+        });
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function () {
+            current = i;
+            goTo(current, true);
+            updateDots(current);
+          });
+        });
+
+        setInterval(function () {
+          current++;
+          goTo(current, true);
+          updateDots(current);
+        }, 5000);
+      })();
+    </script>
+  </body>
+</html>

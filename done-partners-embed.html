@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Done Partners</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & Base ── */
+      .dp-embed *,
+      .dp-embed *::before,
+      .dp-embed *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-pearl: #fbfbfb;
+        --color-midnight: #0b0425;
+        --color-platinum: #f0f0f0;
+        --color-violet: #6a00d5;
+        --color-lavender: #f4efff;
+        --color-text-secondary: #6b6b6b;
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+        --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+        --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+
+        --duration-normal: 200ms;
+        --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .dp-embed {
+        font-family: "DM Sans", sans-serif;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      /* ── Layout ── */
+      .dp-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ── */
+      .dp-hero {
+        padding: 48px 24px 72px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dp-hero-inner {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0b0425 0%,
+          #240046 50%,
+          #6a00d5 100%
+        );
+        border-radius: 100px;
+        padding: 72px 48px;
+        overflow: hidden;
+        min-height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dp-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        text-align: center;
+      }
+
+      .dp-hero-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(106, 0, 213, 0.4) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 60%,
+            rgba(42, 12, 80, 0.5) 0%,
+            transparent 50%
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .dp-hero h1 {
+        font-size: clamp(40px, 6vw, 56px);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--color-pearl);
+        margin-bottom: 16px;
+      }
+
+      .dp-hero p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+      }
+
+      /* ── Featured Partners ── */
+      .dp-featured {
+        padding: 0 0 80px;
+      }
+
+      .dp-section-title {
+        font-size: clamp(24px, 3vw, 32px);
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 24px;
+      }
+
+      .dp-featured-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .dp-featured-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 40px 32px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
+        transition: all var(--duration-normal) var(--ease-default);
+      }
+
+      .dp-featured-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .dp-featured-card img {
+        max-height: 4rem;
+        width: auto;
+        object-fit: contain;
+        margin-bottom: 24px;
+      }
+
+      .dp-featured-card h3 {
+        font-size: 26px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 12px;
+      }
+
+      .dp-featured-card p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        flex-grow: 1;
+        margin-bottom: 28px;
+      }
+
+      .dp-card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        background-color: var(--color-platinum);
+        padding: 12px 24px;
+        border-radius: 100px;
+        text-decoration: none;
+        transition: all var(--duration-normal) var(--ease-default);
+        align-self: flex-start;
+      }
+
+      .dp-card-btn:hover {
+        background-color: var(--color-lavender);
+        color: var(--color-violet);
+      }
+
+      .dp-card-btn svg {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2;
+      }
+
+      /* ── Partners Grid ── */
+      .dp-grid-section {
+        padding: 0 0 80px;
+      }
+
+      .dp-partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 24px;
+      }
+
+      .dp-partner-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 140px;
+        text-decoration: none;
+        transition: all var(--duration-normal) var(--ease-default);
+      }
+
+      .dp-partner-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .dp-partner-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .dp-partner-logo span {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-midnight);
+      }
+
+      .dp-partner-card img {
+        max-height: 3rem;
+        width: auto;
+        object-fit: contain;
+      }
+
+      /* ── CTA ── */
+      .dp-cta {
+        padding: 0 24px 48px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dp-cta-inner {
+        background-color: var(--color-midnight);
+        border-radius: 100px;
+        padding: 72px 48px;
+        text-align: center;
+      }
+
+      .dp-cta h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .dp-cta p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        margin: 0 auto 32px;
+        line-height: 1.6;
+      }
+
+      .dp-btn {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        padding: 16px 40px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .dp-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+      }
+
+      .dp-btn:active {
+        transform: translateY(0);
+      }
+
+      .dp-btn:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: 2px;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .dp-hero-content {
+          max-width: 100%;
+        }
+        .dp-featured-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .dp-hero-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+          min-height: 260px;
+        }
+        .dp-hero h1 {
+          font-size: 32px;
+        }
+        .dp-hero p {
+          font-size: 17px;
+        }
+        .dp-section-title {
+          font-size: 22px;
+        }
+        .dp-cta-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .dp-cta h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dp-embed">
+      <!-- Hero -->
+      <section class="dp-hero">
+        <div class="dp-hero-inner">
+          <div class="dp-hero-glow"></div>
+          <div class="dp-hero-content">
+            <h1>Partners</h1>
+            <p>
+              We work with industry leaders to deliver integrated solutions that
+              power your business.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Partners -->
+      <section class="dp-featured">
+        <div class="dp-wrap">
+          <h2 class="dp-section-title">Featured Partners</h2>
+          <div class="dp-featured-grid">
+            <!-- Finago -->
+            <div class="dp-featured-card">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/691725b3c8fa665402556d14_finago_logo_normal_black.png"
+                alt="Finago"
+                style="height: 32px; width: auto"
+              />
+              <h3>Finago</h3>
+              <p>
+                Finago delivers ERP and accounting software trusted by thousands
+                of Nordic businesses. Their platform integrates with Done.ai,
+                enabling comprehensive bookkeeping, payroll, and financial
+                reporting.
+              </p>
+              <a
+                href="https://finago.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="dp-card-btn"
+              >
+                Visit Finago
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Nordiska -->
+            <div class="dp-featured-card">
+              <img
+                src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                alt="Nordiska"
+                style="height: 32px; width: auto"
+              />
+              <h3>Nordiska</h3>
+              <p>
+                Nordiska is a Swedish bank providing embedded finance
+                infrastructure. Through this partnership, Done.ai integrates
+                financial services—including BNPL, invoice financing, SME loans,
+                and savings accounts—directly into the platform.
+              </p>
+              <a
+                href="https://www.nordiska.se/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="dp-card-btn"
+              >
+                Visit Nordiska
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partners Grid -->
+      <section class="dp-grid-section">
+        <div class="dp-wrap">
+          <h2 class="dp-section-title">Partners</h2>
+          <div class="dp-partners-grid">
+            <a
+              href="https://mynt.no"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="dp-partner-card"
+            >
+              <div class="dp-partner-logo">
+                <img
+                  src="https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/694022744e53777b5d941176_LHL-logo.svg"
+                  alt="Mynt"
+                  style="height: 32px; width: auto"
+                />
+                <span>Mynt</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="dp-cta">
+        <div class="dp-cta-inner">
+          <h2>Interested in partnering?</h2>
+          <p>We're always looking for partners who share our vision.</p>
+          <a href="/contact" class="dp-btn">Reach out</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

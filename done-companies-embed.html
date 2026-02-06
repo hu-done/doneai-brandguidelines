@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Companies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & Base ── */
+      .dc-embed *,
+      .dc-embed *::before,
+      .dc-embed *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-pearl: #fbfbfb;
+        --color-midnight: #0b0425;
+        --color-platinum: #f0f0f0;
+        --color-violet: #6a00d5;
+        --color-lavender: #f4efff;
+        --color-text-secondary: #6b6b6b;
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 1px 2px rgba(11, 4, 37, 0.05);
+        --shadow-md: 0 4px 12px rgba(11, 4, 37, 0.08);
+        --shadow-lg: 0 8px 24px rgba(11, 4, 37, 0.12);
+
+        --duration-normal: 200ms;
+        --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .dc-embed {
+        font-family: "DM Sans", sans-serif;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+
+      /* ── Layout ── */
+      .dc-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ── */
+      .dc-hero {
+        padding: 48px 24px 72px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dc-hero-inner {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0b0425 0%,
+          #240046 50%,
+          #6a00d5 100%
+        );
+        border-radius: 100px;
+        padding: 72px 48px;
+        overflow: hidden;
+        min-height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dc-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        text-align: center;
+      }
+
+      .dc-hero-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(106, 0, 213, 0.4) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 60%,
+            rgba(42, 12, 80, 0.5) 0%,
+            transparent 50%
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .dc-hero h1 {
+        font-size: clamp(40px, 6vw, 56px);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--color-pearl);
+        margin-bottom: 16px;
+      }
+
+      .dc-hero p {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(251, 251, 251, 0.7);
+        line-height: 1.6;
+      }
+
+      /* ── Companies Grid ── */
+      .dc-companies {
+        padding: 0 0 80px;
+      }
+
+      .dc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      @media (max-width: 700px) {
+        .dc-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Company Card ── */
+      .dc-card {
+        background-color: var(--color-pearl);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all var(--duration-normal) var(--ease-default);
+      }
+
+      .dc-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Image area */
+      .dc-card-img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: var(--color-platinum);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .dc-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Placeholder shown when no image is set */
+      .dc-card-img-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        color: rgba(11, 4, 37, 0.15);
+      }
+
+      .dc-card-img-placeholder svg {
+        width: 48px;
+        height: 48px;
+        stroke-width: 1;
+      }
+
+      /* Card body */
+      .dc-card-body {
+        padding: 24px 28px 28px;
+      }
+
+      .dc-card-name {
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        margin-bottom: 4px;
+      }
+
+      /* Accordion toggle */
+      .dc-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+        transition: color var(--duration-normal) var(--ease-default);
+      }
+
+      .dc-toggle:hover {
+        color: var(--color-violet);
+      }
+
+      .dc-toggle svg {
+        width: 16px;
+        height: 16px;
+        stroke-width: 2;
+        transition: transform var(--duration-normal) var(--ease-default);
+      }
+
+      .dc-toggle[aria-expanded="true"] svg {
+        transform: rotate(180deg);
+      }
+
+      /* Expandable content */
+      .dc-details {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 300ms var(--ease-default);
+      }
+
+      .dc-details[data-open="true"] {
+        grid-template-rows: 1fr;
+      }
+
+      .dc-details-inner {
+        overflow: hidden;
+      }
+
+      .dc-details-content {
+        padding-top: 16px;
+        font-size: 16px;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+      }
+
+      .dc-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .dc-tag {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        background-color: var(--color-platinum);
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+      }
+
+      /* ── CTA ── */
+      .dc-cta {
+        padding: 0 24px 48px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .dc-cta-inner {
+        background-color: var(--color-midnight);
+        border-radius: 100px;
+        padding: 72px 48px;
+        text-align: center;
+      }
+
+      .dc-cta h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 500;
+        color: var(--color-pearl);
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .dc-btn {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: var(--color-midnight);
+        background-color: var(--color-pearl);
+        padding: 16px 40px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform var(--duration-normal) var(--ease-default),
+          box-shadow var(--duration-normal) var(--ease-default);
+      }
+
+      .dc-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 10px -4px rgba(106, 0, 213, 0.5);
+      }
+
+      .dc-btn:active {
+        transform: translateY(0);
+      }
+
+      .dc-btn:focus-visible {
+        outline: 2px solid var(--color-violet);
+        outline-offset: 2px;
+      }
+
+      /* ── Responsive ── */
+
+      @media (max-width: 768px) {
+        .dc-hero-content {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .dc-hero-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+          min-height: 260px;
+        }
+        .dc-hero h1 {
+          font-size: 32px;
+        }
+        .dc-hero p {
+          font-size: 17px;
+        }
+        .dc-cta-inner {
+          border-radius: 40px;
+          padding: 56px 24px;
+        }
+        .dc-cta h2 {
+          font-size: 24px;
+        }
+        .dc-card-body {
+          padding: 20px 24px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dc-embed">
+      <!-- Hero -->
+      <section class="dc-hero">
+        <div class="dc-hero-inner">
+          <div class="dc-hero-glow"></div>
+          <div class="dc-hero-content">
+            <h1>Our Companies</h1>
+            <p>The teams behind Done.ai.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Companies -->
+      <section class="dc-companies">
+        <div class="dc-wrap">
+          <div class="dc-grid">
+            <!-- Accountabl -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/68397b432697f372655db2b9_accountabl.png"
+                  alt="Accountabl"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Accountabl</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      UK-based spend management company providing real-time
+                      expense tracking, card management, and budgetary control.
+                      This acquisition reinforces Done.ai's strategic goal to
+                      lead in the spend management market, delivering increased
+                      financial transparency and operational efficiency to
+                      businesses.
+                      <div class="dc-tags">
+                        <span class="dc-tag"
+                          >Spend visibility and analytics</span
+                        >
+                        <span class="dc-tag">Cost and expense management</span>
+                        <span class="dc-tag"
+                          >Financial control and efficiency</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Debet -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/68a70920aaf72c6ef938939b_www.debet.no_%201.png"
+                  alt="Debet"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Debet</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Norwegian software company offering a cloud-based
+                      invoicing, billing and debt-collection platform tailored
+                      for small and medium-sized businesses. By integrating
+                      Debet's financial tools and debt management solutions,
+                      Done.ai strengthens its fintech ecosystem and expands its
+                      offering of AI-powered invoicing and accounting services
+                      across the SMB market.
+                      <div class="dc-tags">
+                        <span class="dc-tag">Cloud-based invoicing</span>
+                        <span class="dc-tag">Accounting Solutions</span>
+                        <span class="dc-tag">Debt Collection</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frisikt -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/68397815ad4bc4b125c66b72_Screenshot_30-5-2025_111848_www.frisikt.no.jpeg"
+                  alt="Frisikt"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Frisikt</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Leading Norwegian professional services and technology
+                      firm, significantly expanding Done.ai's capabilities in
+                      accounting, ERP, compliance, and business advisory. With
+                      over 200 professionals and contracted revenues exceeding
+                      NOK 200M, Frisikt enhances Done.ai's service offering,
+                      especially for small and medium-sized businesses (SMBs).
+                      <div class="dc-tags">
+                        <span class="dc-tag">Accounting and ERP services</span>
+                        <span class="dc-tag">Compliance and advisory</span>
+                        <span class="dc-tag"
+                          >Professional services and business consulting</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fullstakk -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/68a70a5efda070a8bb7554a1_www.fullstakk.no_%201.png"
+                  alt="Fullstakk"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Fullstakk</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Norwegian growth-focused digital marketing agency founded
+                      in 2019, dedicated to leveraging data-driven and
+                      transparent methods to deliver measurable business growth.
+                      Through Fullstakk's expertise in performance marketing and
+                      digital growth strategies, Done.ai expands its commercial
+                      capabilities and accelerates delivery of scalable
+                      marketing solutions for clients across the Nordics.
+                      <div class="dc-tags">
+                        <span class="dc-tag"
+                          >Data-driven Digital Marketing</span
+                        >
+                        <span class="dc-tag"
+                          >Performance & Growth Optimization</span
+                        >
+                        <span class="dc-tag"
+                          >Transparent Campaign Management</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Huddlestock -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/6839772b8797ad1720a60fcf_Huddlestock.png"
+                  alt="Huddlestock"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Huddlestock</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Investment-as-a-Service (IaaS) platform bringing proven
+                      expertise in investment services infrastructure to
+                      Done.ai. This acquisition strengthens Done.ai's ability to
+                      deliver integrated financial solutions, now encompassing
+                      credit, payments, and investments, all embedded within ERP
+                      systems businesses already use.
+                      <div class="dc-tags">
+                        <span class="dc-tag"
+                          >Integrated investment infrastructure</span
+                        >
+                        <span class="dc-tag">API Integration</span>
+                        <span class="dc-tag"
+                          >Comprehensive financial management</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- JCloud -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/68a708450f02dc61b011aa4c_jcloud.no_%201.png"
+                  alt="JCloud"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">JCloud</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Delivers proprietary cloud and AI solutions built for
+                      today's demands of flexibility, performance, and security.
+                      By adding advanced cloud infrastructure and AI-driven
+                      services, JCloud enhances Done.ai's ability to deliver
+                      secure, scalable, and cost-efficient digital platforms
+                      tailored to Norwegian SMBs.
+                      <div class="dc-tags">
+                        <span class="dc-tag">Cloud Infrastructure</span>
+                        <span class="dc-tag">AI-Driven Business Solutions</span>
+                        <span class="dc-tag"
+                          >Secure & Scalable Data Center Operations</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Masterplan -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/6839892c581429554ab70cb0_Masterplan.png"
+                  alt="Masterplan"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Masterplan</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Delivers a proven cloud-based enterprise resource planning
+                      system, initially designed to address the precise needs of
+                      a Wisconsin-based manufacturing firm. Today, Masterplan
+                      serves clients across seven countries and multiple
+                      industries — from family-owned businesses to Fortune 500
+                      corporations — leveraging deep manufacturing expertise to
+                      deliver exceptional reliability, efficiency, and value.
+                      <div class="dc-tags">
+                        <span class="dc-tag">Cloud-based ERP solutions</span>
+                        <span class="dc-tag"
+                          >Manufacturing-centric capabilities</span
+                        >
+                        <span class="dc-tag"
+                          >Global scalability and versatility</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MetaManager -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/6839875f07594a40bb2d3667_Metamanager.png"
+                  alt="MetaManager"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">MetaManager</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Norwegian SaaS innovation, enhances Done.ai's capabilities
+                      with its advanced AI-driven marketing software specialized
+                      in Search Engine Optimization (SEO) and Generative Engine
+                      Optimization (GEO). By simplifying and automating SEO
+                      tasks, MetaManager enables businesses to achieve stronger
+                      organic growth and enhanced digital visibility, without
+                      extensive technical resources.
+                      <div class="dc-tags">
+                        <span class="dc-tag"
+                          >AI-powered SEO & content optimization</span
+                        >
+                        <span class="dc-tag"
+                          >Generative Engine Optimization (GEO)</span
+                        >
+                        <span class="dc-tag"
+                          >Simplified digital marketing management</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Oflow -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/683988ad6161fbd77abcddd4_Oflow.png"
+                  alt="Oflow"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Oflow</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      Offers a fully web-based solution for payment reminders,
+                      integrated into your accounting system. Built on a modern
+                      technological platform, Oflow ensures efficient workflows,
+                      clear oversight, and easy communication between debtors,
+                      creditors, and accountants. Cases unresolved by initial
+                      reminders transition into the debt-collection module,
+                      where experienced specialists manage the process
+                      professionally.
+                      <div class="dc-tags">
+                        <span class="dc-tag">Automated payment reminders</span>
+                        <span class="dc-tag">Accounting integration</span>
+                        <span class="dc-tag"
+                          >Professional debt collection services</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plorea -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/697371ee2922b909bdbeada2_plorea-site.png"
+                  alt="Plorea"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Plorea</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      A Nordic provider of cloud-based point-of-sale and payment
+                      solutions, brings Done.ai directly to where transactions
+                      happen. Serving over 2,000 merchants across HoReCa,
+                      retail, services, and food & beverage, Plorea processes
+                      more than 8 million transactions annually.
+                      <div class="dc-tags">
+                        <span class="dc-tag">Point-of-sale systems</span>
+                        <span class="dc-tag">Payment processing</span>
+                        <span class="dc-tag">Omnichannel commerce</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WeAssist -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/6839827ee0230a0a2c5663dc_WeAssist.png"
+                  alt="WeAssist"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">WeAssist</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      A dynamic Nordic digital agency operating in Norway and
+                      Denmark, specializes in accelerating business growth
+                      through digital innovation. Combining creative talent with
+                      strategic thinking, WeAssist strengthens Done.ai's
+                      commercial capabilities and expands the delivery of
+                      scalable digital solutions across the Nordics.
+                      <div class="dc-tags">
+                        <span class="dc-tag"
+                          >Digital strategy and innovation</span
+                        >
+                        <span class="dc-tag">Growth-driven marketing</span>
+                        <span class="dc-tag">Business scaling solutions</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Innomate -->
+            <div class="dc-card">
+              <div class="dc-card-img">
+                <img
+                  src="https://cdn.prod.website-files.com/67e3e64e789e29dcb11d8a73/697cb14bfd41f58fc4bfa085_innomate-site.png"
+                  alt="Innomate"
+                />
+              </div>
+              <div class="dc-card-body">
+                <h3 class="dc-card-name">Innomate</h3>
+                <button
+                  class="dc-toggle"
+                  aria-expanded="false"
+                  onclick="toggleCard(this)"
+                >
+                  Read more about the company
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="dc-details">
+                  <div class="dc-details-inner">
+                    <div class="dc-details-content">
+                      A Danish HR software company with over two decades of
+                      experience. Innomate offers a module-based, end-to-end
+                      automated HR SaaS solution covering onboarding,
+                      recruitment, competence management, and administration —
+                      supporting employees from day one to offboarding.
+                      <div class="dc-tags">
+                        <span class="dc-tag">End-to-end HR automation</span>
+                        <span class="dc-tag">Recruitment and onboarding</span>
+                        <span class="dc-tag">Competence management</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="dc-cta">
+        <div class="dc-cta-inner">
+          <h2>Want to learn more about our companies?</h2>
+          <a href="/contact" class="dc-btn">Reach out</a>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function toggleCard(btn) {
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        const details = btn.nextElementSibling;
+        details.setAttribute("data-open", String(!expanded));
+      }
+    </script>
+  </body>
+</html>
