@@ -22,7 +22,7 @@ const Button = styled.button`
   letter-spacing: 0;
   border-radius: 100px;
   cursor: pointer;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
   border: none;
 
   /* Variant Styles */
@@ -317,25 +317,35 @@ const Buttons = () => {
         <thead>
           <tr>
             <TableHeader>State</TableHeader>
-            <TableHeader>Visual Change</TableHeader>
+            <TableHeader>Primary</TableHeader>
+            <TableHeader>Secondary/Ghost</TableHeader>
+            <TableHeader>Destructive</TableHeader>
           </tr>
         </thead>
         <tbody>
           <tr>
             <TableCell>Hover</TableCell>
-            <TableCell>Opacity reduction or subtle shadow</TableCell>
+            <TableCell>translateY(-2px) + violet shadow</TableCell>
+            <TableCell>Lavender background</TableCell>
+            <TableCell>opacity 0.9 + shadow</TableCell>
           </tr>
           <tr>
-            <TableCell>Active (pressed)</TableCell>
-            <TableCell>Scale to 0.98</TableCell>
+            <TableCell>Active</TableCell>
+            <TableCell>translateY(0)</TableCell>
+            <TableCell>scale(0.98)</TableCell>
+            <TableCell>scale(0.98)</TableCell>
           </tr>
           <tr>
             <TableCell>Focus</TableCell>
             <TableCell>2px violet ring, 2px offset</TableCell>
+            <TableCell>2px violet ring, 2px offset</TableCell>
+            <TableCell>2px violet ring, 2px offset</TableCell>
           </tr>
           <tr>
             <TableCell>Disabled</TableCell>
-            <TableCell>50% opacity, cursor not-allowed</TableCell>
+            <TableCell>50% opacity</TableCell>
+            <TableCell>50% opacity</TableCell>
+            <TableCell>50% opacity</TableCell>
           </tr>
         </tbody>
       </SpecTable>
@@ -543,7 +553,7 @@ const Buttons = () => {
   bg-midnight text-pearl
   px-5 py-3
   rounded-full
-  font-medium
+  font-normal
   hover:shadow-md hover:-translate-y-0.5
   active:translate-y-0
   transition-all duration-100
@@ -559,7 +569,7 @@ const Buttons = () => {
   bg-transparent text-midnight
   px-5 py-3
   rounded-full
-  font-medium
+  font-normal
   border border-midnight
   hover:bg-lavender
   active:scale-98
@@ -576,7 +586,7 @@ const Buttons = () => {
   bg-transparent text-midnight
   px-5 py-3
   rounded-full
-  font-medium
+  font-normal
   hover:bg-lavender
   active:scale-98
   transition-all duration-100

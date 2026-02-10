@@ -282,6 +282,26 @@ $breakpoint-2xl: 1536px;`;
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* ========================================
+   BASE ELEMENT STYLES
+   ======================================== */
+
+/* Links - use --color-accent for automatic dark mode support */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-default);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }`;
 
   const tailwindConfig = `// tailwind.config.js
@@ -588,6 +608,12 @@ export default {
             {cssCustomProps}
           </CodeBlock>
         </div>
+
+        <Callout type="info" title="Link Styling Included">
+          This CSS includes base link styles using --color-accent. This variable
+          automatically adjusts from #6A00D5 (light) to #8B5CF6 (dark) for
+          proper contrast. Do not use --color-violet for links.
+        </Callout>
       </Section>
 
       {/* Tailwind Config */}

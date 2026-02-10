@@ -85,12 +85,12 @@ const TriggerButton = styled.button`
   border: none;
   border-radius: 100px;
   font-size: var(--text-body-small);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
 
   &:hover {
     transform: translateY(-2px);
@@ -189,9 +189,9 @@ const DemoButton = styled.button`
   border: none;
   border-radius: 100px;
   font-size: var(--text-body);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
 
   &:hover {
     transform: translateY(-2px);

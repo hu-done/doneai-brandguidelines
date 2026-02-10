@@ -553,7 +553,7 @@ const Icons = () => {
       <S.Subtitle>Resources</S.Subtitle>
       <S.Bodytext>
         Browse the complete Lucide icon library at{" "}
-        <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-violet)" }}>
+        <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>
           lucide.dev/icons
         </a>
       </S.Bodytext>

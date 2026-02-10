@@ -195,9 +195,9 @@ const CheckButton = styled.button`
   border: none;
   font-family: "DM Sans", sans-serif;
   font-size: var(--text-body);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
   margin-top: var(--space-3);
   display: flex;
   align-items: center;

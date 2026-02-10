@@ -93,8 +93,8 @@ const DownloadButton = styled.a`
   border-radius: 100px;
   text-decoration: none;
   font-size: var(--text-body-small);
-  font-weight: 500;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  font-weight: 400;
+  transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
   border: none;
   cursor: pointer;
 
@@ -137,8 +137,8 @@ const ViewReferenceButton = styled.a`
   border-radius: 100px;
   text-decoration: none;
   font-size: var(--text-body-small);
-  font-weight: 500;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  font-weight: 400;
+  transition: all var(--duration-fast) var(--ease-default);
   cursor: pointer;
 
   &:hover {
@@ -189,7 +189,7 @@ const Toast = styled.div`
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   z-index: 1000;
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn var(--duration-slow) var(--ease-out);
 
   @keyframes slideIn {
     from {

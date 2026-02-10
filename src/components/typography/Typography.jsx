@@ -326,6 +326,68 @@ const Typography = () => {
         </TypeSpecs>
       </TypeSpecimen>
 
+      <S.Subtitle>Links</S.Subtitle>
+      <S.Bodytext>
+        Inline text links use the accent color, which automatically adjusts for
+        light and dark modes to maintain contrast.
+      </S.Bodytext>
+
+      <TypeSpecimen>
+        <S.Bodytext style={{ marginBottom: 0 }}>
+          Read more about our design philosophy in the{" "}
+          <a
+            href="#"
+            style={{ color: "var(--color-accent)" }}
+            onClick={(e) => e.preventDefault()}
+          >
+            brand essentials
+          </a>{" "}
+          section.
+        </S.Bodytext>
+        <TypeSpecs>
+          <TypeSpec>
+            <TypeLabel>Color</TypeLabel>
+            var(--color-accent)
+          </TypeSpec>
+          <TypeSpec>
+            <TypeLabel>Light Mode</TypeLabel>
+            #6A00D5
+          </TypeSpec>
+          <TypeSpec>
+            <TypeLabel>Dark Mode</TypeLabel>
+            #8B5CF6
+          </TypeSpec>
+          <TypeSpec>
+            <TypeLabel>Underline</TypeLabel>
+            On hover (optional)
+          </TypeSpec>
+        </TypeSpecs>
+      </TypeSpecimen>
+
+      <Callout type="info" title="Why --color-accent?">
+        Use --color-accent instead of --color-violet for links. The accent
+        variable automatically shifts to a lighter violet (#8B5CF6) in dark
+        mode, ensuring sufficient contrast against dark backgrounds.
+      </Callout>
+
+      <CodeBlock language="css" title="Link Styling">
+        {`/* Inline text links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-default);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}`}
+      </CodeBlock>
+
       <S.Subtitle>Responsive Typography</S.Subtitle>
       <S.Bodytext>
         For SvelteKit projects, use CSS clamp() to create fluid typography that scales smoothly across all screen sizes. This approach eliminates breakpoint-based font size adjustments and provides a better responsive experience.
