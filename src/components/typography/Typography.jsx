@@ -335,13 +335,20 @@ const Typography = () => {
       <TypeSpecimen>
         <S.Bodytext style={{ marginBottom: 0 }}>
           Read more about our design philosophy in the{" "}
-          <a
-            href="#"
-            style={{ color: "var(--color-accent)" }}
-            onClick={(e) => e.preventDefault()}
+          <button
+            type="button"
+            style={{
+              color: "var(--color-accent)",
+              background: "none",
+              border: "none",
+              padding: 0,
+              font: "inherit",
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
           >
             brand essentials
-          </a>{" "}
+          </button>{" "}
           section.
         </S.Bodytext>
         <TypeSpecs>
